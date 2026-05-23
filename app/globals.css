@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand colors */
+  --color-navy-900: #0D2D5C;
+  --color-navy-800: #143769;
+  --color-navy-700: #1A4178;
+  --color-navy-500: #4F76A8;
+  --color-navy-200: #C3D2E5;
+  --color-navy-100: #E0E8F2;
+
+  --color-terra-900: #6F1D12;
+  --color-terra-800: #7E2114;
+  --color-terra-700: #8C2518;
+  --color-terra-500: #B84B36;
+  --color-terra-400: #D9705A;
+  --color-terra-100: #F4DDD5;
+
+  --color-cream-50: #FAFAF7;
+  --color-cream-100: #F4F2EC;
+  --color-cream-200: #E8E4D9;
+  --color-cream-300: #D6D0C2;
+
+  --color-ink-900: #1A1A1A;
+  --color-ink-800: #2A2A28;
+  --color-ink-700: #4A4A48;
+  --color-ink-500: #76746E;
+  --color-ink-300: #A8A69F;
+
+  /* Typography */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Layout */
+  --container-7xl: 80rem;
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Shadow tinted to navy */
+  --shadow-card: 0 1px 0 rgba(13, 45, 92, 0.04), 0 12px 32px -20px rgba(13, 45, 92, 0.18);
+  --shadow-elevated: 0 2px 0 rgba(13, 45, 92, 0.04), 0 24px 48px -24px rgba(13, 45, 92, 0.22);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: var(--color-cream-50);
+    color: var(--color-ink-900);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background-color: var(--color-terra-700);
+    color: var(--color-cream-50);
+  }
+
+  /* Focus visible — accessible but not ugly */
+  :focus-visible {
+    outline: 2px solid var(--color-navy-900);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Display headings */
+  .font-display {
+    font-family: var(--font-display);
+    font-feature-settings: "ss01", "ss02";
+    letter-spacing: -0.02em;
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Section anchor offset for sticky header */
+  .scroll-mt-header {
+    scroll-margin-top: 5rem;
+  }
+}
