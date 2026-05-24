@@ -26,8 +26,12 @@ export function ValueProps() {
           {valueProps.map((prop, i) => {
             const Icon = icons[i]!;
             return (
-              <Reveal key={prop.title} delay={i * 0.06}>
-                <article className="flex flex-col md:px-8 md:first:pl-0 md:last:pr-0">
+              <Reveal
+                key={prop.title}
+                delay={i * 0.06}
+                className="md:px-10 md:[&:first-child]:pl-0 md:[&:last-child]:pr-0 lg:px-14 lg:[&:first-child]:pl-0 lg:[&:last-child]:pr-0"
+              >
+                <article className="flex flex-col">
                   <span className="mb-7 inline-flex h-12 w-12 items-center justify-center rounded-full bg-cream-50 text-terra-700 ring-1 ring-cream-300">
                     <Icon strokeWidth={1.5} className="h-5 w-5" />
                   </span>

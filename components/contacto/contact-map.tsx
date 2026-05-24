@@ -13,7 +13,7 @@ const LeafletMap = dynamic(() => import("./leaflet-map"), {
 
 export function ContactMap() {
   return (
-    <div className="h-[280px] w-full overflow-hidden rounded-lg border border-cream-300 bg-cream-100 sm:h-[320px]">
+    <div className="relative isolate z-0 h-[280px] w-full overflow-hidden rounded-lg border border-cream-300 bg-cream-100 sm:h-[320px]">
       <LeafletMap />
     </div>
   );

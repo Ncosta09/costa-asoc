@@ -39,7 +39,7 @@ export function SiteHeader() {
           <Logo priority />
         </Link>
 
-        <nav aria-label="Principal" className="hidden justify-self-center md:block">
+        <nav aria-label="Principal" className="hidden justify-self-center lg:block">
           <ul className="flex items-center gap-1">
             {navLinks.map((link) => {
               const active =
@@ -75,7 +75,7 @@ export function SiteHeader() {
             href="/contacto"
             variant="primary"
             size="default"
-            className="hidden md:inline-flex"
+            className="hidden lg:inline-flex"
           >
             Solicitar propuesta
           </Button>

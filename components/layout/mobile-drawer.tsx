@@ -46,7 +46,7 @@ export function MobileDrawer() {
         aria-expanded={open}
         aria-controls="mobile-drawer"
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-navy-900 transition-colors hover:bg-navy-100/60 md:hidden"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-md text-navy-900 transition-colors hover:bg-navy-100/60 lg:hidden"
       >
         <Menu strokeWidth={1.75} className="h-5 w-5" />
       </button>
@@ -59,7 +59,7 @@ export function MobileDrawer() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduce ? 0 : 0.2 }}
-            className="fixed inset-0 z-50 bg-ink-900/40 backdrop-blur-[2px] md:hidden"
+            className="fixed inset-0 z-50 bg-ink-900/40 backdrop-blur-[2px] lg:hidden"
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
@@ -79,7 +79,7 @@ export function MobileDrawer() {
             role="dialog"
             aria-modal="true"
             aria-label="Menú"
-            className="fixed inset-y-0 right-0 z-50 flex w-[88%] max-w-sm flex-col bg-cream-50 shadow-[0_24px_80px_-12px_rgba(13,45,92,0.25)] md:hidden"
+            className="fixed inset-y-0 right-0 z-50 flex w-[88%] max-w-sm flex-col bg-cream-50 shadow-[0_24px_80px_-12px_rgba(13,45,92,0.25)] lg:hidden"
           >
             <div className="flex h-[64px] items-center justify-between border-b border-cream-200 px-5">
               <Logo />

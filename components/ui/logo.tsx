@@ -5,14 +5,14 @@ import horizontalSrc from "@/public/logos/costa-horizontal.png";
 import stackedSrc from "@/public/logos/costa-stacked.png";
 
 type LogoProps = {
-  variant?: "horizontal" | "stacked";
+  variant?: "horizontal" | "stacked" | "responsive";
   className?: string;
   ariaLabel?: string;
   priority?: boolean;
 };
 
 export function Logo({
-  variant = "horizontal",
+  variant = "responsive",
   className,
   ariaLabel = "Costa & Asociados",
   priority = false,
@@ -30,14 +30,37 @@ export function Logo({
     );
   }
 
+  if (variant === "horizontal") {
+    return (
+      <Image
+        src={horizontalSrc}
+        alt={ariaLabel}
+        priority={priority}
+        sizes="300px"
+        placeholder="empty"
+        className={cn("h-9 w-auto select-none", className)}
+      />
+    );
+  }
+
   return (
-    <Image
-      src={horizontalSrc}
-      alt={ariaLabel}
-      priority={priority}
-      sizes="300px"
-      placeholder="empty"
-      className={cn("h-6 w-auto select-none sm:h-7", className)}
-    />
+    <>
+      <Image
+        src={stackedSrc}
+        alt={ariaLabel}
+        priority={priority}
+        sizes="120px"
+        placeholder="empty"
+        className={cn("h-10 w-auto select-none lg:hidden", className)}
+      />
+      <Image
+        src={horizontalSrc}
+        alt={ariaLabel}
+        priority={priority}
+        sizes="300px"
+        placeholder="empty"
+        className={cn("hidden h-9 w-auto select-none lg:block", className)}
+      />
+    </>
   );
 }
