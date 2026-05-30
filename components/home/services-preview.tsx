@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 import { featuredServices } from "@/content/services";
+import { ServiceCard } from "@/components/home/service-card";
 
 export function ServicesPreview() {
   return (
@@ -32,27 +33,16 @@ export function ServicesPreview() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-t border-cream-200">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {featuredServices.map((service, i) => {
             const Icon = service.icon;
             return (
-              <Reveal key={service.title} delay={(i % 3) * 0.06}>
-                <article
-                  className="group flex h-full flex-col border-b border-cream-200 px-1 py-8 sm:px-6 sm:py-10 lg:px-8
-                    sm:[&:nth-child(odd)]:border-r sm:[&:nth-child(odd)]:border-cream-200
-                    lg:border-r lg:border-cream-200 lg:[&:nth-child(3n)]:border-r-0
-                    sm:[&:nth-child(odd)]:lg:[&:nth-child(3n)]:border-r-0"
-                >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-navy-100 text-navy-900 transition-colors duration-300 group-hover:bg-terra-100 group-hover:text-terra-700">
-                    <Icon strokeWidth={1.5} className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-5 font-display text-[1.25rem] leading-tight tracking-tight text-navy-900">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 text-[14.5px] leading-relaxed text-ink-700">
-                    {service.description}
-                  </p>
-                </article>
+              <Reveal key={service.title} delay={(i % 3) * 0.06} className="h-full">
+                <ServiceCard
+                  icon={<Icon strokeWidth={1.5} className="h-[22px] w-[22px]" />}
+                  title={service.title}
+                  description={service.description}
+                />
               </Reveal>
             );
           })}

@@ -51,7 +51,7 @@ export function Logo({
         priority={priority}
         sizes="120px"
         placeholder="empty"
-        className={cn("h-10 w-auto select-none lg:hidden", className)}
+        className={cn("h-8 w-auto select-none lg:hidden", className)}
       />
       <Image
         src={horizontalSrc}
@@ -59,7 +59,7 @@ export function Logo({
         priority={priority}
         sizes="300px"
         placeholder="empty"
-        className={cn("hidden h-9 w-auto select-none lg:block", className)}
+        className={cn("hidden h-7 w-auto select-none lg:block", className)}
       />
     </>
   );
