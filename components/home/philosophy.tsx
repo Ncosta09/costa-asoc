@@ -1,16 +1,60 @@
-import { Check } from "lucide-react";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Reveal } from "@/components/ui/reveal";
-import { principles } from "@/content/philosophy";
+import { PrinciplesList } from "@/components/home/principles-list";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function Philosophy() {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const targets = [leftRef.current, rightRef.current].filter(Boolean);
+    if (!gridRef.current || targets.length === 0) return;
+
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      gsap.set(targets, { opacity: 1, y: 0 });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // Single trigger on the grid → both columns reveal in perfect sync.
+      gsap.fromTo(
+        targets,
+        { opacity: 0, y: 24 },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 82%",
+            end: "top 55%",
+            scrub: 1,
+          },
+        },
+      );
+    }, gridRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <Section tone="default" spacing="default">
       <Container>
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <Reveal>
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-16"
+        >
+          <div className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start">
+            <div ref={leftRef} style={{ opacity: 0 }}>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
                 Filosofía
               </p>
@@ -23,29 +67,13 @@ export function Philosophy() {
                 quien entiende que detrás de cada expensa hay un grupo de familias o una
                 operación corporativa que depende del orden.
               </p>
-            </Reveal>
+            </div>
           </div>
 
           <div className="lg:col-span-7 lg:pl-8">
-            <Reveal delay={0.08}>
-              <ul className="divide-y divide-cream-200 border-t border-cream-200">
-                {principles.map((p) => (
-                  <li key={p.title} className="grid grid-cols-[auto,1fr] gap-x-5 py-5 sm:gap-x-8 sm:py-6">
-                    <span className="mt-1 inline-flex h-7 w-7 items-center justify-center rounded-full bg-terra-100 text-terra-700">
-                      <Check strokeWidth={2} className="h-3.5 w-3.5" />
-                    </span>
-                    <div>
-                      <h3 className="font-display text-[1.15rem] tracking-tight text-navy-900">
-                        {p.title}
-                      </h3>
-                      <p className="mt-1 text-[15px] leading-relaxed text-ink-700">
-                        {p.body}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+            <div ref={rightRef} style={{ opacity: 0 }}>
+              <PrinciplesList />
+            </div>
           </div>
         </div>
       </Container>

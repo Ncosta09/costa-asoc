@@ -42,7 +42,7 @@ function Tile({ index, title, body, feature = false, className }: TileProps) {
         alt={img.alt}
         fill
         sizes={feature ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 768px) 25vw, 100vw"}
-        className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]"
+        className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:scale-[1.045]"
       />
       {/* Warm ink scrim for legibility (kept neutral so photos stay natural) */}
       <div

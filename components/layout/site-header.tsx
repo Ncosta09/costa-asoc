@@ -70,7 +70,7 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="flex items-center justify-self-end">
+        <div className="col-start-3 flex items-center gap-2 justify-self-end">
           <Button
             href="/contacto"
             variant="primary"
@@ -78,6 +78,14 @@ export function SiteHeader() {
             className="hidden lg:inline-flex"
           >
             Solicitar propuesta
+          </Button>
+          <Button
+            href="/contacto"
+            variant="primary"
+            size="sm"
+            className="lg:hidden"
+          >
+            Propuesta
           </Button>
           <MobileDrawer />
         </div>
