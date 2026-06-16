@@ -9,7 +9,7 @@ export const site = {
   language: "es-AR",
 
   founded: 2009,
-  yearsExperience: "15+",
+  yearsExperience: "15",
 
   address: {
     street: "Perú 359, Piso 8° Of. 804",
@@ -19,14 +19,13 @@ export const site = {
     postalCode: "C1067",
   },
 
-  // Placeholders — completar con Gabriel
   contact: {
-    phone: "[TELÉFONO]",
-    phoneHref: "tel:+5491100000000",
-    email: "[EMAIL]",
-    emailHref: "mailto:contacto@costaasociados.com.ar",
-    whatsapp: "[WHATSAPP]",
-    whatsappHref: "https://wa.me/5491100000000",
+    phone: "11 6381-5053",
+    phoneHref: "tel:+5491163815053",
+    email: "gcosta@costa-asoc.com.ar",
+    emailHref: "mailto:gcosta@costa-asoc.com.ar",
+    whatsapp: "11 6381-5053",
+    whatsappHref: "https://wa.me/5491163815053",
   },
 
   hours: {

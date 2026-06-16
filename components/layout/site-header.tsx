@@ -85,7 +85,7 @@ export function SiteHeader() {
             size="sm"
             className="lg:hidden"
           >
-            Propuesta
+            Solicitar propuesta
           </Button>
           <MobileDrawer />
         </div>

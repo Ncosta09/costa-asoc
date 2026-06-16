@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
@@ -20,8 +21,8 @@ export function IntroBlock() {
                 Costa &amp; Asociados es un estudio contable con foco específico en la
                 administración profesional de consorcios. Trabajamos desde {site.founded}
                 {" "}con edificios residenciales y corporativos de Buenos Aires, aportando la
-                disciplina del análisis contable a una actividad que históricamente se
-                gestiona desde la improvisación.
+                disciplina del análisis contable a una actividad que gana mucho cuando la
+                lidera un profesional con formación contable.
               </p>
               <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-ink-700">
                 Más de {site.yearsExperience} años acompañando a consejos de administración
@@ -33,18 +34,15 @@ export function IntroBlock() {
 
           <div className="lg:col-span-5">
             <Reveal delay={0.08}>
-              {/* TODO: reemplazar por foto real de Gabriel o de la oficina */}
+              {/* TODO: reemplazar por foto real de Gabriel o de la oficina (stock provisorio) */}
               <figure className="relative aspect-[4/5] overflow-hidden rounded-lg border border-cream-200 bg-cream-100">
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_var(--color-cream-100)_0%,_var(--color-cream-200)_100%)]"
+                <Image
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80"
+                  alt="Equipo del estudio contable trabajando en la oficina"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center text-ink-500">
-                  <span className="font-display text-sm uppercase tracking-[0.18em] text-navy-700">
-                    Pendiente
-                  </span>
-                  <span className="text-[13px]">Foto de Gabriel / oficina</span>
-                </div>
               </figure>
             </Reveal>
           </div>
