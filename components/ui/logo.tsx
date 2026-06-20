@@ -49,17 +49,17 @@ export function Logo({
         src={stackedSrc}
         alt={ariaLabel}
         priority={priority}
-        sizes="120px"
+        sizes="150px"
         placeholder="empty"
-        className={cn("h-8 w-auto select-none lg:hidden", className)}
+        className={cn("h-9 w-auto select-none lg:hidden", className)}
       />
       <Image
         src={horizontalSrc}
         alt={ariaLabel}
         priority={priority}
-        sizes="300px"
+        sizes="340px"
         placeholder="empty"
-        className={cn("hidden h-7 w-auto select-none lg:block", className)}
+        className={cn("hidden h-8 w-auto select-none lg:block", className)}
       />
     </>
   );

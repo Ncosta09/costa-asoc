@@ -18,10 +18,10 @@ export function HowWeWork() {
           </div>
         </Reveal>
 
-        <ol className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200 md:grid-cols-2 lg:grid-cols-4">
-          {howWeWork.map((step, i) => (
-            <Reveal key={step.step} delay={i * 0.05}>
-              <li className="flex h-full flex-col gap-4 bg-cream-50 p-7 sm:p-8">
+        <Reveal delay={0.08}>
+          <ol className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200 md:grid-cols-2 lg:grid-cols-4">
+            {howWeWork.map((step) => (
+              <li key={step.step} className="flex h-full flex-col gap-4 bg-cream-50 p-7 sm:p-8">
                 <span className="font-display text-[13px] tracking-[0.18em] text-terra-700">
                   {step.step}
                 </span>
@@ -32,9 +32,9 @@ export function HowWeWork() {
                   {step.body}
                 </p>
               </li>
-            </Reveal>
-          ))}
-        </ol>
+            ))}
+          </ol>
+        </Reveal>
       </Container>
     </Section>
   );

@@ -33,9 +33,9 @@ export function IntroBlock() {
           </div>
 
           <div className="lg:col-span-5">
-            <Reveal delay={0.08}>
+            <Reveal delay={0.08} className="h-full">
               {/* TODO: reemplazar por foto real de Gabriel o de la oficina (stock provisorio) */}
-              <figure className="relative aspect-[4/5] overflow-hidden rounded-lg border border-cream-200 bg-cream-100">
+              <figure className="relative aspect-[4/5] overflow-hidden rounded-lg border border-cream-200 bg-cream-100 lg:aspect-auto lg:h-full lg:min-h-[24rem]">
                 <Image
                   src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80"
                   alt="Equipo del estudio contable trabajando en la oficina"

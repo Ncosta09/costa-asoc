@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
+import { ServiceCard } from "@/components/home/service-card";
 import { serviceCategories } from "@/content/services";
 
 const accents = ["01", "02", "03", "04"];
@@ -7,7 +8,7 @@ const accents = ["01", "02", "03", "04"];
 export function ServiceCategories() {
   return (
     <Container>
-      <div className="flex flex-col gap-20 sm:gap-28">
+      <div className="flex flex-col gap-20 pb-20 sm:gap-28 sm:pb-28 lg:pb-32">
         {serviceCategories.map((category, idx) => (
           <Reveal key={category.slug}>
             <article
@@ -29,28 +30,19 @@ export function ServiceCategories() {
                 </p>
               </header>
 
-              <ul className="lg:col-span-8">
-                <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200 md:grid-cols-2">
-                  {category.services.map((service) => {
-                    const Icon = service.icon;
-                    return (
-                      <li
-                        key={service.title}
-                        className="flex flex-col gap-3 bg-cream-50 p-6 sm:p-7"
-                      >
-                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-md bg-navy-100 text-navy-900">
-                          <Icon strokeWidth={1.5} className="h-4.5 w-4.5" />
-                        </span>
-                        <h3 className="font-display text-[1.1rem] leading-tight tracking-tight text-navy-900">
-                          {service.title}
-                        </h3>
-                        <p className="text-[14.5px] leading-relaxed text-ink-700">
-                          {service.description}
-                        </p>
-                      </li>
-                    );
-                  })}
-                </div>
+              <ul className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:col-span-8">
+                {category.services.map((service) => {
+                  const Icon = service.icon;
+                  return (
+                    <li key={service.title} className="h-full">
+                      <ServiceCard
+                        icon={<Icon strokeWidth={1.5} className="h-[22px] w-[22px]" />}
+                        title={service.title}
+                        description={service.description}
+                      />
+                    </li>
+                  );
+                })}
               </ul>
             </article>
           </Reveal>

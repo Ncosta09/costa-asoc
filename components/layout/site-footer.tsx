@@ -9,15 +9,15 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-cream-200 bg-cream-100 text-ink-800">
       <Container className="py-16">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-10">
-          <div className="md:col-span-5">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-4">
             <Logo variant="stacked" />
             <p className="mt-6 max-w-[36ch] text-[15px] leading-relaxed text-ink-700">
               {site.description}
             </p>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h2 className="font-display text-sm uppercase tracking-[0.12em] text-navy-900">
               Navegación
             </h2>
@@ -35,7 +35,21 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <div className="md:col-span-4">
+          <div className="md:col-span-3">
+            <h2 className="font-display text-sm uppercase tracking-[0.12em] text-navy-900">
+              Matrículas
+            </h2>
+            <ul className="mt-5 flex flex-col gap-3 text-[14px] text-ink-700">
+              {site.registries.map((r) => (
+                <li key={r.label}>
+                  <span className="font-medium text-ink-900">{r.short}</span>
+                  <span className="ml-2 text-ink-700">— {r.full}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="md:col-span-3">
             <h2 className="font-display text-sm uppercase tracking-[0.12em] text-navy-900">
               Contacto
             </h2>
@@ -61,18 +75,6 @@ export function SiteFooter() {
                 </a>
               </li>
               <li className="text-ink-700">{site.hours.label}</li>
-            </ul>
-
-            <h2 className="mt-8 font-display text-sm uppercase tracking-[0.12em] text-navy-900">
-              Matrículas
-            </h2>
-            <ul className="mt-5 flex flex-col gap-2 text-[14px] text-ink-700">
-              {site.registries.map((r) => (
-                <li key={r.label}>
-                  <span className="font-medium text-ink-900">{r.short}</span>
-                  <span className="ml-2 text-ink-700">— {r.full}</span>
-                </li>
-              ))}
             </ul>
           </div>
         </div>

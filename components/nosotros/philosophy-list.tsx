@@ -8,7 +8,7 @@ export function PhilosophyList() {
     <Section tone="muted" spacing="default">
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
             <Reveal>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
                 Filosofía
@@ -29,7 +29,7 @@ export function PhilosophyList() {
                 {principles.map((p, i) => (
                   <li
                     key={p.title}
-                    className="grid grid-cols-[auto,1fr] gap-x-6 py-6 sm:gap-x-10 sm:py-8"
+                    className="grid grid-cols-[auto_1fr] gap-x-6 py-6 sm:gap-x-10 sm:py-8"
                   >
                     <span className="font-display text-[13px] tracking-[0.18em] text-terra-700">
                       0{i + 1}

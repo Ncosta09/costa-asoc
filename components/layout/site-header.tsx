@@ -83,7 +83,7 @@ export function SiteHeader() {
             href="/contacto"
             variant="primary"
             size="sm"
-            className="lg:hidden"
+            className="hidden sm:inline-flex lg:hidden"
           >
             Solicitar propuesta
           </Button>

@@ -39,12 +39,15 @@ export function TransparencyBlock() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200 md:grid-cols-3">
-          {items.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <Reveal key={item.title} delay={i * 0.06}>
-                <article className="flex h-full flex-col gap-4 bg-cream-50 p-7 sm:p-9">
+        <Reveal delay={0.08}>
+          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200 md:grid-cols-3">
+            {items.map((item) => {
+              const Icon = item.icon;
+              return (
+                <article
+                  key={item.title}
+                  className="flex h-full flex-col gap-4 bg-cream-50 p-7 sm:p-9"
+                >
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-terra-100 text-terra-700">
                     <Icon strokeWidth={1.5} className="h-5 w-5" />
                   </span>
@@ -53,10 +56,10 @@ export function TransparencyBlock() {
                   </h3>
                   <p className="text-[15px] leading-relaxed text-ink-700">{item.body}</p>
                 </article>
-              </Reveal>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </Reveal>
       </Container>
     </Section>
   );

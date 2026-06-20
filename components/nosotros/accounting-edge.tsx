@@ -46,12 +46,15 @@ export function AccountingEdge() {
           </div>
 
           <div className="lg:col-span-7">
-            <ul className="flex flex-col gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200">
-              {points.map((point, i) => {
-                const Icon = point.icon;
-                return (
-                  <Reveal key={point.title} delay={i * 0.05}>
-                    <li className="grid grid-cols-[auto,1fr] gap-6 bg-cream-50 p-7 sm:p-9">
+            <Reveal delay={0.08}>
+              <ul className="flex flex-col gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200">
+                {points.map((point) => {
+                  const Icon = point.icon;
+                  return (
+                    <li
+                      key={point.title}
+                      className="grid grid-cols-[auto_1fr] gap-6 bg-cream-50 p-7 sm:p-9"
+                    >
                       <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-navy-900 text-cream-50">
                         <Icon strokeWidth={1.5} className="h-5 w-5" />
                       </span>
@@ -64,10 +67,10 @@ export function AccountingEdge() {
                         </p>
                       </div>
                     </li>
-                  </Reveal>
-                );
-              })}
-            </ul>
+                  );
+                })}
+              </ul>
+            </Reveal>
           </div>
         </div>
       </Container>
