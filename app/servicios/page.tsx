@@ -38,11 +38,7 @@ export default function ServiciosPage() {
 
       <TransparencyBlock />
 
-      <Section tone="navy" spacing="default" className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-32 -bottom-32 h-80 w-80 rounded-full bg-terra-700/20 blur-3xl"
-        />
+      <Section tone="navy" spacing="default">
         <Container>
           <Reveal>
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">

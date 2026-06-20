@@ -12,7 +12,7 @@ type Size = "default" | "lg" | "sm";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-terra-700 text-cream-50 hover:bg-terra-800 active:translate-y-px shadow-[0_1px_0_rgba(0,0,0,0.08),0_8px_20px_-12px_rgba(140,37,24,0.45)]",
+    "bg-terra-700 text-cream-50 hover:bg-terra-800 active:translate-y-px",
   secondary:
     "border border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-cream-50 active:translate-y-px",
   ghost:

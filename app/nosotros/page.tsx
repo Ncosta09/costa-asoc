@@ -24,11 +24,7 @@ export default function NosotrosPage() {
       <AccountingEdge />
       <HowWeWork />
 
-      <Section tone="navy" spacing="default" className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-terra-700/20 blur-3xl"
-        />
+      <Section tone="navy" spacing="default">
         <Container>
           <Reveal>
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
