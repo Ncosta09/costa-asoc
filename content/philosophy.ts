@@ -12,7 +12,7 @@ export const valueProps = [
   {
     title: "Respuesta inmediata",
     body:
-      "Atención de lunes a viernes en oficina y guardia para emergencias edilicias fuera de horario. El consejo siempre tiene a quién llamar.",
+      "Atención de lunes a viernes en oficina y guardia para emergencias edilicias fuera de horario. El copropietario siempre tiene a quién llamar.",
   },
 ] as const;
 

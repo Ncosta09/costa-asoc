@@ -12,11 +12,11 @@ export const site = {
   yearsExperience: "15",
 
   address: {
-    street: "Perú 359, Piso 8° Of. 804",
+    street: "Campana 4710, Piso 6° \"B\"",
     city: "Ciudad Autónoma de Buenos Aires",
     region: "CABA",
     country: "AR",
-    postalCode: "C1067",
+    postalCode: "C1419FQD",
   },
 
   contact: {
@@ -33,10 +33,10 @@ export const site = {
     structured: "Mo-Fr 09:00-18:00",
   },
 
-  // Coordenadas de Perú 359, CABA
+  // Coordenadas de Campana 4710, CABA (Villa Devoto)
   geo: {
-    lat: -34.6098,
-    lng: -58.3724,
+    lat: -34.5893617,
+    lng: -58.5077353,
   },
 
   registries: [

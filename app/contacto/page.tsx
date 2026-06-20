@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Contacto",
   description:
-    "Coordinemos una primera reunión sin compromiso. Formulario de contacto y datos del estudio en Perú 359, CABA.",
+    "Coordinemos una primera reunión sin compromiso. Formulario de contacto y datos del estudio en Campana 4710, CABA.",
   path: "/contacto",
 });
 
