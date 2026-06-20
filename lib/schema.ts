@@ -1,5 +1,34 @@
 import { site } from "@/content/site";
 
+type ArticleInput = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+};
+
+export function blogPostingSchema(post: ArticleInput) {
+  const url = `${site.url}/blog/${post.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": url,
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: site.language,
+    author: { "@type": "Organization", name: post.author },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: { "@type": "ImageObject", url: `${site.url}/logos/costa-horizontal.png` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  };
+}
+
 export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
