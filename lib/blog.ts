@@ -14,6 +14,8 @@ export type PostMeta = {
   author: string;
   tags: string[];
   draft: boolean;
+  cover?: string;
+  coverAlt?: string;
 };
 
 export type Post = PostMeta & { content: string };
@@ -28,6 +30,8 @@ function parsePost(slug: string, raw: string): Post {
     author: String(data.author ?? site.name),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     draft: Boolean(data.draft),
+    cover: data.cover ? String(data.cover) : undefined,
+    coverAlt: data.coverAlt ? String(data.coverAlt) : undefined,
     content,
   };
 }

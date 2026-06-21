@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -99,6 +100,19 @@ export default async function BlogPostPage({
               <span>{post.author}</span>
             </div>
           </header>
+
+          {post.cover ? (
+            <figure className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl border border-cream-200 bg-cream-200">
+              <Image
+                src={post.cover}
+                alt={post.coverAlt ?? ""}
+                fill
+                priority
+                sizes="(min-width: 768px) 44rem, 100vw"
+                className="object-cover"
+              />
+            </figure>
+          ) : null}
 
           <div className="mt-8">
             <MDXRemote

@@ -34,17 +34,17 @@ export function Hero() {
               </Button>
             </div>
 
-            <ul className="mt-10 flex flex-wrap items-center gap-2.5">
+            <ul className="mt-10 flex flex-nowrap items-center gap-2 sm:gap-2.5">
               {site.registries.map((r) => (
                 <li key={r.label}>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
-                    <BadgeCheck strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
+                  <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-cream-100 px-3 py-1.5 text-[12px] font-medium text-navy-900 ring-1 ring-cream-300 sm:px-3.5 sm:text-[13px]">
+                    <BadgeCheck strokeWidth={1.75} className="hidden h-3.5 w-3.5 text-terra-700 sm:inline-block" />
                     {r.short}
                   </span>
                 </li>
               ))}
               <li>
-                <span className="inline-flex items-center rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
+                <span className="inline-flex items-center whitespace-nowrap rounded-full bg-cream-100 px-3 py-1.5 text-[12px] font-medium text-navy-900 ring-1 ring-cream-300 sm:px-3.5 sm:text-[13px]">
                   Desde {site.founded}
                 </span>
               </li>
