@@ -29,10 +29,35 @@ export function blogPostingSchema(post: ArticleInput) {
   };
 }
 
-export function localBusinessSchema() {
+export function breadcrumbSchema(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
-    "@type": "AccountingService",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function faqSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
+export function professionalServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["ProfessionalService", "AccountingService"],
     "@id": `${site.url}#organization`,
     name: site.name,
     description: site.description,
@@ -42,6 +67,12 @@ export function localBusinessSchema() {
     foundingDate: String(site.founded),
     image: `${site.url}/og-default.png`,
     logo: `${site.url}/logos/costa-horizontal.png`,
+    hasCredential: site.registries.map((r) => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Matrícula / membresía profesional",
+      name: r.full,
+      identifier: r.short,
+    })),
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street,

@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SkipToContent } from "@/components/layout/skip-to-content";
 import { buildMetadata } from "@/lib/seo";
-import { localBusinessSchema } from "@/lib/schema";
+import { professionalServiceSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -22,8 +22,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = buildMetadata({
-  title: site.tagline,
-  description: site.description,
+  title: "Administración de consorcios en Buenos Aires | Costa & Asoc.",
+  description:
+    "Estudio contable matriculado que administra consorcios en CABA desde 2009. Cuentas a nombre del consorcio y rendición transparente. Pedí tu propuesta sin cargo.",
   path: "/",
 });
 
@@ -46,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           // JSON-LD must be raw, not escaped — only emitted once at root
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema()) }}
         />
       </body>
     </html>

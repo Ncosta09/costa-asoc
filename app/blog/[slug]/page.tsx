@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
-import { blogPostingSchema } from "@/lib/schema";
+import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
+import { site } from "@/content/site";
 
 type Params = { slug: string };
 
@@ -59,6 +60,18 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(blogPostingSchema(post)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Inicio", url: site.url },
+              { name: "Blog", url: `${site.url}/blog` },
+              { name: post.title, url: `${site.url}/blog/${post.slug}` },
+            ]),
+          ),
         }}
       />
       <Container>

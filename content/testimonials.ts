@@ -1,21 +1,24 @@
-// TODO: reemplazar por testimonios reales de consorcios administrados.
+// Testimonios REALES pendientes (con autorización del consorcio).
+// Mientras los valores sean placeholders {{...}}, la sección no se renderiza
+// (ver components/home/testimonials.tsx). NO completar con texto inventado.
 export const testimonials = [
   {
-    quote:
-      "Pasamos de no entender una liquidación a tener reportes claros todos los meses. El consejo dejó de perseguir al administrador para conseguir información.",
-    author: "Consejo de Administración",
-    role: "Edificio residencial, Recoleta",
+    quote: "{{TESTIMONIO_1_TEXTO}}",
+    author: "{{TESTIMONIO_1_NOMBRE_Y_ROL}}",
+    role: "{{TESTIMONIO_1_EDIFICIO_BARRIO}}",
   },
   {
-    quote:
-      "Lo que más valoramos es la previsibilidad. Nos anticipan los gastos importantes y planifican el fondo de reserva en vez de improvisar con expensas extraordinarias.",
-    author: "Presidente del Consejo",
-    role: "Torre corporativa, Puerto Madero",
+    quote: "{{TESTIMONIO_2_TEXTO}}",
+    author: "{{TESTIMONIO_2_NOMBRE_Y_ROL}}",
+    role: "{{TESTIMONIO_2_EDIFICIO_BARRIO}}",
   },
   {
-    quote:
-      "Cuentas a nombre del consorcio y cada movimiento documentado. Cuando pedimos una auditoría, estaba todo ordenado y disponible. Tranquilidad total.",
-    author: "Miembro del Consejo",
-    role: "Edificio mixto, Belgrano",
+    quote: "{{TESTIMONIO_3_TEXTO}}",
+    author: "{{TESTIMONIO_3_NOMBRE_Y_ROL}}",
+    role: "{{TESTIMONIO_3_EDIFICIO_BARRIO}}",
   },
 ] as const;
+
+export const hasRealTestimonials = !testimonials.some((t) =>
+  t.quote.startsWith("{{"),
+);

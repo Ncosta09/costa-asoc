@@ -134,6 +134,95 @@ export const serviceCategories: ServiceCategory[] = [
   },
 ];
 
+// Servicios core para la landing /servicios (H2 con keyword + beneficio + ancla)
+export type CoreService = {
+  slug: string;
+  title: string;
+  benefit: string;
+  includes: string[];
+  icon: LucideIcon;
+};
+
+export const coreServices: CoreService[] = [
+  {
+    slug: "liquidacion-de-expensas",
+    title: "Liquidación mensual de expensas",
+    benefit:
+      "Liquidaciones claras, en término y desglosadas por unidad y por rubro. Cada egreso, con su comprobante. El consejo deja de perseguir al administrador para entender en qué se gasta.",
+    includes: [
+      "Cálculo y distribución según coeficiente de copropiedad",
+      "Detalle por unidad funcional y por rubro",
+      "Seguimiento de morosidad e intimaciones formales",
+      "Pago de servicios, impuestos y proveedores",
+    ],
+    icon: Calculator,
+  },
+  {
+    slug: "control-financiero",
+    title: "Control financiero y presupuestario",
+    benefit:
+      "Nuestro diferencial contable: un presupuesto anual activo que comparamos mes a mes para anticipar gastos y evitar expensas extraordinarias por sorpresa. Cuentas bancarias a nombre del consorcio, siempre.",
+    includes: [
+      "Planificación financiera anual",
+      "Seguimiento mensual del presupuesto",
+      "Proyección y resguardo del fondo de reserva",
+      "Cuentas bancarias a nombre del consorcio",
+    ],
+    icon: LineChart,
+  },
+  {
+    slug: "personal-y-haberes",
+    title: "Supervisión de personal y liquidación de haberes",
+    benefit:
+      "Encargados, suplentes y personal contratado al día: sueldos, aportes, ART y obligaciones sindicales. El rigor contable protege al consorcio de contingencias laborales.",
+    includes: [
+      "Liquidación de haberes, aportes y recibos",
+      "Cumplimiento laboral, impositivo y previsional",
+      "Gestión ante GCBA, AFIP y ANSES",
+      "Resguardo documental ordenado",
+    ],
+    icon: Users,
+  },
+  {
+    slug: "reparaciones-y-obras",
+    title: "Coordinación de reparaciones y obras",
+    benefit:
+      "Cotejo de proveedores, supervisión de avance y certificación de obras según los lineamientos del consejo. Sin sobreprecios ni trabajos sin control.",
+    includes: [
+      "Presupuestos y cotejo de proveedores",
+      "Supervisión y certificación de avance",
+      "Gestión de siniestros ante aseguradoras",
+      "Inspecciones periódicas del edificio",
+    ],
+    icon: Wrench,
+  },
+  {
+    slug: "asambleas",
+    title: "Convocatoria y asistencia a asambleas",
+    benefit:
+      "Asambleas ordinarias y extraordinarias bien llevadas: convocatoria formal en término, asistencia, redacción de actas y seguimiento de las resoluciones aprobadas.",
+    includes: [
+      "Convocatoria formal en término",
+      "Asistencia y moderación de la asamblea",
+      "Redacción de actas",
+      "Seguimiento de resoluciones",
+    ],
+    icon: Vote,
+  },
+  {
+    slug: "guardia-emergencias",
+    title: "Guardia para emergencias edilicias",
+    benefit:
+      "Atención fuera del horario de oficina para urgencias del edificio. Contacto directo, sin call centers: el copropietario siempre tiene a quién llamar.",
+    includes: [
+      "Atención de contingencias fuera de horario",
+      "Coordinación de urgencias edilicias",
+      "Línea directa de guardia",
+    ],
+    icon: PhoneCall,
+  },
+];
+
 // Subset destacado para preview en home
 export const featuredServices: Service[] = [
   serviceCategories[0]!.services[0]!,

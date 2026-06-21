@@ -1,3 +1,4 @@
+import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { site } from "@/content/site";
@@ -33,17 +34,17 @@ export function Hero() {
               </Button>
             </div>
 
-            <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-[13px] text-ink-500">
+            <ul className="mt-10 flex flex-wrap items-center gap-2.5">
               {site.registries.map((r) => (
-                <li
-                  key={r.label}
-                  className="inline-flex items-center gap-2 before:inline-block before:h-1 before:w-1 before:rounded-full before:bg-cream-300"
-                >
-                  <span className="font-medium text-ink-700">{r.label}</span>
+                <li key={r.label}>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
+                    <BadgeCheck strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
+                    {r.short}
+                  </span>
                 </li>
               ))}
-              <li className="inline-flex items-center gap-2 before:inline-block before:h-1 before:w-1 before:rounded-full before:bg-cream-300">
-                <span className="font-medium text-ink-700">
+              <li>
+                <span className="inline-flex items-center rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
                   Desde {site.founded}
                 </span>
               </li>

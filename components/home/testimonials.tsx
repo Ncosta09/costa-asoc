@@ -1,9 +1,12 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
-import { testimonials } from "@/content/testimonials";
+import { testimonials, hasRealTestimonials } from "@/content/testimonials";
 
 export function Testimonials() {
+  // No renderizar la sección con testimonios placeholder/inventados.
+  if (!hasRealTestimonials) return null;
+
   return (
     <Section tone="muted" spacing="default">
       <Container>

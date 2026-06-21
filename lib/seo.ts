@@ -9,7 +9,8 @@ type PageMeta = {
 
 export function buildMetadata({ title, description, path }: PageMeta): Metadata {
   const url = `${site.url}${path}`;
-  const fullTitle = path === "/" ? `${site.name} — ${site.tagline}` : `${title} — ${site.name}`;
+  // En home el `title` ya viene formateado (con keyword). En el resto: "Título — Marca".
+  const fullTitle = path === "/" ? title : `${title} — ${site.name}`;
 
   return {
     title: fullTitle,
