@@ -4,7 +4,7 @@ export const site = {
   legalName: "Costa & Asociados",
   description:
     "Estudio contable especializado en administración profesional de consorcios residenciales y corporativos en CABA. Gestión transparente y control financiero riguroso.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://costaasociados.com.ar",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.costa-asoc.com.ar",
   locale: "es_AR",
   language: "es-AR",
 
