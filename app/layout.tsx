@@ -21,12 +21,22 @@ const geist = Geist({
   variable: "--font-geist",
 });
 
-export const metadata: Metadata = buildMetadata({
-  title: "Administración de consorcios en Buenos Aires | Costa & Asoc.",
-  description:
-    "Estudio contable matriculado que administra consorcios en CABA desde 2009. Cuentas a nombre del consorcio y rendición transparente. Pedí tu propuesta sin cargo.",
-  path: "/",
-});
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: "Administración de consorcios en Buenos Aires | Costa & Asoc.",
+    description:
+      "Estudio contable matriculado que administra consorcios en CABA desde 2009. Cuentas a nombre del consorcio y rendición transparente. Pedí tu propuesta sin cargo.",
+    path: "/",
+  }),
+  // Verificación de propiedad. Se activan cargando las env vars en Vercel
+  // (no requieren tocar código). Google: código del método "Etiqueta HTML".
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : {},
+  },
+};
 
 export const viewport: Viewport = {
   themeColor: "#FAFAF7",
