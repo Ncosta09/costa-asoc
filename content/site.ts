@@ -29,8 +29,8 @@ export const site = {
   },
 
   hours: {
-    label: "Lunes a viernes, 9 a 18 hs",
-    structured: "Mo-Fr 09:00-18:00",
+    label: "Lunes a viernes, 8 a 18 hs",
+    structured: "Mo-Fr 08:00-18:00",
   },
 
   // Coordenadas de Campana 4710, CABA (Villa Devoto)
