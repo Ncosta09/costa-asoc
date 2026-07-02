@@ -28,10 +28,9 @@ export const metadata: Metadata = {
       "Estudio contable matriculado que administra consorcios en CABA desde 2009. Cuentas a nombre del consorcio y rendición transparente. Pedí tu propuesta sin cargo.",
     path: "/",
   }),
-  // Verificación de propiedad. Se activan cargando las env vars en Vercel
-  // (no requieren tocar código). Google: código del método "Etiqueta HTML".
+  // Verificación de propiedad de buscadores (valores públicos y permanentes).
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION,
+    google: "GtWvdbpHtztRqo5SwAPyKSFqNr3b_VewXaSnR81z4HI",
     other: process.env.BING_SITE_VERIFICATION
       ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
       : {},
