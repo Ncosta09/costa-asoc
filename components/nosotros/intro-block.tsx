@@ -34,15 +34,26 @@ export function IntroBlock() {
 
           <div className="lg:col-span-5">
             <Reveal delay={0.08} className="h-full">
-              {/* TODO: reemplazar por foto real de Gabriel o de la oficina (stock provisorio) */}
-              <figure className="relative aspect-[4/5] overflow-hidden rounded-lg border border-cream-200 bg-cream-100 lg:aspect-auto lg:h-full lg:min-h-[24rem]">
-                <Image
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80"
-                  alt="Equipo del estudio contable trabajando en la oficina"
-                  fill
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
-                />
+              <figure className="flex h-full flex-col">
+                {/* TODO: reemplazar por foto de Gabriel en alta resolución (actual: 400x400) */}
+                <div className="relative aspect-[4/5] flex-1 overflow-hidden rounded-lg border border-cream-200 bg-cream-100 lg:aspect-auto lg:min-h-[24rem]">
+                  <Image
+                    src="/nosotros/gabriel-costa.jpg"
+                    alt="Gabriel A. Costa, contador público y titular de Costa & Asociados"
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover object-[center_top]"
+                  />
+                </div>
+                <figcaption className="mt-4">
+                  <p className="font-display text-[1.25rem] leading-tight tracking-tight text-navy-900">
+                    Gabriel A. Costa
+                  </p>
+                  <p className="mt-1 text-[14px] text-ink-600">
+                    Contador Público{" "}
+                    <span className="text-terra-700">·</span> Titular del estudio
+                  </p>
+                </figcaption>
               </figure>
             </Reveal>
           </div>
