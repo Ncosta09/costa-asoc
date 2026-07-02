@@ -12,8 +12,6 @@ export type ContactFormState = {
   errors?: Partial<Record<string, string>>;
 };
 
-const initialState: ContactFormState = { status: "idle" };
-
 async function getClientIp() {
   const h = await headers();
   const fwd = h.get("x-forwarded-for");
@@ -100,5 +98,3 @@ export async function submitContact(
     };
   }
 }
-
-export { initialState as contactInitialState };

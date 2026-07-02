@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { CheckCircle2, Loader2 } from "lucide-react";
-import { submitContact, contactInitialState } from "@/app/contacto/actions";
+import { submitContact, type ContactFormState } from "@/app/contacto/actions";
 import {
   Field,
   Honeypot,
@@ -43,7 +43,8 @@ function SubmitButton() {
 }
 
 export function ContactForm() {
-  const [state, formAction] = useActionState(submitContact, contactInitialState);
+  const initialState: ContactFormState = { status: "idle" };
+  const [state, formAction] = useActionState(submitContact, initialState);
 
   if (state.status === "success") {
     return (
