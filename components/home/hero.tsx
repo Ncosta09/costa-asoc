@@ -1,4 +1,4 @@
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { site } from "@/content/site";
@@ -29,7 +29,11 @@ export function Hero() {
               <Button href="/contacto" variant="primary" size="lg">
                 Solicitar propuesta sin cargo
               </Button>
-              <Button href="/servicios" variant="secondary" size="lg">
+              <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
+                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
+                Escribir por WhatsApp
+              </Button>
+              <Button href="/servicios" variant="ghost" size="lg">
                 Conocer servicios
               </Button>
             </div>

@@ -23,7 +23,7 @@ const geist = Geist({
 
 export const metadata: Metadata = {
   ...buildMetadata({
-    title: "Administración de consorcios en Buenos Aires | Costa & Asoc.",
+    title: "Administración de consorcios en Buenos Aires — Costa & Asociados",
     description:
       "Estudio contable matriculado que administra consorcios en CABA desde 2009. Cuentas a nombre del consorcio y rendición transparente. Pedí tu propuesta sin cargo.",
     path: "/",

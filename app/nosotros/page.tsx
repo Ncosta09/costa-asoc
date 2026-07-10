@@ -8,6 +8,8 @@ import { PhilosophyList } from "@/components/nosotros/philosophy-list";
 import { AccountingEdge } from "@/components/nosotros/accounting-edge";
 import { HowWeWork } from "@/components/nosotros/how-we-work";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/schema";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Nosotros",
@@ -19,6 +21,17 @@ export const metadata: Metadata = buildMetadata({
 export default function NosotrosPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Inicio", url: site.url },
+              { name: "Nosotros", url: `${site.url}/nosotros` },
+            ]),
+          ),
+        }}
+      />
       <IntroBlock />
       <PhilosophyList />
       <AccountingEdge />

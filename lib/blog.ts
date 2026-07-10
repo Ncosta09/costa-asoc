@@ -5,6 +5,8 @@ import { site } from "@/content/site";
 
 const BLOG_DIR = path.join(process.cwd(), "content/blog");
 
+export type FaqEntry = { question: string; answer: string };
+
 export type PostMeta = {
   slug: string;
   title: string;
@@ -16,6 +18,8 @@ export type PostMeta = {
   draft: boolean;
   cover?: string;
   coverAlt?: string;
+  /** FAQ opcional del post → se renderiza y emite FAQPage JSON-LD. */
+  faq?: FaqEntry[];
 };
 
 export type Post = PostMeta & { content: string };
@@ -32,6 +36,13 @@ function parsePost(slug: string, raw: string): Post {
     draft: Boolean(data.draft),
     cover: data.cover ? String(data.cover) : undefined,
     coverAlt: data.coverAlt ? String(data.coverAlt) : undefined,
+    faq: Array.isArray(data.faq)
+      ? data.faq
+          .filter((f: unknown): f is FaqEntry =>
+            typeof f === "object" && f !== null && "question" in f && "answer" in f,
+          )
+          .map((f: FaqEntry) => ({ question: String(f.question), answer: String(f.answer) }))
+      : undefined,
     content,
   };
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BadgeCheck } from "lucide-react";
+import { BadgeCheck, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ import { servicesFaq } from "@/content/faq";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Administración de consorcios en Buenos Aires",
+  title: "Servicios: expensas, obras, asambleas y guardia 24/7",
   description:
     "Liquidación de expensas, control financiero, personal, obras, asambleas y guardia 24/7. Estudio contable matriculado (RPA 8192) con cuentas a nombre del consorcio.",
   path: "/servicios",
@@ -43,7 +43,7 @@ export default function ServiciosPage() {
               Servicios
             </p>
             <h1 className="mt-3 font-display text-[2.5rem] leading-[1.04] tracking-[-0.025em] text-balance text-navy-900 sm:text-[3.5rem]">
-              Administración de consorcios en Buenos Aires
+              Qué incluye nuestra administración de consorcios
             </h1>
             <p className="mt-6 max-w-[60ch] text-[18px] leading-relaxed text-ink-800">
               Estudio contable matriculado con Contadores Públicos al frente de cada
@@ -77,7 +77,11 @@ export default function ServiciosPage() {
               <Button href="/contacto" variant="primary" size="lg">
                 Solicitar propuesta sin cargo
               </Button>
-              <Button href="/nosotros" variant="secondary" size="lg">
+              <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
+                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
+                Escribir por WhatsApp
+              </Button>
+              <Button href="/nosotros" variant="ghost" size="lg">
                 Cómo trabajamos
               </Button>
             </div>

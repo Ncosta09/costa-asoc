@@ -11,6 +11,25 @@ export const site = {
   founded: 2009,
   yearsExperience: "15",
 
+  // Rango de precios orientativo para el schema LocalBusiness (no se muestra en la UI).
+  priceRange: "$$",
+
+  // Titular del estudio — usado para el nodo Person (founder/author) en el schema.
+  principal: {
+    name: "Gabriel A. Costa",
+    role: "Contador Público · Titular del estudio",
+    credential: "Contador Público",
+    // LinkedIn personal de Gabriel → va al sameAs del Person (no al de la organización).
+    linkedin: "https://www.linkedin.com/in/gabriel-costa-9839771b8/",
+  },
+
+  // Perfiles y ficha externa de la ORGANIZACIÓN. Se inyectan en `sameAs` del schema y (si hay) en el footer.
+  // TODO(nico): pegar la URL de la ficha de Google Business Profile cuando esté verificada.
+  // (Instagram: no hay. LinkedIn de empresa: no hay — el personal de Gabriel va en principal.linkedin.)
+  social: {
+    googleBusiness: "", // ej. "https://maps.app.goo.gl/xxxxxxxx" (ficha de Google Business Profile)
+  },
+
   address: {
     street: "Campana 4710, Piso 6° \"B\"",
     city: "Ciudad Autónoma de Buenos Aires",
@@ -40,8 +59,10 @@ export const site = {
   },
 
   registries: [
-    { label: "Matrícula RPA Nº 8192", short: "RPA 8192", full: "Registro Público de Administradores GCBA" },
-    { label: "CAPHAI Nº 2903", short: "CAPHAI 2903", full: "Cámara Argentina de Propiedad Horizontal y Actividades Inmobiliarias" },
+    // `url`: link a la ficha/padrón público del organismo para verificar la matrícula.
+    // TODO(nico): completar con las URLs reales de verificación. Vacío = se muestra como texto, sin link.
+    { label: "Matrícula RPA Nº 8192", short: "RPA 8192", full: "Registro Público de Administradores GCBA", url: "https://buenosaires.gob.ar/gcaba_historico/registro-publico-de-administradores-de-consorcios/buscador-de-administradores" },
+    { label: "CAPHAI Nº 2903", short: "CAPHAI 2903", full: "Cámara Argentina de Propiedad Horizontal y Actividades Inmobiliarias", url: "https://caphai.com.ar/" },
   ],
 } as const;
 

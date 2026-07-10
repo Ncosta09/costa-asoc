@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { mdxComponents } from "@/components/blog/mdx-components";
+import { FaqSection } from "@/components/ui/faq-section";
 import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
@@ -56,6 +57,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
+    <>
     <Section spacing="tight" className="pt-24 sm:pt-28">
       <script
         type="application/ld+json"
@@ -139,5 +141,9 @@ export default async function BlogPostPage({
         </article>
       </Container>
     </Section>
+    {post.faq && post.faq.length > 0 ? (
+      <FaqSection items={post.faq} title="Preguntas frecuentes" />
+    ) : null}
+    </>
   );
 }

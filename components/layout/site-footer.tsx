@@ -6,6 +6,12 @@ import { site, navLinks } from "@/content/site";
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
+  // Links externos: ficha de Google (organización) + LinkedIn del titular. Se muestran solo si hay URL.
+  const socialLinks = [
+    { label: "Google", href: site.social.googleBusiness as string },
+    { label: "LinkedIn", href: site.principal.linkedin as string },
+  ].filter((s) => s.href);
+
   return (
     <footer className="border-t border-cream-200 bg-cream-100 text-ink-800">
       <Container className="py-16">
@@ -40,13 +46,47 @@ export function SiteFooter() {
               Matrículas
             </h2>
             <ul className="mt-5 flex flex-col gap-3 text-[14px] text-ink-700">
-              {site.registries.map((r) => (
-                <li key={r.label}>
-                  <span className="font-medium text-ink-900">{r.short}</span>
-                  <span className="ml-2 text-ink-700">— {r.full}</span>
-                </li>
-              ))}
+              {site.registries.map((r) => {
+                const url: string = r.url;
+                return (
+                  <li key={r.label}>
+                    {url ? (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors hover:text-navy-900"
+                      >
+                        <span className="font-medium text-ink-900">{r.short}</span>
+                        <span className="ml-2 text-ink-700">— {r.full}</span>
+                      </a>
+                    ) : (
+                      <>
+                        <span className="font-medium text-ink-900">{r.short}</span>
+                        <span className="ml-2 text-ink-700">— {r.full}</span>
+                      </>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
+
+            {socialLinks.length > 0 && (
+              <ul className="mt-6 flex flex-wrap gap-4 text-[14px]">
+                {socialLinks.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink-700 transition-colors hover:text-navy-900"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <div className="md:col-span-3">

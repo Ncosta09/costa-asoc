@@ -6,6 +6,7 @@ type ArticleInput = {
   description: string;
   date: string;
   author: string;
+  cover?: string;
 };
 
 export function blogPostingSchema(post: ArticleInput) {
@@ -16,10 +17,23 @@ export function blogPostingSchema(post: ArticleInput) {
     "@id": url,
     headline: post.title,
     description: post.description,
+    ...(post.cover ? { image: post.cover } : {}),
     datePublished: post.date,
     dateModified: post.date,
     inLanguage: site.language,
-    author: { "@type": "Organization", name: post.author },
+    // Autor como Person con credencial → señal E-E-A-T más fuerte que Organization
+    // para contenido regulatorio. El nombre viene del frontmatter del post.
+    author: {
+      "@type": "Person",
+      name: post.author,
+      jobTitle: site.principal.role,
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Matrícula profesional",
+        name: site.principal.credential,
+      },
+      worksFor: { "@type": "Organization", name: site.name },
+    },
     publisher: {
       "@type": "Organization",
       name: site.name,
@@ -55,6 +69,11 @@ export function faqSchema(items: { question: string; answer: string }[]) {
 }
 
 export function professionalServiceSchema() {
+  // Teléfono en formato E.164 (deriva del `tel:` href para no duplicar el dato).
+  const telephoneE164 = site.contact.phoneHref.replace("tel:", "");
+  // sameAs: solo perfiles con URL cargada (evita strings vacíos en el schema).
+  const sameAs = Object.values(site.social).filter(Boolean);
+
   return {
     "@context": "https://schema.org",
     "@type": ["ProfessionalService", "AccountingService"],
@@ -62,11 +81,26 @@ export function professionalServiceSchema() {
     name: site.name,
     description: site.description,
     url: site.url,
-    telephone: site.contact.phone,
+    telephone: telephoneE164,
     email: site.contact.email,
     foundingDate: String(site.founded),
-    image: `${site.url}/og-default.png`,
+    priceRange: site.priceRange,
+    // `image` apunta a la OG generada por app/opengraph-image.tsx (200 OK), no a un PNG inexistente.
+    image: `${site.url}/opengraph-image`,
     logo: `${site.url}/logos/costa-horizontal.png`,
+    ...(sameAs.length ? { sameAs } : {}),
+    founder: {
+      "@type": "Person",
+      name: site.principal.name,
+      jobTitle: site.principal.role,
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Matrícula profesional",
+        name: site.principal.credential,
+      },
+      // LinkedIn personal del titular → sameAs del Person (solo si está cargado).
+      ...(site.principal.linkedin ? { sameAs: [site.principal.linkedin] } : {}),
+    },
     hasCredential: site.registries.map((r) => ({
       "@type": "EducationalOccupationalCredential",
       credentialCategory: "Matrícula / membresía profesional",

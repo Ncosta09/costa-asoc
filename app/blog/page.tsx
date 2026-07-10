@@ -6,6 +6,8 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/schema";
+import { site } from "@/content/site";
 import { getAllPosts, formatDate } from "@/lib/blog";
 
 export const metadata: Metadata = buildMetadata({
@@ -20,6 +22,17 @@ export default function BlogPage() {
 
   return (
     <Section spacing="tight" className="pt-24 sm:pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Inicio", url: site.url },
+              { name: "Blog", url: `${site.url}/blog` },
+            ]),
+          ),
+        }}
+      />
       <Container>
         <Reveal>
           <div className="mb-14 max-w-[60ch]">

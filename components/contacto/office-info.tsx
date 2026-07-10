@@ -30,6 +30,16 @@ export function OfficeInfo() {
               {site.address.street}
             </p>
             <p className="mt-1 text-[14px] text-ink-700">{site.address.city}</p>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                `${site.name} ${site.address.street} ${site.address.city}`,
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-block text-[13.5px] font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-2 transition-colors hover:decoration-terra-700"
+            >
+              Ver en Google Maps · Cómo llegar
+            </a>
           </div>
         </li>
 
