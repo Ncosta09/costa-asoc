@@ -21,14 +21,22 @@ No negociables, valen igual para Nico y para el agente:
    para el CCyC, buscador del RPA para matrículas. Si no se puede verificar, no se afirma.
 4. **Nunca inventar montos, plazos ni jurisprudencia.** Los números (salarios, multas, aranceles)
    salen de la planilla o del boletín oficial. Si no está a mano, la nota sale sin el número.
-5. **Estructura:** H2 en forma de pregunta (matchean queries), 1.200–1.800 palabras, tablas donde
+5. **Estructura:** H2 en forma de pregunta (matchean queries), 1.200–2.200 palabras, tablas donde
    ayuden, `faq` en el frontmatter (4–6 entradas → renderiza FAQ visible + `FAQPage` JSON-LD).
-6. **Frontmatter obligatorio:** `title`, `description`, `date`, `updated`, `author`, `tags`,
+   El techo es orientativo: nunca recortes detalle normativo verificado (inciso, plazo, escala de
+   sanciones) para entrar en el rango. Sí recortá relleno.
+6. **Verificación:** `npm ci && npm run build && npm run typecheck`, **en ese orden**. `next-env.d.ts`
+   está gitignoreado y lo genera `next build`; correr `typecheck` antes falla con TS2307 en los
+   imports de `.png` de `logo.tsx` y `hero-mark.tsx` en cualquier clon limpio, sin que tenga nada
+   que ver con el contenido.
+7. **Frontmatter obligatorio:** `title`, `description`, `date`, `updated`, `author`, `tags`,
    `cover`, `coverAlt`, `draft: false`, `faq`. **Al editar una nota vieja, tocar `updated`** — sin
    eso el sitemap le informa a Google una fecha anterior al último crawl y no vuelve a pasar.
-7. **Links internos:** mínimo 2 a otras notas del mismo cluster + 1 a `/servicios` + CTA a
+   La `cover` va de `images.unsplash.com` (único dominio remoto habilitado en `next.config.ts`),
+   verificada con `curl -I`, y que no esté ya usada en otra nota **ni en la home**.
+8. **Links internos:** mínimo 2 a otras notas del mismo cluster + 1 a `/servicios` + CTA a
    `/contacto`. Anchor text descriptivo con la keyword, nunca "hacé click acá".
-8. **Sin promesas de resultado ni asesoramiento legal individual.** Explicamos el marco, no
+9. **Sin promesas de resultado ni asesoramiento legal individual.** Explicamos el marco, no
    dictaminamos sobre el caso de nadie.
 
 ---
@@ -52,7 +60,7 @@ No negociables, valen igual para Nico y para el agente:
 |---|---|---|---|---|---|
 | 1 | ⬜ | `escala-salarial-encargados-de-edificio` (página, no post) | escala salarial encargados de edificio | Personal | **Máximo volumen del nicho.** Página viva actualizada por paritaria, no nota. **Bloqueada: necesita la planilla oficial FATERYH que Gabriel liquida cada mes.** Acuerdo vigente jul-ago-sep 2026 firmado 27-jul-2026 |
 | 2 | ✅ | `quien-paga-las-expensas-propietario-o-inquilino` | quién paga las expensas inquilino o propietario | Expensas | Publicada 2026-08-03. Ángulo diferencial: el criterio del art. 1209 es "gasto habitual", NO "ordinarias vs extraordinarias" (lo dice el propio texto). Vigencia post-DNU 70/2023 tratada como discusión abierta, no zanjada |
-| 3 | ⬜ | `expensas-ordinarias-y-extraordinarias-diferencias` | expensas extraordinarias quién las paga | Expensas | Cruza con la #2. Jurisprudencia: no se trasladan al inquilino |
+| 3 | ✅ | `expensas-ordinarias-y-extraordinarias-diferencias` | expensas extraordinarias quién las paga | Expensas | Publicada 2026-08-03. Ángulo: lo que define a la extraordinaria es la **resolución de la asamblea** (art. 2048), no el monto. Diferencial CABA: Ley 941 art. 10 inc. j) (texto Ley 5.983) obliga a liquidarlas separadas, art. 15 inc. d) lo hace infracción y art. 16 fija la escala de sanciones. Sin jurisprudencia citada (no se verificó ningún fallo en fuente oficial) |
 | 4 | ⬜ | `deuda-de-expensas-y-juicio-ejecutivo` | no pagar expensas consecuencias | Expensas | CCyC art. 2048/2049. Vía ejecutiva |
 | 5 | ⬜ | `honorarios-del-administrador-de-consorcio` | cuánto cobra un administrador de consorcio | Administrador | **Intención comercial alta** → link fuerte a `/servicios`. Sin publicar tarifas propias |
 | 6 | ⬜ | `asamblea-de-consorcio-quorum-y-mayorias` | quórum asamblea consorcio | Asambleas | **Pilar del cluster.** CCyC arts. 2058-2062 |
