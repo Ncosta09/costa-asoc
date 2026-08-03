@@ -11,8 +11,15 @@ export type PostMeta = {
   slug: string;
   title: string;
   description: string;
-  /** ISO date, ej. "2026-06-20" */
+  /** ISO date de publicación, ej. "2026-06-20" */
   date: string;
+  /**
+   * ISO date de la última modificación real del contenido.
+   * Alimenta el `lastmod` del sitemap y el `dateModified` del schema.
+   * Si falta, se usa `date`. SIEMPRE tocarlo al editar un post: si el sitemap
+   * informa una fecha anterior al último crawl, Google no vuelve a pasar.
+   */
+  updated?: string;
   author: string;
   tags: string[];
   draft: boolean;
@@ -31,6 +38,7 @@ function parsePost(slug: string, raw: string): Post {
     title: String(data.title ?? ""),
     description: String(data.description ?? ""),
     date: String(data.date ?? ""),
+    updated: data.updated ? String(data.updated) : undefined,
     author: String(data.author ?? site.name),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     draft: Boolean(data.draft),
@@ -83,6 +91,11 @@ export function getPostBySlug(slug: string): Post | null {
   if (!raw) return null;
   const post = parsePost(slug, raw);
   return isVisible(post) ? post : null;
+}
+
+/** Fecha de última modificación efectiva del post (sitemap `lastmod`, schema `dateModified`). */
+export function lastModified(post: Pick<PostMeta, "date" | "updated">): string {
+  return post.updated ?? post.date;
 }
 
 const MONTHS = [

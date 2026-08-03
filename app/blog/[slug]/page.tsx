@@ -10,7 +10,8 @@ import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { FaqSection } from "@/components/ui/faq-section";
-import { getAllPosts, getPostBySlug, formatDate } from "@/lib/blog";
+import { RelatedPosts } from "@/components/blog/related-posts";
+import { getAllPosts, getPostBySlug, formatDate, lastModified } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
@@ -42,6 +43,7 @@ export async function generateMetadata({
       ...base.openGraph,
       type: "article",
       publishedTime: post.date,
+      modifiedTime: lastModified(post),
       authors: [post.author],
     },
   };
@@ -96,10 +98,19 @@ export default async function BlogPostPage({
             <h1 className="mt-3 font-display text-[2.1rem] leading-[1.08] tracking-[-0.02em] text-balance text-navy-900 sm:text-[2.9rem]">
               {post.title}
             </h1>
-            <div className="mt-5 flex items-center gap-3 text-[14px] text-ink-500">
+            <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[14px] text-ink-500">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
               <span aria-hidden="true" className="h-1 w-1 rounded-full bg-cream-300" />
               <span>{post.author}</span>
+              {post.updated && post.updated !== post.date ? (
+                <>
+                  <span aria-hidden="true" className="h-1 w-1 rounded-full bg-cream-300" />
+                  <span>
+                    Actualizada el{" "}
+                    <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+                  </span>
+                </>
+              ) : null}
             </div>
           </header>
 
@@ -144,6 +155,14 @@ export default async function BlogPostPage({
     {post.faq && post.faq.length > 0 ? (
       <FaqSection items={post.faq} title="Preguntas frecuentes" />
     ) : null}
+    <RelatedPosts
+      limit={2}
+      exclude={post.slug}
+      tags={post.tags}
+      eyebrow="Seguir leyendo"
+      title="Otras notas sobre propiedad horizontal"
+      tone={post.faq && post.faq.length > 0 ? "default" : "muted"}
+    />
     </>
   );
 }

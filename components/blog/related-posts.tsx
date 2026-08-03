@@ -7,6 +7,10 @@ import { getAllPosts, formatDate } from "@/lib/blog";
 
 type RelatedPostsProps = {
   limit?: number;
+  /** Slug a excluir (para no auto-linkear la nota que se está leyendo). */
+  exclude?: string;
+  /** Tags de referencia: los posts que comparten tags se muestran primero. */
+  tags?: string[];
   eyebrow?: string;
   title?: string;
   tone?: "default" | "muted";
@@ -14,28 +18,58 @@ type RelatedPostsProps = {
 
 export function RelatedPosts({
   limit = 2,
+  exclude,
+  tags,
   eyebrow = "Recursos",
   title = "Notas para el consejo de administración",
   tone = "default",
 }: RelatedPostsProps) {
-  const posts = getAllPosts().slice(0, limit);
+  const candidates = getAllPosts().filter((post) => post.slug !== exclude);
+  const posts = (
+    tags?.length
+      ? [...candidates].sort(
+          (a, b) =>
+            b.tags.filter((t) => tags.includes(t)).length -
+            a.tags.filter((t) => tags.includes(t)).length,
+        )
+      : candidates
+  ).slice(0, limit);
+
   if (posts.length === 0) return null;
 
   return (
     <Section tone={tone} spacing="default">
       <Container>
         <Reveal>
-          <div className="mb-10 max-w-[52ch]">
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
-              {eyebrow}
-            </p>
-            <h2 className="mt-3 font-display text-3xl leading-[1.1] tracking-tight text-balance text-navy-900 sm:text-[2.5rem]">
-              {title}
-            </h2>
+          <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-[52ch]">
+              <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
+                {eyebrow}
+              </p>
+              <h2 className="mt-3 font-display text-3xl leading-[1.1] tracking-tight text-balance text-navy-900 sm:text-[2.5rem]">
+                {title}
+              </h2>
+            </div>
+            <Link
+              href="/blog"
+              className="group inline-flex shrink-0 items-center gap-2 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-terra-700"
+            >
+              Ver todas las notas
+              <ArrowRight
+                strokeWidth={1.75}
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+              />
+            </Link>
           </div>
         </Reveal>
 
-        <ul className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
+        <ul
+          className={
+            posts.length >= 3
+              ? "grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
+              : "grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2"
+          }
+        >
           {posts.map((post, i) => (
             <Reveal key={post.slug} delay={i * 0.06} className="h-full">
               <li className="h-full">

@@ -5,6 +5,7 @@ type ArticleInput = {
   title: string;
   description: string;
   date: string;
+  updated?: string;
   author: string;
   cover?: string;
 };
@@ -19,7 +20,8 @@ export function blogPostingSchema(post: ArticleInput) {
     description: post.description,
     ...(post.cover ? { image: post.cover } : {}),
     datePublished: post.date,
-    dateModified: post.date,
+    // Fecha real de última edición: Google la usa como señal de frescura.
+    dateModified: post.updated ?? post.date,
     inLanguage: site.language,
     // Autor como Person con credencial → señal E-E-A-T más fuerte que Organization
     // para contenido regulatorio. El nombre viene del frontmatter del post.
