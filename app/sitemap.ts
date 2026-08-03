@@ -14,6 +14,7 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/": "2026-08-03",
   "/servicios": "2026-08-03",
   "/nosotros": "2026-07-10",
+  // (bumpear al editar el contenido de la página, no en cada deploy)
   "/blog": "2026-08-03",
   "/contacto": "2026-07-10",
 };

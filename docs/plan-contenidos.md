@@ -51,7 +51,7 @@ No negociables, valen igual para Nico y para el agente:
 | # | Estado | Slug | Keyword objetivo | Cluster | Notas |
 |---|---|---|---|---|---|
 | 1 | ⬜ | `escala-salarial-encargados-de-edificio` (página, no post) | escala salarial encargados de edificio | Personal | **Máximo volumen del nicho.** Página viva actualizada por paritaria, no nota. **Bloqueada: necesita la planilla oficial FATERYH que Gabriel liquida cada mes.** Acuerdo vigente jul-ago-sep 2026 firmado 27-jul-2026 |
-| 2 | ⬜ | `quien-paga-las-expensas-propietario-o-inquilino` | quién paga las expensas inquilino o propietario | Expensas | Alto volumen. Ojo con la vigencia del régimen de alquileres (Ley 27.551 modificada por DNU 70/2023) → verificar antes de afirmar |
+| 2 | ✅ | `quien-paga-las-expensas-propietario-o-inquilino` | quién paga las expensas inquilino o propietario | Expensas | Publicada 2026-08-03. Ángulo diferencial: el criterio del art. 1209 es "gasto habitual", NO "ordinarias vs extraordinarias" (lo dice el propio texto). Vigencia post-DNU 70/2023 tratada como discusión abierta, no zanjada |
 | 3 | ⬜ | `expensas-ordinarias-y-extraordinarias-diferencias` | expensas extraordinarias quién las paga | Expensas | Cruza con la #2. Jurisprudencia: no se trasladan al inquilino |
 | 4 | ⬜ | `deuda-de-expensas-y-juicio-ejecutivo` | no pagar expensas consecuencias | Expensas | CCyC art. 2048/2049. Vía ejecutiva |
 | 5 | ⬜ | `honorarios-del-administrador-de-consorcio` | cuánto cobra un administrador de consorcio | Administrador | **Intención comercial alta** → link fuerte a `/servicios`. Sin publicar tarifas propias |

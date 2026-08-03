@@ -6,7 +6,8 @@ import { site, navLinks } from "@/content/site";
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
-  // Links externos: ficha de Google (organización) + LinkedIn del titular. Se muestran solo si hay URL.
+  // Links externos: ficha de Google (organización) + LinkedIn del titular. Se muestran solo si
+  // hay URL, y van en la columna de Contacto: dentro de "Matrículas" LinkedIn leía como matrícula.
   const socialLinks = [
     { label: "Google", href: site.social.googleBusiness as string },
     { label: "LinkedIn", href: site.principal.linkedin as string },
@@ -70,23 +71,6 @@ export function SiteFooter() {
                 );
               })}
             </ul>
-
-            {socialLinks.length > 0 && (
-              <ul className="mt-6 flex flex-wrap gap-4 text-[14px]">
-                {socialLinks.map((s) => (
-                  <li key={s.label}>
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-ink-700 transition-colors hover:text-navy-900"
-                    >
-                      {s.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
           </div>
 
           <div className="md:col-span-3">
@@ -116,6 +100,23 @@ export function SiteFooter() {
               </li>
               <li className="text-ink-700">{site.hours.label}</li>
             </ul>
+
+            {socialLinks.length > 0 && (
+              <ul className="mt-5 flex flex-wrap gap-4 text-[14px]">
+                {socialLinks.map((s) => (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink-700 transition-colors hover:text-navy-900"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
 
