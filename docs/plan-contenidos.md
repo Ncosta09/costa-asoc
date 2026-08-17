@@ -38,6 +38,10 @@ No negociables, valen igual para Nico y para el agente:
    `/contacto`. Anchor text descriptivo con la keyword, nunca "hacé click acá".
 9. **Sin promesas de resultado ni asesoramiento legal individual.** Explicamos el marco, no
    dictaminamos sobre el caso de nadie.
+10. **Sin em-dashes (—) en ningún texto.** Regla de estilo dura (2026-08-17): los incisos van
+    entre paréntesis, con comas o con dos puntos. Vale para el cuerpo, el frontmatter
+    (`title`/`description`/`faq`) y cualquier copy. El sitio entero ya se limpió en el commit
+    `dbe9755`; una nota nueva con em-dashes no se publica hasta reescribirlos.
 
 ---
 
