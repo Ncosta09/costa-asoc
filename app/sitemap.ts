@@ -11,7 +11,7 @@ import { getAllPosts, lastModified } from "@/lib/blog";
  * lo necesitan para que recrawlee. Bumpear a mano al editar el contenido de la página.
  */
 const STATIC_LASTMOD: Record<string, string> = {
-  "/": "2026-08-03",
+  "/": "2026-08-17",
   "/servicios": "2026-08-03",
   "/nosotros": "2026-07-10",
   // (bumpear al editar el contenido de la página, no en cada deploy)
