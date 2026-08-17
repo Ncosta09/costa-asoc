@@ -17,6 +17,7 @@ const STATIC_LASTMOD: Record<string, string> = {
   // (bumpear al editar el contenido de la página, no en cada deploy)
   "/blog": "2026-08-17",
   "/contacto": "2026-07-10",
+  "/administracion-de-consorcios-villa-devoto": "2026-08-17",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

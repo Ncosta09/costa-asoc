@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
-import { coverageZones } from "@/content/zones";
+import { coverageZones, zoneHrefs } from "@/content/zones";
 
 export function Zones() {
   return (
@@ -26,14 +27,31 @@ export function Zones() {
 
             <div className="lg:col-span-7">
               <ul className="flex flex-wrap gap-2.5">
-                {coverageZones.map((zone) => (
-                  <li key={zone}>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[14px] font-medium text-navy-900 ring-1 ring-cream-300">
+                {coverageZones.map((zone) => {
+                  const href = zoneHrefs[zone];
+                  const chip = (
+                    <>
                       <MapPin strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
                       {zone}
-                    </span>
-                  </li>
-                ))}
+                    </>
+                  );
+                  return (
+                    <li key={zone}>
+                      {href ? (
+                        <Link
+                          href={href}
+                          className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[14px] font-medium text-navy-900 ring-1 ring-cream-300 transition-colors hover:bg-cream-50 hover:ring-terra-700/40"
+                        >
+                          {chip}
+                        </Link>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[14px] font-medium text-navy-900 ring-1 ring-cream-300">
+                          {chip}
+                        </span>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
