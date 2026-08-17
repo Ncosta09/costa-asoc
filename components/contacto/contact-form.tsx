@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
+import { trackEvent } from "@/lib/analytics";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { submitContact, type ContactFormState } from "@/app/contacto/actions";
 import {
@@ -45,6 +46,11 @@ function SubmitButton() {
 export function ContactForm() {
   const initialState: ContactFormState = { status: "idle" };
   const [state, formAction] = useActionState(submitContact, initialState);
+
+  // Conversión principal para GA4/Ads. No-op si no hay tracking activo.
+  useEffect(() => {
+    if (state.status === "success") trackEvent("generate_lead");
+  }, [state.status]);
 
   if (state.status === "success") {
     return (

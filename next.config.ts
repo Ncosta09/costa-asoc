@@ -12,17 +12,25 @@ const isDev = process.env.NODE_ENV === "development";
 // - img-src: imágenes propias/optimizadas ('self'), placeholders (data:/blob:) y
 //   covers de blog (images.unsplash.com).
 // - frame-src: el embed de Google Maps en /contacto (www.google.com).
+// - Dominios de GA4: solo entran al CSP si NEXT_PUBLIC_GA_MEASUREMENT_ID está
+//   configurada (build-time). Sin la env var, el CSP sigue igual de cerrado.
+const gaEnabled = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
+const gaScript = gaEnabled ? " https://www.googletagmanager.com" : "";
+const gaConnect = gaEnabled
+  ? " https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com"
+  : "";
+const gaImg = gaEnabled ? " https://*.google-analytics.com" : "";
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'self'",
   "form-action 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}${gaScript}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://images.unsplash.com",
+  `img-src 'self' data: blob: https://images.unsplash.com${gaImg}`,
   "font-src 'self' data:",
-  "connect-src 'self'",
+  `connect-src 'self'${gaConnect}`,
   "frame-src https://www.google.com",
   "upgrade-insecure-requests",
 ].join("; ");

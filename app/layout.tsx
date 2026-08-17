@@ -3,6 +3,8 @@ import { Fraunces, Geist } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SkipToContent } from "@/components/layout/skip-to-content";
+import { Analytics } from "@/components/analytics/analytics";
+import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { buildMetadata } from "@/lib/seo";
 import { professionalServiceSchema } from "@/lib/schema";
 import { site } from "@/content/site";
@@ -53,6 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        {/* GA4 con consentimiento: no carga nada sin NEXT_PUBLIC_GA_MEASUREMENT_ID + aceptación */}
+        <Analytics />
+        <ConsentBanner />
         <script
           type="application/ld+json"
           // JSON-LD must be raw, not escaped — only emitted once at root
