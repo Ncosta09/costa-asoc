@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { BadgeCheck, Building2, Clock3, MapPin, MessageCircle, Users } from "lucide-react";
+import Image from "next/image";
+import { BadgeCheck, Building2, Clock3, MapPin, MessageCircle, Trees, Users } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -28,7 +29,7 @@ const devotoFaq: FaqItem[] = [
   {
     question: "¿Atienden barrios cercanos a Villa Devoto?",
     answer:
-      "Sí. Además de Villa Devoto trabajamos en los barrios vecinos —Villa del Parque, Monte Castro, Villa Pueyrredón y Villa Real— y en el resto de CABA. La oficina en Devoto nos permite llegar rápido a cualquier edificio de la zona noroeste de la Ciudad.",
+      "Sí. Además de Villa Devoto trabajamos en los barrios vecinos (Villa del Parque, Monte Castro, Villa Pueyrredón y Villa Real) y en el resto de CABA. La oficina en Devoto nos permite llegar rápido a cualquier edificio de la zona noroeste de la Ciudad.",
   },
   {
     question: "¿Qué cambia que el administrador esté en el barrio?",
@@ -56,7 +57,7 @@ const localReasons = [
   {
     icon: Clock3,
     title: "Respuesta rápida",
-    text: "Ante una urgencia edilicia —una pérdida, un ascensor parado, un siniestro— la cercanía deja de ser un detalle comercial y pasa a ser tiempo de respuesta real.",
+    text: "Ante una urgencia edilicia (una pérdida, un ascensor parado, un siniestro), la cercanía deja de ser un detalle comercial y pasa a ser tiempo de respuesta real.",
   },
   {
     icon: Building2,
@@ -67,6 +68,25 @@ const localReasons = [
     icon: Users,
     title: "Asambleas y consejo, cara a cara",
     text: "Reuniones presenciales con el consejo de propietarios sin coordinar semanas: la relación con el edificio se construye estando, no contestando mails.",
+  },
+];
+
+const barrioFacts = [
+  {
+    title: "El Jardín de la Ciudad",
+    text: "Villa Devoto es conocido por sus calles arboladas y su perfil residencial. Ese carácter se cuida: fachadas, veredas y frentes verdes son parte del valor de cada edificio del barrio.",
+  },
+  {
+    title: "Plaza Arenales y el casco histórico",
+    text: "El corazón del barrio, rodeado de arquitectura de principios del siglo XX. Muchos edificios de la zona tienen décadas de vida: exigen mantenimiento planificado, no reactivo.",
+  },
+  {
+    title: "Comuna 11, entre la plaza y la General Paz",
+    text: "Devoto integra la Comuna 11 junto a Villa del Parque, Villa Santa Rita y Villa General Mitre. Cubrimos toda la zona: la oficina está a minutos de cualquier edificio de estos barrios.",
+  },
+  {
+    title: "Consorcios de escala humana",
+    text: "Casas y PHs en el corazón del barrio, y edificios bajos y medianos sobre los ejes de Av. Francisco Beiró, Av. San Martín y la zona comercial de la estación. El consorcio típico de Devoto es chico o mediano: exactamente el que más sufre a las administraciones de cartera masiva.",
   },
 ];
 
@@ -91,7 +111,8 @@ export default function VillaDevotoPage() {
       {/* HERO */}
       <Section spacing="tight" className="pt-24 sm:pt-28">
         <Container>
-          <div className="max-w-[64ch]">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="max-w-[64ch] lg:col-span-7">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
               Villa Devoto · CABA
             </p>
@@ -138,6 +159,24 @@ export default function VillaDevotoPage() {
               </Button>
             </div>
           </div>
+
+          <figure className="lg:col-span-5">
+            <div className="overflow-hidden rounded-lg border border-cream-300">
+              <Image
+                src="/zonas/plaza-arenales-villa-devoto.jpg"
+                alt="Esquina de la Plaza Arenales, en el corazón de Villa Devoto, con sus árboles y veredas"
+                width={1600}
+                height={1200}
+                priority
+                className="h-[320px] w-full object-cover sm:h-[400px] lg:h-[520px]"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+              />
+            </div>
+            <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              Plaza Arenales, el corazón de Villa Devoto.
+            </figcaption>
+          </figure>
+          </div>
         </Container>
       </Section>
 
@@ -176,11 +215,56 @@ export default function VillaDevotoPage() {
         </Container>
       </Section>
 
-      {/* QUÉ INCLUYE (resumen + link a servicios) */}
+      {/* EL BARRIO */}
       <Section tone="default" spacing="default">
         <Container>
           <Reveal>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-6">
+                <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
+                  <Trees strokeWidth={1.75} className="mr-1.5 inline h-3.5 w-3.5 -translate-y-px text-terra-700" />
+                  El barrio
+                </p>
+                <h2 className="mt-3 font-display text-[2rem] leading-[1.05] tracking-[-0.02em] text-balance text-navy-900 sm:text-[2.5rem]">
+                  Un barrio que conocemos caminando
+                </h2>
+                <div className="mt-8 space-y-7">
+                  {barrioFacts.map((fact) => (
+                    <div key={fact.title}>
+                      <h3 className="font-display text-[1.15rem] leading-snug text-navy-900">
+                        {fact.title}
+                      </h3>
+                      <p className="mt-2 text-[15.5px] leading-relaxed text-ink-700">
+                        {fact.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="lg:col-span-6 lg:flex lg:flex-col lg:justify-center">
+                <div className="relative isolate z-0 h-[320px] w-full overflow-hidden rounded-lg border border-cream-300 bg-cream-100 sm:h-[420px]">
+                  <iframe
+                    title="Villa Devoto en Google Maps"
+                    src="https://www.google.com/maps?q=Villa+Devoto,+Ciudad+Aut%C3%B3noma+de+Buenos+Aires&z=14&hl=es&output=embed"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="h-full w-full border-0"
+                  />
+                </div>
+                <p className="mt-2 text-[13px] text-ink-700/70">
+                  Villa Devoto y alrededores: la zona que cubrimos todos los días.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* QUÉ INCLUYE + OFICINA + MAPA */}
+      <Section tone="muted" spacing="default">
+        <Container>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-7">
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
                   El servicio
@@ -205,9 +289,10 @@ export default function VillaDevotoPage() {
                   </a>
                   .
                 </p>
+
               </div>
-              <div className="lg:col-span-5">
-                <div className="rounded-2xl bg-cream-100 p-7 ring-1 ring-cream-300">
+              <div className="lg:col-span-5 lg:flex lg:items-center">
+                <div className="w-full rounded-2xl bg-cream-100 p-7 ring-1 ring-cream-300">
                   <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
                     La oficina
                   </p>
@@ -222,7 +307,7 @@ export default function VillaDevotoPage() {
                   </p>
                   <div className="mt-6">
                     <Button href="/contacto" variant="secondary" size="default">
-                      Ver ubicación y contacto
+                      Ver contacto completo
                     </Button>
                   </div>
                 </div>
@@ -235,13 +320,13 @@ export default function VillaDevotoPage() {
       <RelatedPosts
         eyebrow="Recursos"
         title="Guías útiles para propietarios y consejos"
-        tone="muted"
+        tone="default"
       />
 
       <FaqSection
         items={devotoFaq}
         title="Preguntas frecuentes sobre administración en Villa Devoto"
-        tone="default"
+        tone="muted"
       />
 
       {/* CTA FINAL */}
