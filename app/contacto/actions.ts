@@ -75,7 +75,7 @@ export async function submitContact(
       from,
       to: [to],
       replyTo: data.email,
-      subject: `Consulta web — ${data.name} (${data.neighborhood})`,
+      subject: `Consulta web: ${data.name} (${data.neighborhood})`,
       react: ContactEmail({ data }),
     });
 

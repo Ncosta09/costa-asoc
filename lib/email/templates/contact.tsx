@@ -17,7 +17,7 @@ type Props = {
 };
 
 export function ContactEmail({ data }: Props) {
-  const previewText = `Consulta de ${data.name} — ${roleLabels[data.role]}`;
+  const previewText = `Consulta de ${data.name} (${roleLabels[data.role]})`;
 
   const fields: Array<[string, string]> = [
     ["Nombre", data.name],
@@ -63,7 +63,7 @@ export function ContactEmail({ data }: Props) {
             Nueva consulta desde el sitio
           </Heading>
           <Text style={{ color: "#76746E", fontSize: 14, margin: "0 0 24px" }}>
-            Costa &amp; Asociados — formulario de contacto
+            Costa &amp; Asociados · formulario de contacto
           </Text>
 
           <Section>

@@ -33,7 +33,7 @@ export function SiteHeader() {
       <Container className="grid h-[64px] grid-cols-[1fr_auto_1fr] items-center gap-6 sm:h-[72px]">
         <Link
           href="/"
-          aria-label="Costa & Asociados — Inicio"
+          aria-label="Costa & Asociados, ir al inicio"
           className="-m-1 inline-flex items-center justify-self-start rounded-sm p-1"
         >
           <Logo priority />

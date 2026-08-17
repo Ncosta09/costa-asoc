@@ -59,12 +59,12 @@ export function SiteFooter() {
                         className="transition-colors hover:text-navy-900"
                       >
                         <span className="font-medium text-ink-900">{r.short}</span>
-                        <span className="ml-2 text-ink-700">— {r.full}</span>
+                        <span className="ml-2 text-ink-700">· {r.full}</span>
                       </a>
                     ) : (
                       <>
                         <span className="font-medium text-ink-900">{r.short}</span>
-                        <span className="ml-2 text-ink-700">— {r.full}</span>
+                        <span className="ml-2 text-ink-700">· {r.full}</span>
                       </>
                     )}
                   </li>

@@ -9,7 +9,7 @@ export function ContactMap() {
   return (
     <div className="relative isolate z-0 h-[280px] w-full overflow-hidden rounded-lg border border-cream-300 bg-cream-100 sm:h-[320px]">
       <iframe
-        title={`Ubicación de ${site.name} en Google Maps — ${site.address.street}, ${site.address.city}`}
+        title={`Ubicación de ${site.name} en Google Maps: ${site.address.street}, ${site.address.city}`}
         src={embedSrc}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
