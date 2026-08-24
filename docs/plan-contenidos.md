@@ -51,7 +51,7 @@ No negociables, valen igual para Nico y para el agente:
 |---|---|---|
 | Expensas | `/blog/expensas-consorcio-que-son-como-se-liquidan` | ✅ publicado |
 | Administrador y normativa | `/blog/ley-941-obligaciones-administrador-consorcios` | ✅ publicado |
-| Asambleas y consejo | — | falta pilar (ítem 6) |
+| Asambleas y consejo | `/blog/asamblea-de-consorcio-quorum-y-mayorias` | ✅ publicado |
 | Personal del edificio | `/escala-salarial-encargados-de-edificio` (página viva) | ⬜ ítem 1 |
 | Obligaciones del edificio en CABA | — | falta pilar (ítem 10) |
 | Local / money pages | `/servicios` | track aparte, ver abajo |
@@ -67,7 +67,7 @@ No negociables, valen igual para Nico y para el agente:
 | 3 | ✅ | `expensas-ordinarias-y-extraordinarias-diferencias` | expensas extraordinarias quién las paga | Expensas | Publicada 2026-08-03. Ángulo: lo que define a la extraordinaria es la **resolución de la asamblea** (art. 2048), no el monto. Diferencial CABA: Ley 941 art. 10 inc. j) (texto Ley 5.983) obliga a liquidarlas separadas, art. 15 inc. d) lo hace infracción y art. 16 fija la escala de sanciones. Sin jurisprudencia citada (no se verificó ningún fallo en fuente oficial) |
 | 4 | ✅ | `deuda-de-expensas-y-juicio-ejecutivo` | no pagar expensas consecuencias | Expensas | Publicada 2026-08-10. Ángulo: por qué la vía ejecutiva es tan rápida (certificado del art. 2048 CCyC + art. 524 CPCCN), defensas taxativas del art. 544 CPCCN (las quejas de gestión NO son defensa), prescripción 2 años (art. 2562 inc. c), privilegio especial (art. 2582 inc. a), el comprador hereda la deuda (art. 2049). Citas verificadas contra Infoleg |
 | 5 | ✅ | `honorarios-del-administrador-de-consorcio` | cuánto cobra un administrador de consorcio | Administrador | Publicada 2026-08-17. Ángulo: no hay arancel oficial — art. 14 Ley 941 ("sin ninguna otra entidad o cámara que los regule", modificación solo por asamblea y en acta), art. 9º (detallar en acta qué incluye el honorario y qué va aparte), art. 10 (recibo con CUIT/matrícula en la liquidación). Sin tarifas propias ni de mercado. Citas verificadas contra CEDOM |
-| 6 | ⬜ | `asamblea-de-consorcio-quorum-y-mayorias` | quórum asamblea consorcio | Asambleas | **Pilar del cluster.** CCyC arts. 2058-2062 |
+| 6 | ✅ | `asamblea-de-consorcio-quorum-y-mayorias` | quórum asamblea consorcio | Asambleas | Publicada 2026-08-24. **Pilar del cluster.** Ángulo: el art. 2059 se titula "Convocatoria y quórum" y no fija ningún número (el quórum sale del reglamento); lo decisivo es el art. 2060, mayoría absoluta sobre la **totalidad** con doble exigencia (unidades + partes indivisas). Diferencial CABA: Ley 941 art. 9º obliga a convocar **bajo pena de nulidad** con lugar, día, temario y **horario de comienzo y finalización**, más copia del acta anterior. Además arts. 2058 inc. b) (5% de partes indivisas somete temas), 2061 (conformidad expresa del titular), 2062 (actas y cotejo de firmas), 2063 (asamblea judicial, 10% del total, mayoría simple de presentes), 2064 inc. a). Citas verificadas contra Infoleg y CEDOM |
 | 7 | ⬜ | `certificado-de-deuda-de-expensas-para-escriturar` | certificado de deuda de expensas | Expensas | Long-tail transaccional (escribanías, compradores) |
 | 8 | ⬜ | `como-verificar-la-matricula-rpa-de-tu-administrador` | verificar matrícula administrador consorcio | Administrador | Buscador oficial del RPA. Refuerza E-E-A-T propio (RPA 8192) |
 | 9 | ⬜ | `funciones-del-consejo-de-propietarios` | consejo de propietarios funciones | Asambleas | Público = nuestro comprador real |
