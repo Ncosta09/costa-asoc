@@ -13,6 +13,7 @@ export const coverageZones = [
   "Microcentro",
   "Barrio Norte",
   "Villa Devoto",
+  "Villa del Parque",
   "Colegiales",
 ] as const;
 
@@ -20,4 +21,5 @@ export const coverageZones = [
 // Al publicar una landing nueva, agregar acá su ruta (y nada más: el componente la levanta).
 export const zoneHrefs: Partial<Record<(typeof coverageZones)[number], string>> = {
   "Villa Devoto": "/administracion-de-consorcios-villa-devoto",
+  "Villa del Parque": "/administracion-de-consorcios-villa-del-parque",
 };

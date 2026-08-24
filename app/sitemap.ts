@@ -18,6 +18,7 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/blog": "2026-08-24",
   "/contacto": "2026-07-10",
   "/administracion-de-consorcios-villa-devoto": "2026-08-17",
+  "/administracion-de-consorcios-villa-del-parque": "2026-08-24",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

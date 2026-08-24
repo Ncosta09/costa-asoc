@@ -93,10 +93,20 @@ No negociables, valen igual para Nico y para el agente:
 
 Estas traen **leads**, no clicks. Se hacen en tandas, no de a una, y las escribo con Nico:
 
-- `/servicios/administracion-de-consorcios` — página dedicada al servicio principal
-- Landings por barrio: Villa Devoto, Villa del Parque, Caballito, Belgrano, Palermo, Microcentro
-  (foco oficinas). Contenido real por zona, no plantilla clonada — si son iguales, Google las
-  trata como thin content y no indexa ninguna.
+- `/servicios/administracion-de-consorcios`: página dedicada al servicio principal. **Pendiente.**
+- Landings por barrio. Orden según `07 — Estrategia competitiva SEO` del vault: los barrios que
+  rodean la oficina, que son donde juega el único competidor local real y donde la SERP es débil.
+  Contenido real por zona, no plantilla clonada: si son iguales, Google las trata como thin
+  content y no indexa ninguna. **Control: al publicar una, medir el solapamiento de 8-gramas
+  contra las anteriores** (Devoto vs Villa del Parque dio 17,7%, y ese resto es header y footer).
+  - ✅ **Villa Devoto** (2026-08-17), ángulo: oficina real en el barrio, edificios chicos y PH.
+  - ✅ **Villa del Parque** (2026-08-24), ángulo: conviven dos parques edilicios (PH de 1930-1960
+    y más de 50 obras nuevas), y el art. 13 de la Ley 941 le pone fecha a la primera asamblea de
+    un edificio nuevo, donde cesa el administrador que puso la desarrolladora si no lo ratifican.
+  - ⬜ Monte Castro · ⬜ Villa Pueyrredón · después el resto (Caballito, Belgrano, Palermo).
+- **Al publicar una landing:** agregar el barrio a `coverageZones` y a `zoneHrefs` en
+  `content/zones.ts` (el chip de la home se vuelve link solo), sumar la ruta a `STATIC_LASTMOD`
+  en `app/sitemap.ts`, correr `npm run indexnow -- <ruta>` y pedir indexación manual en GSC.
 
 ## Track aparte: herramientas y plantillas
 
