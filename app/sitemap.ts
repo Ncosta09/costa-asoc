@@ -11,14 +11,15 @@ import { getAllPosts, lastModified } from "@/lib/blog";
  * lo necesitan para que recrawlee. Bumpear a mano al editar el contenido de la página.
  */
 const STATIC_LASTMOD: Record<string, string> = {
-  "/": "2026-08-24",
+  "/": "2026-09-04",
   "/servicios": "2026-08-03",
   "/nosotros": "2026-07-10",
   // (bumpear al editar el contenido de la página, no en cada deploy)
-  "/blog": "2026-08-24",
+  "/blog": "2026-09-04",
   "/contacto": "2026-07-10",
   "/administracion-de-consorcios-villa-devoto": "2026-08-17",
   "/administracion-de-consorcios-villa-del-parque": "2026-08-24",
+  "/administracion-de-consorcios-monte-castro": "2026-09-04",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {

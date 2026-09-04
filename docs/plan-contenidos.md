@@ -54,6 +54,7 @@ No negociables, valen igual para Nico y para el agente:
 | Asambleas y consejo | `/blog/asamblea-de-consorcio-quorum-y-mayorias` | ✅ publicado |
 | Personal del edificio | `/escala-salarial-encargados-de-edificio` (página viva) | ⬜ ítem 1 |
 | Obligaciones del edificio en CABA | — | falta pilar (ítem 10) |
+| Propiedad horizontal | `/blog/propiedad-horizontal-que-es-como-funciona` | ✅ publicado |
 | Local / money pages | `/servicios` | track aparte, ver abajo |
 
 ---
@@ -107,7 +108,7 @@ impresiones en GSC), pero sí significa que no pueden ir antes que un tema de 1.
 > **Para la rutina automática y para quien retome esto:** el orden de las filas ES la prioridad.
 > Se toma el primer ítem en `⬜` cuya columna Notas no diga **Bloqueada**. Los números son IDs
 > estables, no orden: si algo cambia de prioridad se mueve la fila, no se renumera.
-> **Próximo a escribir: el ítem 25 (propiedad horizontal), 1.600-1.900 búsquedas/mes.**
+> **Próximo a escribir por orden actual: el ítem 7 (certificado de deuda, 30/mes).** La corrida de la nube del 31-08 ya dejó un borrador de esa nota (sin citas verificadas) en su log; sirve como spec. Antes de escribirla conviene decidir si suben los ítems 16 (110/mes), 9 (260) y 8 (320), que el plan medido pone por delante.
 
 
 | # | Estado | Slug | Keyword objetivo | Cluster | Notas |
@@ -118,7 +119,7 @@ impresiones en GSC), pero sí significa que no pueden ir antes que un tema de 1.
 | 4 | ✅ | `deuda-de-expensas-y-juicio-ejecutivo` | no pagar expensas consecuencias | Expensas | Publicada 2026-08-10. Ángulo: por qué la vía ejecutiva es tan rápida (certificado del art. 2048 CCyC + art. 524 CPCCN), defensas taxativas del art. 544 CPCCN (las quejas de gestión NO son defensa), prescripción 2 años (art. 2562 inc. c), privilegio especial (art. 2582 inc. a), el comprador hereda la deuda (art. 2049). Citas verificadas contra Infoleg |
 | 5 | ✅ | `honorarios-del-administrador-de-consorcio` | cuánto cobra un administrador de consorcio | Administrador | Publicada 2026-08-17. Ángulo: no hay arancel oficial — art. 14 Ley 941 ("sin ninguna otra entidad o cámara que los regule", modificación solo por asamblea y en acta), art. 9º (detallar en acta qué incluye el honorario y qué va aparte), art. 10 (recibo con CUIT/matrícula en la liquidación). Sin tarifas propias ni de mercado. Citas verificadas contra CEDOM |
 | 6 | ✅ | `asamblea-de-consorcio-quorum-y-mayorias` | quórum asamblea consorcio | Asambleas | Publicada 2026-08-24. **Pilar del cluster.** Ángulo: el art. 2059 se titula "Convocatoria y quórum" y no fija ningún número (el quórum sale del reglamento); lo decisivo es el art. 2060, mayoría absoluta sobre la **totalidad** con doble exigencia (unidades + partes indivisas). Diferencial CABA: Ley 941 art. 9º obliga a convocar **bajo pena de nulidad** con lugar, día, temario y **horario de comienzo y finalización**, más copia del acta anterior. Además arts. 2058 inc. b) (5% de partes indivisas somete temas), 2061 (conformidad expresa del titular), 2062 (actas y cotejo de firmas), 2063 (asamblea judicial, 10% del total, mayoría simple de presentes), 2064 inc. a). Citas verificadas contra Infoleg y CEDOM |
-| 25 | ⬜ | `propiedad-horizontal-que-es-como-funciona` | propiedad horizontal | Nuevo cluster | **Alta prioridad por dato medido: 1.600-1.900/mes y no tenemos NADA apuntando ahí.** Sumar "reglamento de propiedad horizontal" (320/mes) como sección o nota aparte |
+| 25 | ✅ | `propiedad-horizontal-que-es-como-funciona` | propiedad horizontal | Propiedad horizontal | Publicada 2026-08-31 (fecha de su corrida; subida el 04-09). **Pilar del cluster nuevo.** Ángulo: el régimen artículo por artículo (CCyC 2037-2045, 2056-2057, 2058, 2064-2066, 2068-2069) con la lectura contable: los incisos f) y g) del art. 2056 (parte indivisa vs. proporción de expensas, que pueden no coincidir) más la eximición parcial del art. 2049 son la base de cada liquidación; el consorcio es persona jurídica (art. 2044) con CUIT y cuenta propia; en CABA el administrador voluntario también debe inscribirse (Ley 941 arts. 2º y 3º). Cubre "reglamento de propiedad horizontal" (320/mes) como sección. Ley 13.512 derogada por art. 3º inc. a) Ley 26.994. Todas las citas leídas del texto oficial. **Ojo:** la rutina del 31-08 NO escribió esta nota sino la 7 (su contenedor tiene la cola vieja, no hace fetch de origin) |
 | 7 | ⬜ | `certificado-de-deuda-de-expensas-para-escriturar` | certificado de deuda de expensas | Expensas | Long-tail transaccional (escribanías, compradores). **Vol medido: 30/mes.** No debería ir antes del refuerzo del pilar |
 | 8 | ⬜ | `como-verificar-la-matricula-rpa-de-tu-administrador` | **registro publico de administradores de consorcios** | Administrador | Buscador oficial del RPA. Refuerza E-E-A-T propio (RPA 8192). **Keyword corregida por dato medido:** "verificar matricula administrador consorcio" da 0; la que tiene volumen es **"registro publico de administradores de consorcios" (320/mes)**. Reenfocar la nota sobre el Registro, no sobre el verbo "verificar" |
 | 9 | ⬜ | `funciones-del-consejo-de-propietarios` | consejo de propietarios | Asambleas | Público = nuestro comprador real. **Vol medido: 260/mes.** Sube: es de los mejores de la cola |
@@ -165,7 +166,12 @@ Estas traen **leads**, no clicks. Se hacen en tandas, no de a una, y las escribo
   - ✅ **Villa del Parque** (2026-08-24), ángulo: conviven dos parques edilicios (PH de 1930-1960
     y más de 50 obras nuevas), y el art. 13 de la Ley 941 le pone fecha a la primera asamblea de
     un edificio nuevo, donde cesa el administrador que puso la desarrolladora si no lo ratifican.
-  - ⬜ Monte Castro · ⬜ Villa Pueyrredón · después el resto (Caballito, Belgrano, Palermo).
+  - ✅ **Monte Castro** (2026-09-04), ángulo: barrio de casas y PH de pocas unidades, muchas veces
+    administrados por un vecino sin cobrar: la Ley 941 (arts. 2º, 3º y 4º) obliga a inscribir también al
+    administrador voluntario, y el art. 2067 CCyC le impone las mismas obligaciones. Segundo eje: edificios
+    con local en planta baja sobre Álvarez Jonte (art. 2056 incs. f y g + eximición parcial del art. 2049).
+    Foto de Wikimedia Commons (Gobonobo, CC BY-SA 3.0).
+  - ⬜ Villa Pueyrredón · después el resto (Caballito, Belgrano, Palermo).
 - **Al publicar una landing:** agregar el barrio a `coverageZones` y a `zoneHrefs` en
   `content/zones.ts` (el chip de la home se vuelve link solo), sumar la ruta a `STATIC_LASTMOD`
   en `app/sitemap.ts`, correr `npm run indexnow -- <ruta>` y pedir indexación manual en GSC.
