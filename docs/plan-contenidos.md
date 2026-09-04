@@ -84,9 +84,10 @@ impresiones en GSC), pero sí significa que no pueden ir antes que un tema de 1.
    comercial principal tiene local_pack, "campana 4710" (nuestra propia dirección) rankea a
    pos 14,8, y ningún competidor del nicho tiene backlinks reales, así que lo que nos separa
    de ellos es entidad local, no autoridad de links.
-4. Después: ascensores CABA (110/mes, CPC $1,35), consejo de propietarios (260/mes),
-   registro público de administradores (320/mes), limpieza de tanques (30/mes pero **CPC
-   $8,75**, el más alto del nicho, y es la query donde Ramos rankea #1).
+4. Después, en este orden (fijado el 2026-09-04): consejo de propietarios (260/mes, nuestro
+   comprador, fuentes ya verificadas), registro público de administradores (320/mes), ascensores
+   CABA (110/mes, CPC $1,35, requiere verificar la normativa local), limpieza de tanques (30/mes
+   pero **CPC $8,75**, el más alto del nicho, y es la query donde Ramos rankea #1).
 
 ### Lo que baja de prioridad, con el motivo
 
@@ -108,7 +109,7 @@ impresiones en GSC), pero sí significa que no pueden ir antes que un tema de 1.
 > **Para la rutina automática y para quien retome esto:** el orden de las filas ES la prioridad.
 > Se toma el primer ítem en `⬜` cuya columna Notas no diga **Bloqueada**. Los números son IDs
 > estables, no orden: si algo cambia de prioridad se mueve la fila, no se renumera.
-> **Próximo a escribir por orden actual: el ítem 7 (certificado de deuda, 30/mes).** La corrida de la nube del 31-08 ya dejó un borrador de esa nota (sin citas verificadas) en su log; sirve como spec. Antes de escribirla conviene decidir si suben los ítems 16 (110/mes), 9 (260) y 8 (320), que el plan medido pone por delante.
+> **Próximo a escribir: el ítem 9 (consejo de propietarios, 260/mes), después el 8 (registro público de administradores, 320/mes) y el 16 (ascensores, 110/mes, CPC alto).** Reordenado el 2026-09-04 con OK de Nico. El 7 (30/mes) quedó detrás: la corrida de la nube del 31-08 dejó un borrador sin citas verificadas en su log, sirve como spec cuando le toque.
 
 
 | # | Estado | Slug | Keyword objetivo | Cluster | Notas |
@@ -120,16 +121,16 @@ impresiones en GSC), pero sí significa que no pueden ir antes que un tema de 1.
 | 5 | ✅ | `honorarios-del-administrador-de-consorcio` | cuánto cobra un administrador de consorcio | Administrador | Publicada 2026-08-17. Ángulo: no hay arancel oficial — art. 14 Ley 941 ("sin ninguna otra entidad o cámara que los regule", modificación solo por asamblea y en acta), art. 9º (detallar en acta qué incluye el honorario y qué va aparte), art. 10 (recibo con CUIT/matrícula en la liquidación). Sin tarifas propias ni de mercado. Citas verificadas contra CEDOM |
 | 6 | ✅ | `asamblea-de-consorcio-quorum-y-mayorias` | quórum asamblea consorcio | Asambleas | Publicada 2026-08-24. **Pilar del cluster.** Ángulo: el art. 2059 se titula "Convocatoria y quórum" y no fija ningún número (el quórum sale del reglamento); lo decisivo es el art. 2060, mayoría absoluta sobre la **totalidad** con doble exigencia (unidades + partes indivisas). Diferencial CABA: Ley 941 art. 9º obliga a convocar **bajo pena de nulidad** con lugar, día, temario y **horario de comienzo y finalización**, más copia del acta anterior. Además arts. 2058 inc. b) (5% de partes indivisas somete temas), 2061 (conformidad expresa del titular), 2062 (actas y cotejo de firmas), 2063 (asamblea judicial, 10% del total, mayoría simple de presentes), 2064 inc. a). Citas verificadas contra Infoleg y CEDOM |
 | 25 | ✅ | `propiedad-horizontal-que-es-como-funciona` | propiedad horizontal | Propiedad horizontal | Publicada 2026-08-31 (fecha de su corrida; subida el 04-09). **Pilar del cluster nuevo.** Ángulo: el régimen artículo por artículo (CCyC 2037-2045, 2056-2057, 2058, 2064-2066, 2068-2069) con la lectura contable: los incisos f) y g) del art. 2056 (parte indivisa vs. proporción de expensas, que pueden no coincidir) más la eximición parcial del art. 2049 son la base de cada liquidación; el consorcio es persona jurídica (art. 2044) con CUIT y cuenta propia; en CABA el administrador voluntario también debe inscribirse (Ley 941 arts. 2º y 3º). Cubre "reglamento de propiedad horizontal" (320/mes) como sección. Ley 13.512 derogada por art. 3º inc. a) Ley 26.994. Todas las citas leídas del texto oficial. **Ojo:** la rutina del 31-08 NO escribió esta nota sino la 7 (su contenedor tiene la cola vieja, no hace fetch de origin) |
-| 7 | ⬜ | `certificado-de-deuda-de-expensas-para-escriturar` | certificado de deuda de expensas | Expensas | Long-tail transaccional (escribanías, compradores). **Vol medido: 30/mes.** No debería ir antes del refuerzo del pilar |
+| 9 | ⬜ | `funciones-del-consejo-de-propietarios` | consejo de propietarios | Asambleas | Público = nuestro comprador real. **Vol medido: 260/mes.** Sube: es de los mejores de la cola y su público es nuestro comprador. Fuentes ya verificadas en las notas de asambleas y de propiedad horizontal (no contradecirlas): CCyC 2064 (atribuciones; el consejo NO sustituye al administrador), 2058 inc. b (5% somete temas), 2063 (asamblea judicial en subsidio del consejo), 2067 inc. d (autoriza el fondo de reserva), 2044 (órgano del consorcio) |
 | 8 | ⬜ | `como-verificar-la-matricula-rpa-de-tu-administrador` | **registro publico de administradores de consorcios** | Administrador | Buscador oficial del RPA. Refuerza E-E-A-T propio (RPA 8192). **Keyword corregida por dato medido:** "verificar matricula administrador consorcio" da 0; la que tiene volumen es **"registro publico de administradores de consorcios" (320/mes)**. Reenfocar la nota sobre el Registro, no sobre el verbo "verificar" |
-| 9 | ⬜ | `funciones-del-consejo-de-propietarios` | consejo de propietarios | Asambleas | Público = nuestro comprador real. **Vol medido: 260/mes.** Sube: es de los mejores de la cola |
+| 16 | ⬜ | `mantenimiento-obligatorio-de-ascensores-en-caba` | mantenimiento de ascensores caba | Obligaciones CABA | Conservador matriculado + libro de ascensores. **Vol medido: 110/mes, competencia HIGH, CPC $1,35.** Sube bastante: es el mejor de los ítems de obligaciones |
+| 7 | ⬜ | `certificado-de-deuda-de-expensas-para-escriturar` | certificado de deuda de expensas | Expensas | Long-tail transaccional (escribanías, compradores). **Vol medido: 30/mes.** No debería ir antes del refuerzo del pilar |
 | 10 | ⬜ | `ley-257-caba-fachadas-y-balcones` | ley 257 fachadas CABA | Obligaciones CABA | **Pilar del cluster.** Vencimiento + multa = intención alta |
 | 11 | ⬜ | `administrador-que-no-rinde-cuentas-que-hacer` | administrador no rinde cuentas | Administrador | Denuncia ante Defensa al Consumidor CABA |
 | 12 | ⬜ | `fondo-de-reserva-del-consorcio` | fondo de reserva consorcio | Expensas | Ángulo contable propio = diferencial |
 | 13 | ⬜ | `asamblea-autoconvocada-y-asamblea-judicial` | asamblea autoconvocada consorcio | Asambleas | CCyC art. 2059 / 2063 |
 | 14 | ⬜ | `seguros-obligatorios-de-un-consorcio` | seguro obligatorio consorcio | Obligaciones CABA | Integral + ART + ascensores |
 | 15 | ⬜ | `aguinaldo-y-vacaciones-del-encargado-de-edificio` | aguinaldo encargado de edificio | Personal | Estacional (junio/diciembre) → publicar antes de la liquidación |
-| 16 | ⬜ | `mantenimiento-obligatorio-de-ascensores-en-caba` | mantenimiento de ascensores caba | Obligaciones CABA | Conservador matriculado + libro de ascensores. **Vol medido: 110/mes, competencia HIGH, CPC $1,35.** Sube bastante: es el mejor de los ítems de obligaciones |
 | 17 | ⬜ | `como-leer-una-liquidacion-de-expensas` | liquidacion de expensas | Expensas | Con ejemplo desglosado. **Keyword corregida:** "como leer una liquidacion de expensas" da 0; "liquidacion de expensas" da **70/mes (MEDIUM, CPC $0,87)**. Ojo: parte de este tema se va a cubrir al ampliar el pilar, revisar canibalización antes de escribirla |
 | 18 | ⬜ | `intereses-por-mora-en-expensas` | intereses por mora expensas | Expensas | Qué es legítimo y qué es abusivo. **Vol medido: 0.** El doc 07 la había subido porque iProfesional gana con contenido genérico; el volumen no lo justifica |
 | 19 | ⬜ | `obras-en-el-edificio-que-mayorias-se-necesitan` | mayorías para obras en un consorcio | Asambleas | Innovaciones vs. reparaciones necesarias |
