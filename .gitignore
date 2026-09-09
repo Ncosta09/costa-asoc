@@ -23,3 +23,7 @@ next-env.d.ts
 
 # Reportes de auditoría SEO (locales, no se versionan)
 seo-audit-*/
+
+# Volcados y ledger de DataForSEO (respuestas pagas Live-only, local-only)
+dfs-dumps/
+dfs-ledger.json
