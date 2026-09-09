@@ -36,7 +36,7 @@ export default function ServiciosPage() {
       />
 
       {/* HERO SEO */}
-      <Section spacing="tight" className="pt-24 sm:pt-28">
+      <Section spacing="tight" className="pt-20 sm:pt-28">
         <Container>
           <div className="max-w-[64ch]">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
@@ -46,18 +46,31 @@ export default function ServiciosPage() {
               Qué incluye nuestra administración de consorcios
             </h1>
             <p className="mt-6 max-w-[60ch] text-[18px] leading-relaxed text-ink-800">
-              Estudio contable matriculado con Contadores Públicos al frente de cada
-              edificio, cuentas bancarias a nombre de tu consorcio y rendición
-              transparente. Administramos consorcios en CABA desde {site.founded}.
-            </p>
-            <p className="mt-5 max-w-[60ch] text-[16px] leading-relaxed text-ink-700">
-              Administramos consorcios residenciales y torres corporativas con un
-              diferencial concreto: somos un estudio contable, no una administración
-              más. Eso significa control financiero real y un consejo de administración
-              que siempre sabe en qué se gasta cada peso.
+              Somos un estudio contable, no una administración más: Contadores
+              Públicos matriculados al frente de cada edificio, cuentas bancarias a
+              nombre de tu consorcio y rendición transparente. Administramos
+              consorcios residenciales y torres corporativas en CABA desde{" "}
+              {site.founded}, con control financiero real y un consejo de
+              administración que siempre sabe en qué se gasta cada peso.
             </p>
 
-            <ul className="mt-9 flex flex-wrap items-center gap-2.5">
+            {/* Los botones van antes que las matrículas: a 390px los chips
+                empujaban el CTA fuera de la pantalla. Acción primero, credenciales
+                como refuerzo. */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button href="/contacto" variant="primary" size="lg">
+                Solicitar propuesta sin cargo
+              </Button>
+              <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
+                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
+                Escribir por WhatsApp
+              </Button>
+              <Button href="/nosotros" variant="ghost" size="lg">
+                Cómo trabajamos
+              </Button>
+            </div>
+
+            <ul className="mt-8 flex flex-wrap items-center gap-2.5">
               {site.registries.map((r) => (
                 <li key={r.label}>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
@@ -72,19 +85,6 @@ export default function ServiciosPage() {
                 </span>
               </li>
             </ul>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button href="/contacto" variant="primary" size="lg">
-                Solicitar propuesta sin cargo
-              </Button>
-              <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
-                Escribir por WhatsApp
-              </Button>
-              <Button href="/nosotros" variant="ghost" size="lg">
-                Cómo trabajamos
-              </Button>
-            </div>
           </div>
         </Container>
       </Section>
