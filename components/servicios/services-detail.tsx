@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { coreServices } from "@/content/services";
+import { cn } from "@/lib/utils";
 
 const accents = ["01", "02", "03", "04", "05", "06"];
 
@@ -25,7 +26,7 @@ export function ServicesDetail() {
                     <span aria-hidden="true" className="h-px w-10 bg-terra-700/60" />
                   </div>
                   <span className="mt-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-navy-100 text-navy-900">
-                    <Icon strokeWidth={1.5} className="h-[22px] w-[22px]" />
+                    <Icon aria-hidden="true" strokeWidth={1.5} className="h-[22px] w-[22px]" />
                   </span>
                   <h2 className="mt-5 font-display text-[1.6rem] leading-[1.1] tracking-tight text-balance text-navy-900 sm:text-[2rem]">
                     {service.title}
@@ -37,12 +38,21 @@ export function ServicesDetail() {
 
                 <div className="lg:col-span-7">
                   <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-cream-200 bg-cream-200 sm:grid-cols-2">
-                    {service.includes.map((item) => (
+                    {service.includes.map((item, i) => (
                       <li
                         key={item}
-                        className="flex items-start gap-3 bg-cream-50 p-6 sm:p-7"
+                        className={cn(
+                          "flex items-start gap-3 bg-cream-50 p-6 sm:p-7",
+                          // Con cantidad impar, el último ocupa las dos columnas:
+                          // si no, la celda que sobra deja ver el bg-cream-200 del
+                          // contenedor (el truco de los bordes con gap-px) como un
+                          // rectángulo gris suelto. Pasa en el servicio 06, que tiene 3.
+                          service.includes.length % 2 === 1 &&
+                            i === service.includes.length - 1 &&
+                            "sm:col-span-2",
+                        )}
                       >
-                        <Check
+                        <Check aria-hidden="true"
                           strokeWidth={2}
                           className="mt-0.5 h-4.5 w-4.5 flex-none text-terra-700"
                         />

@@ -33,7 +33,7 @@ function SubmitButton() {
     >
       {pending ? (
         <>
-          <Loader2 strokeWidth={1.75} className="h-4 w-4 animate-spin" />
+          <Loader2 aria-hidden="true" strokeWidth={1.75} className="h-4 w-4 animate-spin" />
           Enviando…
         </>
       ) : (
@@ -57,7 +57,7 @@ export function ContactForm() {
       <div className="rounded-xl border border-cream-300 bg-cream-50 p-8 sm:p-10">
         <div className="flex flex-col items-start gap-5">
           <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-terra-100 text-terra-700">
-            <CheckCircle2 strokeWidth={1.5} className="h-6 w-6" />
+            <CheckCircle2 aria-hidden="true" strokeWidth={1.5} className="h-6 w-6" />
           </span>
           <div>
             <h2 className="font-display text-[1.75rem] leading-tight tracking-tight text-navy-900">
@@ -65,7 +65,7 @@ export function ContactForm() {
             </h2>
             <p className="mt-3 max-w-[44ch] text-[16px] leading-relaxed text-ink-700">
               Te respondemos en menos de 24 hs hábiles. Si es urgente, podés
-              escribirnos también por WhatsApp desde la columna de la derecha.
+              escribirnos también por WhatsApp.
             </p>
           </div>
         </div>

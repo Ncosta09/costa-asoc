@@ -34,8 +34,6 @@ export function Reveal({ children, delay = 0, y = 24, className }: RevealProps) 
     // Recién ahora, sabiendo que el JS corre y va a animar, ocultamos (pre-paint → sin flash).
     gsap.set(el, { opacity: 0, y });
 
-    const startPct = 90 - Math.min(delay, 0.3) * 30;
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
@@ -43,12 +41,17 @@ export function Reveal({ children, delay = 0, y = 24, className }: RevealProps) 
         {
           opacity: 1,
           y: 0,
+          duration: 0.7,
+          delay,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: `top ${startPct}%`,
-            end: "top 62%",
-            scrub: 1, // ties progress to scroll with ~1s of organic catch-up
+            start: "top 88%",
+            // `once`, no `scrub`. Con scrub la opacidad quedaba atada a la
+            // posición de scroll, así que al volver hacia arriba el contenido
+            // se volvía a desvanecer, y los 14 tweens del bloque recalculaban
+            // en cada frame del scroll. Una vez revelado, se queda revelado.
+            once: true,
           },
         },
       );

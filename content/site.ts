@@ -9,7 +9,10 @@ export const site = {
   language: "es-AR",
 
   founded: 2009,
-  yearsExperience: "15",
+  // Derivado, no hardcodeado: decía "15" con founded 2009 y en 2026 ya eran 17.
+  get yearsExperience() {
+    return String(new Date().getFullYear() - this.founded);
+  },
 
   // Rango de precios orientativo para el schema LocalBusiness (no se muestra en la UI).
   priceRange: "$$",
