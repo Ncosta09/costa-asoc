@@ -48,7 +48,7 @@ export function Hero() {
                 size="lg"
                 className="border-cream-50/50 text-cream-50 hover:bg-cream-50 hover:text-navy-900"
               >
-                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
+                <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
                 Escribir por WhatsApp
               </Button>
               <Button
@@ -65,7 +65,7 @@ export function Hero() {
               {site.registries.map((r) => (
                 <li key={r.label}>
                   <span className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-navy-900/30 px-3 py-1.5 text-[12px] font-medium text-cream-50 ring-1 ring-cream-50/25 sm:px-3.5 sm:text-[13px]">
-                    <BadgeCheck strokeWidth={1.75} className="hidden h-3.5 w-3.5 text-terra-400 sm:inline-block" />
+                    <BadgeCheck aria-hidden="true" strokeWidth={1.75} className="hidden h-3.5 w-3.5 text-terra-400 sm:inline-block" />
                     {r.short}
                   </span>
                 </li>

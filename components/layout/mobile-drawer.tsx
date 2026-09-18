@@ -54,7 +54,7 @@ export function MobileDrawer() {
         onClick={() => setOpen(true)}
         className="-mr-1 inline-flex h-11 w-11 items-center justify-center rounded-md text-navy-900 transition-colors hover:bg-navy-100/60 lg:hidden"
       >
-        <Menu strokeWidth={1.75} className="h-5 w-5" />
+        <Menu aria-hidden="true" strokeWidth={1.75} className="h-5 w-5" />
       </button>
 
       {mounted &&
@@ -97,7 +97,7 @@ export function MobileDrawer() {
                     onClick={() => setOpen(false)}
                     className="-mr-1 inline-flex h-11 w-11 items-center justify-center rounded-md text-navy-900 transition-colors hover:bg-navy-100/60"
                   >
-                    <X strokeWidth={1.75} className="h-5 w-5" />
+                    <X aria-hidden="true" strokeWidth={1.75} className="h-5 w-5" />
                   </button>
                 </div>
 

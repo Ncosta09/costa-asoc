@@ -49,7 +49,7 @@ export function TransparencyBlock() {
                   className="flex h-full flex-col gap-4 bg-cream-50 p-7 sm:p-9"
                 >
                   <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-terra-100 text-terra-700">
-                    <Icon strokeWidth={1.5} className="h-5 w-5" />
+                    <Icon aria-hidden="true" strokeWidth={1.5} className="h-5 w-5" />
                   </span>
                   <h3 className="font-display text-[1.25rem] leading-tight tracking-tight text-navy-900">
                     {item.title}

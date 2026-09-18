@@ -52,10 +52,10 @@ export function RelatedPosts({
             </div>
             <Link
               href="/blog"
-              className="group inline-flex shrink-0 items-center gap-2 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-terra-700"
+              className="group inline-flex shrink-0 items-center gap-2 py-1 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-terra-700"
             >
               Ver todas las notas
-              <ArrowRight
+              <ArrowRight aria-hidden="true"
                 strokeWidth={1.75}
                 className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
               />
@@ -70,16 +70,19 @@ export function RelatedPosts({
               : "grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2"
           }
         >
+          {/* El <li> va AFUERA del Reveal: Reveal renderiza un <div> y <ul> solo
+              admite <li>, así que envolverlo rompía el árbol de accesibilidad
+              (el lector no anunciaba "lista de N elementos"). */}
           {posts.map((post, i) => (
-            <Reveal key={post.slug} delay={i * 0.06} className="h-full">
-              <li className="h-full">
+            <li key={post.slug} className="h-full">
+              <Reveal delay={i * 0.06} className="h-full">
                 <Link
                   href={`/blog/${post.slug}`}
                   className="group flex h-full flex-col rounded-2xl border border-cream-200 bg-cream-100/60 p-7 shadow-[var(--shadow-card)] transition-[box-shadow,border-color,background-color] duration-[600ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] [@media(hover:hover)]:hover:border-navy-200/70 [@media(hover:hover)]:hover:bg-cream-50 [@media(hover:hover)]:hover:shadow-[var(--shadow-elevated)] sm:p-8"
                 >
                   <time
                     dateTime={post.date}
-                    className="text-xs font-medium uppercase tracking-[0.14em] text-ink-500"
+                    className="text-xs font-medium uppercase tracking-[0.14em] text-ink-700"
                   >
                     {formatDate(post.date)}
                   </time>
@@ -91,14 +94,14 @@ export function RelatedPosts({
                   </p>
                   <span className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-navy-900">
                     Leer nota
-                    <ArrowRight
+                    <ArrowRight aria-hidden="true"
                       strokeWidth={1.75}
                       className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
                     />
                   </span>
                 </Link>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ul>
       </Container>

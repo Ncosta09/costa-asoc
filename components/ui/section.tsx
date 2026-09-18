@@ -12,11 +12,16 @@ const spacings = {
   loose: "py-28 sm:py-36 lg:py-44",
 } as const;
 
+// Cada tono publica su superficie y el color de foco que se ve encima. `Button`
+// los consume: antes tenía `ring-navy-900` y `ring-offset-cream-50` hardcodeados
+// en el base, así que sobre una sección navy el anillo quedaba navy sobre navy.
 const tones = {
-  default: "bg-cream-50 text-ink-900",
-  muted: "bg-cream-100 text-ink-900",
-  ink: "bg-ink-900 text-cream-50",
-  navy: "bg-navy-900 text-cream-50",
+  default:
+    "bg-cream-50 text-ink-900 [--surface:var(--color-cream-50)] [--ring:var(--color-navy-900)]",
+  muted:
+    "bg-cream-100 text-ink-900 [--surface:var(--color-cream-100)] [--ring:var(--color-navy-900)]",
+  ink: "bg-ink-900 text-cream-50 [--surface:var(--color-ink-900)] [--ring:var(--color-cream-50)]",
+  navy: "bg-navy-900 text-cream-50 [--surface:var(--color-navy-900)] [--ring:var(--color-cream-50)]",
 } as const;
 
 export function Section({

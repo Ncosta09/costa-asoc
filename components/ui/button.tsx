@@ -28,7 +28,7 @@ const sizes: Record<Size, string> = {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-[-0.005em] transition-[background-color,color,transform,box-shadow] duration-200 ease-[var(--ease-out-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 focus-visible:ring-navy-900 disabled:opacity-60 disabled:pointer-events-none whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-md font-medium tracking-[-0.005em] transition-[background-color,color,transform,box-shadow] duration-200 ease-[var(--ease-out-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--surface,var(--color-cream-50))] focus-visible:ring-[var(--ring,var(--color-navy-900))] disabled:opacity-60 disabled:pointer-events-none whitespace-nowrap";
 
 type CommonProps = {
   variant?: Variant;

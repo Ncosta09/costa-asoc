@@ -23,7 +23,7 @@ export function OfficeInfo() {
       <ul className="flex flex-col divide-y divide-cream-200 border-y border-cream-200">
         <li className="grid grid-cols-[auto_1fr] items-start gap-4 py-5">
           <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-md bg-navy-100 text-navy-900">
-            <MapPin strokeWidth={1.5} className="h-4.5 w-4.5" />
+            <MapPin aria-hidden="true" strokeWidth={1.5} className="h-4.5 w-4.5" />
           </span>
           <div>
             <p className="font-display text-[1.05rem] tracking-tight text-navy-900">
@@ -45,7 +45,7 @@ export function OfficeInfo() {
 
         <li className="grid grid-cols-[auto_1fr] items-start gap-4 py-5">
           <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-md bg-navy-100 text-navy-900">
-            <Clock strokeWidth={1.5} className="h-4.5 w-4.5" />
+            <Clock aria-hidden="true" strokeWidth={1.5} className="h-4.5 w-4.5" />
           </span>
           <div>
             <p className="font-display text-[1.05rem] tracking-tight text-navy-900">
@@ -57,7 +57,7 @@ export function OfficeInfo() {
 
         <li className="grid grid-cols-[auto_1fr] items-start gap-4 py-5">
           <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-md bg-navy-100 text-navy-900">
-            <Phone strokeWidth={1.5} className="h-4.5 w-4.5" />
+            <Phone aria-hidden="true" strokeWidth={1.5} className="h-4.5 w-4.5" />
           </span>
           <div>
             <p className="font-display text-[1.05rem] tracking-tight text-navy-900">
@@ -74,7 +74,7 @@ export function OfficeInfo() {
 
         <li className="grid grid-cols-[auto_1fr] items-start gap-4 py-5">
           <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-md bg-navy-100 text-navy-900">
-            <Mail strokeWidth={1.5} className="h-4.5 w-4.5" />
+            <Mail aria-hidden="true" strokeWidth={1.5} className="h-4.5 w-4.5" />
           </span>
           <div>
             <p className="font-display text-[1.05rem] tracking-tight text-navy-900">
@@ -101,7 +101,7 @@ export function OfficeInfo() {
       </a>
 
       <div className="grid grid-cols-[auto_1fr] items-start gap-3 rounded-lg border border-terra-700/20 bg-terra-100/40 p-4">
-        <AlertCircle strokeWidth={1.5} className="mt-0.5 h-5 w-5 text-terra-700" />
+        <AlertCircle aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-5 w-5 text-terra-700" />
         <p className="text-[13.5px] leading-relaxed text-ink-800">
           <span className="font-medium text-terra-900">Guardia 24/7.</span> Fuera del
           horario de oficina atendemos emergencias edilicias por la línea directa de

@@ -85,7 +85,7 @@ export default async function BlogPostPage({
             href="/blog"
             className="inline-flex items-center gap-2 text-[14px] font-medium text-ink-500 transition-colors hover:text-navy-900"
           >
-            <ArrowLeft strokeWidth={1.75} className="h-4 w-4" />
+            <ArrowLeft aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
             Volver al blog
           </Link>
 

@@ -31,7 +31,7 @@ export function Zones() {
                   const href = zoneHrefs[zone];
                   const chip = (
                     <>
-                      <MapPin strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
+                      <MapPin aria-hidden="true" strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
                       {zone}
                     </>
                   );

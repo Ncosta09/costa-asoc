@@ -136,14 +136,14 @@ export default function VillaDevotoPage() {
               {site.registries.map((r) => (
                 <li key={r.label}>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
-                    <BadgeCheck strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
+                    <BadgeCheck aria-hidden="true" strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
                     {r.short}
                   </span>
                 </li>
               ))}
               <li>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
-                  <MapPin strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
+                  <MapPin aria-hidden="true" strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
                   Oficina en Villa Devoto
                 </span>
               </li>
@@ -154,7 +154,7 @@ export default function VillaDevotoPage() {
                 Solicitar propuesta sin cargo
               </Button>
               <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
+                <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
                 Escribir por WhatsApp
               </Button>
             </div>
@@ -222,7 +222,7 @@ export default function VillaDevotoPage() {
             <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-6">
                 <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
-                  <Trees strokeWidth={1.75} className="mr-1.5 inline h-3.5 w-3.5 -translate-y-px text-terra-700" />
+                  <Trees aria-hidden="true" strokeWidth={1.75} className="mr-1.5 inline h-3.5 w-3.5 -translate-y-px text-terra-700" />
                   El barrio
                 </p>
                 <h2 className="mt-3 font-display text-[2rem] leading-[1.05] tracking-[-0.02em] text-balance text-navy-900 sm:text-[2.5rem]">

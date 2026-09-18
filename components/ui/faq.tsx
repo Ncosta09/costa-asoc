@@ -10,7 +10,7 @@ export function Faq({ items }: { items: readonly FaqItem[] }) {
             <h3 className="font-display text-[1.15rem] leading-snug tracking-tight text-navy-900">
               {item.question}
             </h3>
-            <ChevronDown
+            <ChevronDown aria-hidden="true"
               strokeWidth={1.75}
               className="h-5 w-5 flex-none text-terra-700 transition-transform duration-300 group-open:rotate-180"
             />
