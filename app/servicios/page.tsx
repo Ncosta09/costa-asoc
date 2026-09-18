@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BadgeCheck, MessageCircle } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -56,17 +56,23 @@ export default function ServiciosPage() {
 
             {/* Los botones van antes que las matrículas: a 390px los chips
                 empujaban el CTA fuera de la pantalla. Acción primero, credenciales
-                como refuerzo. */}
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                como refuerzo.
+
+                Un solo CTA a propósito (medido el 2026-09-18 a 390x844): el
+                banner de cookies arranca en y=709 y con tres botones la fila
+                terminaba en 814, así que WhatsApp y "Cómo trabajamos" quedaban
+                físicamente inclickeables en la primera visita, que es el estado
+                del 100% del tráfico pago. WhatsApp pasó al CTA flotante
+                (`components/ui/whatsapp-float.tsx`) y "Cómo trabajamos" se sacó
+                por ser una fuga a /nosotros en una landing de campaña. Con uno
+                solo la fila termina en 694 y queda limpia.
+
+                Ojo al agregar botones acá: con tres, entre 640px y 767px la fila
+                mide 727px contra 625 a 685 de container y genera scroll
+                horizontal de página. Si vuelven, va `flex-wrap`. */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Button href="/contacto" variant="primary" size="lg">
                 Solicitar propuesta sin cargo
-              </Button>
-              <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                <MessageCircle strokeWidth={1.75} className="h-4 w-4" />
-                Escribir por WhatsApp
-              </Button>
-              <Button href="/nosotros" variant="ghost" size="lg">
-                Cómo trabajamos
               </Button>
             </div>
 
@@ -74,7 +80,7 @@ export default function ServiciosPage() {
               {site.registries.map((r) => (
                 <li key={r.label}>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[13px] font-medium text-navy-900 ring-1 ring-cream-300">
-                    <BadgeCheck strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
+                    <BadgeCheck aria-hidden="true" strokeWidth={1.75} className="h-3.5 w-3.5 text-terra-700" />
                     {r.short}
                   </span>
                 </li>
