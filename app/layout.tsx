@@ -11,15 +11,20 @@ import { professionalServiceSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import "./globals.css";
 
+// subsets: solo "latin". Medido el 2026-09-18 sobre el HTML servido: cero
+// caracteres por encima de U+00FF en todo el sitio (el español rioplatense
+// entero, tildes y ñ incluidas, vive en "latin"). `latin-ext` sumaba 119 KB
+// de woff2 que next/font precarga igual, porque el preload ignora el unicode-range.
 const fraunces = Fraunces({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   display: "swap",
   variable: "--font-fraunces",
-  axes: ["SOFT", "opsz"],
+  // Solo opsz: SOFT no se setea en ningún lado, así que el eje solo engordaba el archivo.
+  axes: ["opsz"],
 });
 
 const geist = Geist({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   display: "swap",
   variable: "--font-geist",
 });
