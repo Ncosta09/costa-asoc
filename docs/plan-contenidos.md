@@ -163,6 +163,42 @@ negativas del plan de Ads.
 
 ---
 
+## Medición del 2026-09-23 (DataForSEO, 171 keywords + 2 SERP, costó $0,098; acumulado $0,196 de $1)
+
+Vocabulario para las landings por barrio y para el sitio entero (Google Ads, Argentina, es):
+
+| Keyword | Vol/mes | Comp. | CPC |
+|---|---|---|---|
+| **administradora de consorcios** / administradoras de consorcios | **4.400** | MEDIUM | $0,54 |
+| administracion de consorcios caba | 720 | MEDIUM | $0,62 |
+| administracion de consorcios cerca de mi | 260 | MEDIUM | $0,19 |
+| sueldo encargado de edificio 2026 | 90 | LOW | $0,01 |
+| administracion de consorcios zona norte | 50 | HIGH | $0,48 |
+| administracion de consorcios caballito (= "en caballito") | 30 | HIGH | $0,92 |
+| administracion de consorcios belgrano (= "en belgrano") | 30 | HIGH | $0,34 |
+| auditoria de consorcio | 30 | HIGH | $0,27 |
+| administracion de consorcios palermo | 20 | HIGH | $1,48 |
+| administracion de consorcios recoleta / villa urquiza / capital federal | 20 | | |
+| administracion de consorcios zona belgrano · almagro · flores · nuñez · zona oeste | 10 | | |
+
+- **El hallazgo grande no es de barrios: "administradora de consorcios" tiene 4.400/mes**, seis veces la head
+  comercial que veníamos midiendo ("administracion de consorcios caba", 720). Es el sustantivo con el que la gente
+  nombra a la empresa. El sitio entero dice "administración de consorcios" y casi nunca "administradora": revisar
+  title de la home, H1 de `/servicios`, el schema LocalBusiness y el copy de las landings. **Decisión pendiente de
+  Nico** (cambia el posicionamiento de marca: "estudio contable" vs "administradora").
+- **"administracion de consorcios cerca de mi" (260/mes)** es una query de GBP puro: refuerza que la ficha de
+  Google Business Profile sigue siendo el crítico #1.
+- Las variantes por barrio distintas de "administracion de consorcios {barrio}" dan todas 0 ("administrador de
+  consorcios caballito", "consorcios belgrano", "expensas caballito", "belgrano r", etc.): la landing tiene que
+  llevar la formulación exacta en title y H1, que es lo que ya hacen las cinco.
+- **SERP "administracion de consorcios caballito"**: hay local pack (3 administraciones chicas) y el orgánico lo
+  encabeza Ramos con su plantilla "en Caballito 2026", seguido de Páginas Amarillas, Instagram, Facebook, dos
+  directorios (doorway y licuo), ADSR, Saettone, Fromo, ELES en #17. **SERP "administracion de consorcios
+  belgrano"**: local pack, AGVSA #1, el portal barrial mibelgrano.com.ar #2 y #16, Ramos #3 ("Belgrano 2026"),
+  Zabala, Admelian, Saettone, Focus, Facebook. En las dos, ninguna página con contenido local real: se gana con
+  lo mismo que en Devoto (contenido propio + entidad local + GBP), pero contra más competidores que en el oeste.
+- Los dumps completos quedaron en `dfs-dumps/` (gitignoreado). Runner: `~/.claude/tools/dataforseo/dfs.mjs`.
+
 ## Cola
 
 > **Para la rutina automática y para quien retome esto:** el orden de las filas ES la prioridad.
@@ -231,7 +267,26 @@ Estas traen **leads**, no clicks. Se hacen en tandas, no de a una, y las escribo
     administrador voluntario, y el art. 2067 CCyC le impone las mismas obligaciones. Segundo eje: edificios
     con local en planta baja sobre Álvarez Jonte (art. 2056 incs. f y g + eximición parcial del art. 2049).
     Foto de Wikimedia Commons (Gobonobo, CC BY-SA 3.0).
-  - ⬜ Villa Pueyrredón · después el resto (Caballito, Belgrano, Palermo).
+  - ✅ **Villa Pueyrredón** (2026-09-23), ángulo: barrio consolidado a mediados del siglo XX, casas y PH en las
+    calles internas y edificios de media altura con balcones sobre Mosconi, Artigas, Nazca y Albarellos, muchos ya
+    con más de 40 o 50 años: la certificación técnica de conservación de fachadas del art. 5.1.2 del Código de la
+    Edificación (tabla de periodicidad por antigüedad) presupuestada con años de anticipación en vez de llegar como
+    extraordinaria de apuro. Segundo eje: la oficina está sobre Campana, la calle límite entre Devoto y Villa
+    Pueyrredón (Comuna 12). Foto de Wikimedia Commons (Cornelius Kibelka, CC BY-SA 2.0). Cierra la tanda de los
+    barrios del doc 07.
+  - ✅ **Caballito** (2026-09-23), ángulo: la Comuna 6 entera, edificios de departamentos grandes con encargado
+    (muchas veces con vivienda), suplentes y servicios centrales: la nómina como el renglón más pesado de la
+    expensa. Diferencial: liquidación de sueldos bajo convenio y la nómina mostrada completa como exige el art. 10
+    de la Ley 941 (categoría del edificio, CUIL, básico, horas extras, descuentos y aportes, clave SUTERH); quién
+    decide qué (CCyC 2067 f y g, Ley 941 art. 9º seguro del personal, 2041 g vivienda del encargado). Foto de
+    Wikimedia Commons (Dario Alpern, CC BY-SA 3.0), la esquina de Rivadavia y Emilio Mitre donde estuvo la pulpería.
+  - ✅ **Belgrano** (2026-09-23), ángulo: dos Belgranos (R de casas y PH de categoría, C de torres sobre Cabildo y
+    las Barrancas, más el Bajo) y consejos exigentes: la **auditoría contable y el informe de control de gestión
+    por Profesionales de Ciencias Económicas que la asamblea puede disponer** (Ley 941 art. 9º), el detalle de
+    proveedores, seguros y juicios del art. 10, la rendición documentada a 60 días (2067 e) y el fondo de reserva
+    (2046 d, 2064 c, 2067 d). Foto de Wikimedia Commons (Patricia Curcio, CC BY-SA 3.0), torres sobre las Barrancas.
+  - ⬜ Después: Palermo (20/mes, CPC $1,48, el más alto de los barrios), Recoleta (20), Villa Urquiza (20). Núñez,
+    Almagro, Flores y Colegiales dan 10 o menos.
 - **Al publicar una landing:** agregar el barrio a `coverageZones` y a `zoneHrefs` en
   `content/zones.ts` (el chip de la home se vuelve link solo), sumar la ruta a `STATIC_LASTMOD`
   en `app/sitemap.ts`, correr `npm run indexnow -- <ruta>` y pedir indexación manual en GSC.

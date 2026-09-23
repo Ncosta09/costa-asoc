@@ -15,6 +15,7 @@ export const coverageZones = [
   "Villa Devoto",
   "Villa del Parque",
   "Monte Castro",
+  "Villa Pueyrredón",
   "Colegiales",
 ] as const;
 
@@ -24,4 +25,7 @@ export const zoneHrefs: Partial<Record<(typeof coverageZones)[number], string>> 
   "Villa Devoto": "/administracion-de-consorcios-villa-devoto",
   "Villa del Parque": "/administracion-de-consorcios-villa-del-parque",
   "Monte Castro": "/administracion-de-consorcios-monte-castro",
+  "Villa Pueyrredón": "/administracion-de-consorcios-villa-pueyrredon",
+  Caballito: "/administracion-de-consorcios-caballito",
+  Belgrano: "/administracion-de-consorcios-belgrano",
 };

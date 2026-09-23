@@ -20,6 +20,9 @@ const STATIC_LASTMOD: Record<string, string> = {
   "/administracion-de-consorcios-villa-devoto": "2026-08-17",
   "/administracion-de-consorcios-villa-del-parque": "2026-08-24",
   "/administracion-de-consorcios-monte-castro": "2026-09-04",
+  "/administracion-de-consorcios-villa-pueyrredon": "2026-09-23",
+  "/administracion-de-consorcios-caballito": "2026-09-23",
+  "/administracion-de-consorcios-belgrano": "2026-09-23",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
