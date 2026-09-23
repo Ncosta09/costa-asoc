@@ -14,9 +14,9 @@ import { servicesFaq } from "@/content/faq";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Servicios: expensas, obras, asambleas y guardia 24/7",
+  title: "Administradora de consorcios en CABA: servicios",
   description:
-    "Liquidación de expensas, control financiero, personal, obras, asambleas y guardia 24/7. Estudio contable matriculado (RPA 8192) con cuentas a nombre del consorcio.",
+    "Administradora de consorcios con mirada contable: expensas, control financiero, personal, obras, asambleas y guardia 24/7. RPA 8192, cuentas del consorcio.",
   path: "/servicios",
 });
 

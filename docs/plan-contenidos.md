@@ -182,10 +182,14 @@ Vocabulario para las landings por barrio y para el sitio entero (Google Ads, Arg
 | administracion de consorcios zona belgrano · almagro · flores · nuñez · zona oeste | 10 | | |
 
 - **El hallazgo grande no es de barrios: "administradora de consorcios" tiene 4.400/mes**, seis veces la head
-  comercial que veníamos midiendo ("administracion de consorcios caba", 720). Es el sustantivo con el que la gente
-  nombra a la empresa. El sitio entero dice "administración de consorcios" y casi nunca "administradora": revisar
-  title de la home, H1 de `/servicios`, el schema LocalBusiness y el copy de las landings. **Decisión pendiente de
-  Nico** (cambia el posicionamiento de marca: "estudio contable" vs "administradora").
+  comercial que veníamos midiendo ("administracion de consorcios caba", 720). **Resuelto el 2026-09-23 con la SERP
+  en vivo:** Google la trata como sinónimo de "administración de consorcios" (local pack + 13 administraciones en el
+  top 20, casi todas tituladas "Administración de Consorcios", más registros oficiales y Liga). Sus variantes
+  geográficas ("administradora de consorcios caba", "en caba", "capital federal", "cerca de mi") dan **0**, o sea
+  que los 4.400 son nacionales. Por eso **no se tocó el title de la home** (es la página con mejor CTR y Google ya
+  hace el mapeo) y la palabra se sumó donde suma CTR sin riesgo: meta description de la home, title y
+  description de `/servicios`, y una mención en el cuerpo de Caballito y Belgrano. Lateral: "administradora de
+  edificios" da **260/mes** (MEDIUM, CPC $0,69).
 - **"administracion de consorcios cerca de mi" (260/mes)** es una query de GBP puro: refuerza que la ficha de
   Google Business Profile sigue siendo el crítico #1.
 - Las variantes por barrio distintas de "administracion de consorcios {barrio}" dan todas 0 ("administrador de

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   ...buildMetadata({
     title: "Administración de consorcios en Buenos Aires | Costa & Asociados",
     description:
-      "Estudio contable matriculado que administra consorcios en CABA desde 2009. Cuentas a nombre del consorcio y rendición transparente. Pedí tu propuesta sin cargo.",
+      "Administradora de consorcios en CABA a cargo de un estudio contable matriculado desde 2009. Cuentas a nombre del consorcio y rendición clara. Propuesta sin cargo.",
     path: "/",
   }),
   // Verificación de propiedad de buscadores (valores públicos y permanentes).
