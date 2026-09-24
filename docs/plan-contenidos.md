@@ -203,6 +203,30 @@ Vocabulario para las landings por barrio y para el sitio entero (Google Ads, Arg
   lo mismo que en Devoto (contenido propio + entidad local + GBP), pero contra más competidores que en el oeste.
 - Los dumps completos quedaron en `dfs-dumps/` (gitignoreado). Runner: `~/.claude/tools/dataforseo/dfs.mjs`.
 
+## Medición del 2026-09-24 (Google Trends vía DataForSEO, 2 consultas, costó $0,022; acumulado $0,31 de $1)
+
+Trends da interés **relativo** (0-100, el pico del set vale 100), no volumen. Sirve para estacionalidad,
+tendencia interanual y queries en subida; el volumen sigue saliendo de Google Ads. Comandos del runner:
+`trends "kw1,kw2" [time_range] [location_code]` y `season [patrón]` (volumen mensual de los dumps, gratis).
+
+- **Corrige la medición del 23-09: "administradora de consorcios" casi no existe en Trends** (interés medio ~0
+  contra 5,3 de "administracion de consorcios", 5 años, Argentina). Google Ads les da el mismo 4.400/mes a las
+  dos porque agrupa variantes cercanas: el número es del cluster, no de "administradora" sola. El cambio de
+  `494ffa4` queda (es sinónimo y no hace daño), pero no hay 4.400 búsquedas nuevas por capturar.
+- **Estacionalidad de "administracion de consorcios"** (índice 100 = media de 5 años):
+
+  | ene | feb | mar | abr | may | jun | jul | ago | sep | oct | nov | dic |
+  |---|---|---|---|---|---|---|---|---|---|---|---|
+  | 88 | 93 | 110 | **126** | 109 | 90 | 111 | **126** | 108 | 97 | 79 | **62** |
+
+  Picos en abril y agosto, piso en noviembre-diciembre. **Las landings y notas fuertes conviene publicarlas antes
+  de marzo-abril y de julio-agosto**, para que estén indexadas cuando sube la demanda. CABA concentra el interés
+  (100 contra 23 de provincia de Buenos Aires).
+- "expensas" es estable todo el año (88-112) y viene +10% interanual: el cluster de expensas no depende del
+  calendario.
+- Top queries de "administracion de consorcios" (12 meses): "curso …" #1 y #2, "… caba" #3. Confirma que la head
+  pelada es formativa y que la comercial es la variante CABA.
+
 ## Cola
 
 > **Para la rutina automática y para quien retome esto:** el orden de las filas ES la prioridad.
