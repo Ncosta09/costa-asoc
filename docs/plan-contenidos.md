@@ -42,6 +42,20 @@ No negociables, valen igual para Nico y para el agente:
     entre paréntesis, con comas o con dos puntos. Vale para el cuerpo, el frontmatter
     (`title`/`description`/`faq`) y cualquier copy. El sitio entero ya se limpió en el commit
     `dbe9755`; una nota nueva con em-dashes no se publica hasta reescribirlos.
+11. **Patrón citable por IAs** (hipótesis del 2026-09-24, a medir). `expensas-ordinarias-y-extraordinarias-diferencias`
+    está en pos 22 de Google con 0 clicks y es la nota que más citan ChatGPT y Copilot (GA4, canal AI Assistant).
+    Lo que la distingue, y que toda nota nueva tiene que tener:
+    - **Respuesta en la primera línea de cada H2**, en negrita y en una frase ("**El propietario de la unidad.**"),
+      y recién después la explicación.
+    - **Cada afirmación con el artículo puntual linkeado** a la fuente oficial, no un link genérico a la ley al
+      principio. Esa nota tiene 12; la media del blog, 5.
+    - **Un desmentido de una creencia del nicho** al abrir, en una frase citable ("no es el monto, es la decisión
+      de la asamblea"). Si la nota no corrige nada de lo que dice la competencia, buscar el ángulo antes de escribir.
+    - **Al menos una tabla de casos con veredicto** ("Situación → ¿Es X?" con Sí/No por fila), además de las
+      tablas de datos.
+
+    Se evalúa a fines de noviembre con GA4 (sesiones de AI Assistant por landing page) y Bing Webmaster Tools
+    (AI Performance → Pages): si las notas nuevas no suman citas, se revisa la regla.
 
 ---
 
