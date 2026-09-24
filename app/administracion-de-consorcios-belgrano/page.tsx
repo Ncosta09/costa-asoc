@@ -20,7 +20,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { FaqSection } from "@/components/ui/faq-section";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/schema";
+import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
 
@@ -193,13 +193,16 @@ export default function BelgranoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Inicio", url: site.url },
-              {
-                name: "Administración de consorcios en Belgrano",
-                url: `${site.url}/administracion-de-consorcios-belgrano`,
-              },
-            ]),
+            [
+              breadcrumbSchema([
+                { name: "Inicio", url: site.url },
+                {
+                  name: "Administración de consorcios en Belgrano",
+                  url: `${site.url}/administracion-de-consorcios-belgrano`,
+                },
+              ]),
+              barrioServiceSchema("Belgrano", "/administracion-de-consorcios-belgrano"),
+            ],
           ),
         }}
       />

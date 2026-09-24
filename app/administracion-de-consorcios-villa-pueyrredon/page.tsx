@@ -18,7 +18,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { FaqSection } from "@/components/ui/faq-section";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/schema";
+import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
 
@@ -129,13 +129,16 @@ export default function VillaPueyrredonPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Inicio", url: site.url },
-              {
-                name: "Administración de consorcios en Villa Pueyrredón",
-                url: `${site.url}/administracion-de-consorcios-villa-pueyrredon`,
-              },
-            ]),
+            [
+              breadcrumbSchema([
+                { name: "Inicio", url: site.url },
+                {
+                  name: "Administración de consorcios en Villa Pueyrredón",
+                  url: `${site.url}/administracion-de-consorcios-villa-pueyrredon`,
+                },
+              ]),
+              barrioServiceSchema("Villa Pueyrredón", "/administracion-de-consorcios-villa-pueyrredon"),
+            ],
           ),
         }}
       />

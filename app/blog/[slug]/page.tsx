@@ -15,6 +15,10 @@ import { getAllPosts, getPostBySlug, formatDate, lastModified } from "@/lib/blog
 import { buildMetadata } from "@/lib/seo";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
+import { zoneHrefs } from "@/content/zones";
+
+// Barrios con landing publicada, en el orden de `zoneHrefs`.
+const barrioLinks = Object.entries(zoneHrefs) as [string, string][];
 
 type Params = { slug: string };
 
@@ -143,11 +147,31 @@ export default async function BlogPostPage({
               Coordinamos una primera reunión sin compromiso para conocer las necesidades
               del edificio y armar una propuesta a medida.
             </p>
-            <div className="mt-6">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/contacto" variant="primary" size="lg">
                 Solicitar propuesta sin cargo
               </Button>
+              <Button href="/servicios" variant="secondary" size="lg">
+                Ver qué incluye el servicio
+              </Button>
             </div>
+            {/* Links a las landings de barrio: llevan el tráfico informativo del blog a las
+                páginas que venden y les pasan enlazado interno desde cada nota. */}
+            <p className="mt-6 text-[14.5px] leading-relaxed text-ink-700">
+              Administramos edificios en{" "}
+              {barrioLinks.map(([zone, href], i) => (
+                <span key={href}>
+                  <Link
+                    href={href}
+                    className="font-medium text-navy-900 underline decoration-terra-700/40 underline-offset-4 hover:decoration-terra-700"
+                  >
+                    {zone}
+                  </Link>
+                  {i < barrioLinks.length - 1 ? ", " : ""}
+                </span>
+              ))}{" "}
+              y en el resto de CABA.
+            </p>
           </footer>
         </article>
       </Container>

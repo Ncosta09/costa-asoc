@@ -18,7 +18,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { RelatedPosts } from "@/components/blog/related-posts";
 import { FaqSection } from "@/components/ui/faq-section";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/schema";
+import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
 
@@ -116,13 +116,16 @@ export default function MonteCastroPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Inicio", url: site.url },
-              {
-                name: "Administración de consorcios en Monte Castro",
-                url: `${site.url}/administracion-de-consorcios-monte-castro`,
-              },
-            ]),
+            [
+              breadcrumbSchema([
+                { name: "Inicio", url: site.url },
+                {
+                  name: "Administración de consorcios en Monte Castro",
+                  url: `${site.url}/administracion-de-consorcios-monte-castro`,
+                },
+              ]),
+              barrioServiceSchema("Monte Castro", "/administracion-de-consorcios-monte-castro"),
+            ],
           ),
         }}
       />

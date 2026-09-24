@@ -58,6 +58,27 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
   };
 }
 
+// Service por landing de barrio: le dice a Google y a los buscadores con IA que el servicio
+// se presta en ese barrio. El provider apunta por @id al ProfessionalService del layout,
+// que está en todas las páginas, así que no se duplica la entidad.
+export function barrioServiceSchema(barrio: string, path: string) {
+  const url = `${site.url}${path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: `Administración de consorcios en ${barrio}`,
+    serviceType: "Administración de consorcios",
+    url,
+    provider: { "@id": `${site.url}#organization` },
+    areaServed: {
+      "@type": "Place",
+      name: barrio,
+      containedInPlace: { "@type": "City", name: "Ciudad Autónoma de Buenos Aires" },
+    },
+  };
+}
+
 export function faqSchema(items: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",
