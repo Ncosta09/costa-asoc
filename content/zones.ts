@@ -28,4 +28,5 @@ export const zoneHrefs: Partial<Record<(typeof coverageZones)[number], string>> 
   "Villa Pueyrredón": "/administracion-de-consorcios-villa-pueyrredon",
   Caballito: "/administracion-de-consorcios-caballito",
   Belgrano: "/administracion-de-consorcios-belgrano",
+  Palermo: "/administracion-de-consorcios-palermo",
 };
