@@ -7,6 +7,9 @@
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
+// Microsoft Clarity (grabaciones y mapas de calor): mismo consentimiento que GA4.
+export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+
 export type ConsentValue = "granted" | "denied";
 
 const CONSENT_KEY = "ga-consent";

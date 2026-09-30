@@ -3,6 +3,7 @@
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import {
+  CLARITY_ID,
   CONSENT_CHANGED_EVENT,
   GA_ID,
   getConsent,
@@ -10,7 +11,9 @@ import {
 } from "@/lib/analytics";
 
 /**
- * Carga GA4 solo si hay ID configurado Y el visitante aceptó el banner.
+ * Carga GA4 (y Clarity, si tiene ID) solo si hay ID de GA configurado Y el
+ * visitante aceptó el banner. El banner depende de GA_ID, así que Clarity
+ * nunca se carga sin haber preguntado.
  * Además registra un listener delegado para medir los clicks de contacto
  * (WhatsApp y teléfono) sin tocar cada componente que los renderiza.
  * Los listeners son inofensivos sin gtag: trackEvent es un no-op.
@@ -58,6 +61,18 @@ export function Analytics() {
           gtag('config', '${GA_ID}');
         `}
       </Script>
+      {CLARITY_ID && (
+        <Script id="clarity-init" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");
+            window.clarity('consent');
+          `}
+        </Script>
+      )}
     </>
   );
 }

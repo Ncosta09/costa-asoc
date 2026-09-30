@@ -49,8 +49,9 @@ export function ConsentBanner() {
       )}
     >
       <p className="text-sm leading-snug text-ink-800 sm:leading-relaxed">
-        Usamos Google Analytics para medir cómo se usa el sitio. Solo se activa
-        si aceptás: si rechazás, no se carga nada y no volvemos a preguntar.
+        Usamos Google Analytics y Microsoft Clarity para medir cómo se usa el
+        sitio. Solo se activan si aceptás: si rechazás, no se carga nada y no
+        volvemos a preguntar.
       </p>
       <div className="mt-3 flex items-center gap-2.5 sm:mt-4 sm:gap-3">
         <Button size="sm" variant="primary" onClick={() => choose("granted")}>
