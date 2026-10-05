@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { BadgeCheck, MessageCircle } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { HeroVideo } from "@/components/home/hero-video";
 import { site } from "@/content/site";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export function Hero() {
   return (
@@ -48,7 +49,7 @@ export function Hero() {
                 size="lg"
                 className="border-cream-50/50 text-cream-50 hover:bg-cream-50 hover:text-navy-900"
               >
-                <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Escribir por WhatsApp
               </Button>
               <Button

@@ -6,7 +6,6 @@ import {
   ClipboardCheck,
   Home,
   MapPin,
-  MessageCircle,
   ShieldCheck,
   Store,
   Trophy,
@@ -21,6 +20,7 @@ import { buildMetadata } from "@/lib/seo";
 import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Monte Castro",
@@ -178,7 +178,7 @@ export default function MonteCastroPage() {
                   Solicitar propuesta sin cargo
                 </Button>
                 <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                  <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                   Escribir por WhatsApp
                 </Button>
               </div>

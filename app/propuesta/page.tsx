@@ -50,10 +50,10 @@ export default function PropuestaPage() {
               credenciales. En desktop el formulario sube a la columna derecha. */}
           <div className="grid grid-cols-1 gap-x-16 gap-y-7 lg:grid-cols-12 lg:gap-y-8">
             <div className="lg:col-span-7 lg:row-start-1 lg:pt-6">
-              <p className="hidden text-xs font-medium uppercase tracking-[0.18em] text-terra-700 sm:block">
+              <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-terra-700 sm:text-xs">
                 Estudio contable · Desde {site.founded}
               </p>
-              <h1 className="font-display text-[2.05rem] leading-[1.06] tracking-[-0.025em] text-balance text-navy-900 sm:mt-3 sm:text-[3rem] lg:text-[3.5rem]">
+              <h1 className="font-display text-[2.05rem] leading-[1.06] tracking-[-0.025em] text-balance text-navy-900 mt-2 sm:mt-3 sm:text-[3rem] lg:text-[3.5rem]">
                 Administración de consorcios en CABA, con Contadores Públicos al frente
               </h1>
               <p className="mt-4 max-w-[54ch] text-pretty text-[16.5px] leading-relaxed text-ink-800 sm:mt-6 sm:text-[18px]">
@@ -143,7 +143,7 @@ export default function PropuestaPage() {
 
       {/* Footer propio: datos de la oficina, sin links de navegación. */}
       <footer className="border-t border-cream-200 bg-cream-100 text-ink-700">
-        <Container className="flex flex-col gap-3 py-10 text-[13.5px] leading-relaxed sm:flex-row sm:items-center sm:justify-between">
+        <Container className="flex flex-col gap-3 pt-10 pb-24 text-[13.5px] leading-relaxed sm:flex-row sm:items-center sm:justify-between sm:pb-10">
           <p>
             <span className="font-medium text-navy-900">{site.name}</span> ·{" "}
             {site.address.street}, {site.address.region} · {site.hours.label}

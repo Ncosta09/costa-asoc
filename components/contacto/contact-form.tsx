@@ -29,8 +29,9 @@ import { cn } from "@/lib/utils";
  * Un solo formulario para /contacto, /servicios y /propuesta.
  *
  * Obligatorios: nombre, un medio de contacto (teléfono o email) y barrio. Los datos
- * del edificio son opcionales: en la variante `compact` (landings) van plegados en
- * un <details> para que el pedido entre arriba del fold; en `full` (/contacto) se ven.
+ * del edificio son opcionales y van en un <details>: en `compact` (landings) siempre
+ * plegados para que el pedido entre arriba del fold; en `full` (/contacto) plegados
+ * por debajo de `lg` y abiertos desde `lg`. Con un error en un opcional se abren solos.
  *
  * Medición: `generate_lead` se emite acá al volver OK. `form_start` lo emite solo la
  * medición mejorada de GA4 (interacciones de formulario) sobre cualquier <form>, así
@@ -74,6 +75,9 @@ function describedBy(name: string, error?: string, hasHint = false) {
 
 const OPTIONAL_FIELDS = ["role", "buildingType", "units", "message"] as const;
 
+/** Mismo corte que `lg` de Tailwind (64rem). */
+const LG_QUERY = "(min-width: 64rem)";
+
 export function ContactForm({
   variant = "full",
   source = "contacto",
@@ -82,7 +86,21 @@ export function ContactForm({
   const initialState: ContactFormState = { status: "idle" };
   const [state, formAction] = useActionState(submitContact, initialState);
   const successRef = useRef<HTMLHeadingElement>(null);
+  const detailsRef = useRef<HTMLDetailsElement>(null);
   const compact = variant === "compact";
+
+  // `full` desde lg: opcionales abiertos. Corre tras cada respuesta del action porque
+  // el atributo `open` controlado por React puede volver a cerrarlo.
+  useEffect(() => {
+    if (compact) return;
+    const mq = window.matchMedia(LG_QUERY);
+    const sync = () => {
+      if (mq.matches && detailsRef.current) detailsRef.current.open = true;
+    };
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, [compact, state]);
 
   // Conversión principal para GA4/Ads. No-op si no hay tracking activo.
   useEffect(() => {
@@ -217,11 +235,13 @@ export function ContactForm({
         />
       </Field>
 
+      {/* Una sola pregunta con dos respuestas posibles: el panel y el "o" evitan que
+          Teléfono y Email se lean como dos obligatorios más. */}
       <fieldset
-        className="flex flex-col gap-3"
+        className="rounded-lg bg-cream-100/60 px-4 pb-4 pt-3.5 ring-1 ring-cream-200/80 sm:px-5 sm:pb-5"
         aria-describedby={contactError ? `${CONTACT_METHOD_ERROR}-error` : "contact-hint"}
       >
-        <legend className="mb-2 text-[13px] font-medium tracking-[0.005em] text-navy-900">
+        <legend className="float-left mb-3 w-full text-[13px] font-medium tracking-[0.005em] text-navy-900">
           ¿Cómo los contactamos?
           <span aria-hidden="true" className="ml-1 text-terra-700">
             *
@@ -230,8 +250,13 @@ export function ContactForm({
             Con uno alcanza
           </span>
         </legend>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <Field label="Teléfono" name="phone" error={errors.phone}>
+        <div className="clear-both grid grid-cols-1 gap-y-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:gap-x-3">
+          <Field
+            label="Teléfono"
+            name="phone"
+            error={errors.phone}
+            labelClassName="font-normal text-ink-700"
+          >
             <TextInput
               id="phone"
               name="phone"
@@ -244,7 +269,19 @@ export function ContactForm({
               aria-describedby={describedBy("phone", errors.phone)}
             />
           </Field>
-          <Field label="Email" name="email" error={errors.email}>
+          <span
+            aria-hidden="true"
+            className="flex items-center gap-3 text-[13px] italic text-ink-500 sm:mt-[27.5px] sm:h-11"
+          >
+            <span className="h-px flex-1 bg-cream-300 sm:hidden" />o
+            <span className="h-px flex-1 bg-cream-300 sm:hidden" />
+          </span>
+          <Field
+            label="Email"
+            name="email"
+            error={errors.email}
+            labelClassName="font-normal text-ink-700"
+          >
             <TextInput
               id="email"
               name="email"
@@ -261,7 +298,7 @@ export function ContactForm({
           <p
             id={`${CONTACT_METHOD_ERROR}-error`}
             role="alert"
-            className="text-[12.5px] text-terra-700"
+            className="mt-3 text-[12.5px] text-terra-700"
           >
             {contactError}
           </p>
@@ -286,30 +323,66 @@ export function ContactForm({
         />
       </Field>
 
-      {compact ? (
-        <details
-          className="group rounded-md border border-cream-300 bg-cream-50"
-          open={optionalHasError || optionalHasValue || undefined}
+      {/* Opcionales plegados: siempre en `compact`; en `full`, solo por debajo de `lg`.
+          Desde `lg` el <details> se abre (CSS para el primer pintado, efecto para el
+          estado) y el summary pasa a ser un título que no pliega. */}
+      <details
+        ref={detailsRef}
+        className={cn(
+          "group rounded-md border border-cream-300 bg-cream-50",
+          !compact &&
+            "lg:rounded-none lg:border-x-0 lg:border-b-0 lg:border-cream-200 lg:bg-transparent lg:pt-6 lg:[&::details-content]:[content-visibility:visible]",
+        )}
+        open={optionalHasError || optionalHasValue || undefined}
+        onClick={
+          compact
+            ? undefined
+            : (e) => {
+                // Desde lg el summary no pliega (los datos quedan siempre a la vista).
+                if (
+                  (e.target as HTMLElement).closest("summary") &&
+                  window.matchMedia(LG_QUERY).matches
+                ) {
+                  e.preventDefault();
+                }
+              }
+        }
+      >
+        <summary
+          className={cn(
+            "flex cursor-pointer list-none items-center justify-between gap-3 rounded-md px-3.5 py-3 text-[14px] font-medium text-navy-900 [&::-webkit-details-marker]:hidden",
+            !compact &&
+              "lg:cursor-default lg:px-0 lg:py-0 lg:font-display lg:text-[1.15rem] lg:font-normal lg:tracking-tight",
+          )}
         >
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-md px-3.5 py-3 text-[14px] font-medium text-navy-900 [&::-webkit-details-marker]:hidden">
-            Datos del edificio (opcional)
-            <ChevronDown
-              aria-hidden="true"
-              strokeWidth={1.75}
-              className="h-4 w-4 text-ink-500 transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
-            />
-          </summary>
-          <div className="border-t border-cream-200 px-3.5 pb-4 pt-4">{optionalFields}</div>
-        </details>
-      ) : (
-        <fieldset className="flex flex-col gap-5 border-t border-cream-200 pt-6">
-          <legend className="float-left mb-1 w-full font-display text-[1.15rem] tracking-tight text-navy-900">
-            Datos del edificio{" "}
-            <span className="font-sans text-[13px] font-normal text-ink-500">(opcional)</span>
-          </legend>
+          {compact ? (
+            "Datos del edificio (opcional)"
+          ) : (
+            <span>
+              Datos del edificio{" "}
+              <span className="font-sans text-[13px] font-normal text-ink-500 lg:tracking-normal">
+                (opcional)
+              </span>
+            </span>
+          )}
+          <ChevronDown
+            aria-hidden="true"
+            strokeWidth={1.75}
+            className={cn(
+              "h-4 w-4 text-ink-500 transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none",
+              !compact && "lg:hidden",
+            )}
+          />
+        </summary>
+        <div
+          className={cn(
+            "border-t border-cream-200 px-3.5 pb-4 pt-4",
+            !compact && "lg:border-t-0 lg:px-0 lg:pb-0 lg:pt-5",
+          )}
+        >
           {optionalFields}
-        </fieldset>
-      )}
+        </div>
+      </details>
 
       {state.status === "error" && state.message ? (
         <p

@@ -47,7 +47,8 @@ export const contactSchema = z
       .string({ required_error: "Ingresen su nombre" })
       .trim()
       .min(2, "Ingresen su nombre")
-      .max(120, "Demasiado largo"),
+      .max(120, "Demasiado largo")
+      .regex(/^[^\r\n]*$/, "Revisen el dato"),
     email: z.preprocess(
       blankToUndefined,
       z
@@ -71,7 +72,8 @@ export const contactSchema = z
       .string({ required_error: "Indiquen el barrio" })
       .trim()
       .min(2, "Indiquen el barrio")
-      .max(120, "Demasiado largo"),
+      .max(120, "Demasiado largo")
+      .regex(/^[^\r\n]*$/, "Revisen el dato"),
     role: z.preprocess(
       blankToUndefined,
       z.enum(roles, { errorMap: () => ({ message: "Elijan una opción de la lista" }) }).optional(),

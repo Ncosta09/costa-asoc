@@ -77,7 +77,7 @@ export function OfficeInfo() {
       <div className="grid grid-cols-[auto_1fr] items-start gap-3 rounded-lg border border-terra-700/20 bg-terra-100/40 p-4">
         <AlertCircle aria-hidden="true" strokeWidth={1.5} className="mt-0.5 h-5 w-5 text-terra-700" />
         <p className="text-[13.5px] leading-relaxed text-ink-800">
-          <span className="font-medium text-terra-900">Guardia 24/7.</span> Fuera del
+          <span className="font-medium text-terra-900">Guardia para emergencias.</span> Fuera del
           horario de oficina atendemos emergencias edilicias por la línea directa de
           guardia indicada en el contrato de administración.
         </p>

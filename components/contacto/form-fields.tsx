@@ -12,17 +12,27 @@ type FieldProps = {
   required?: boolean;
   error?: string;
   hint?: string;
+  /** Para etiquetas secundarias (p. ej. las opciones dentro de un fieldset). */
+  labelClassName?: string;
   children: ReactNode;
 };
 
-export function Field({ label, name, required, error, hint, children }: FieldProps) {
+export function Field({
+  label,
+  name,
+  required,
+  error,
+  hint,
+  labelClassName,
+  children,
+}: FieldProps) {
   const hintId = hint ? `${name}-hint` : undefined;
   const errorId = error ? `${name}-error` : undefined;
   return (
     <div className="flex flex-col gap-2">
       <label
         htmlFor={name}
-        className="text-[13px] font-medium tracking-[0.005em] text-navy-900"
+        className={cn("text-[13px] font-medium tracking-[0.005em] text-navy-900", labelClassName)}
       >
         {label}
         {required ? (

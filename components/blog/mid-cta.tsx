@@ -15,7 +15,7 @@ export function BlogMidCta({ variant }: { variant: MidCtaVariant }) {
   return (
     <aside
       aria-label="Cambio de administrador"
-      className="my-12 rounded-2xl border border-cream-200 border-l-[3px] border-l-terra-700 bg-cream-100/70 p-6 sm:p-8"
+      className="relative my-12 rounded-2xl border border-cream-200 bg-cream-100/70 p-6 before:absolute before:inset-y-6 before:left-0 before:w-[3px] before:rounded-full before:bg-terra-700 before:content-[''] sm:p-8 sm:before:inset-y-8"
     >
       <p className="font-display text-[1.3rem] leading-tight tracking-tight text-balance text-navy-900 sm:text-[1.45rem]">
         {copy.title}

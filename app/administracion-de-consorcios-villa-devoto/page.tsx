@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BadgeCheck, Building2, Clock3, MapPin, MessageCircle, Trees, Users } from "lucide-react";
+import { BadgeCheck, Building2, Clock3, MapPin, Trees, Users } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Villa Devoto",
@@ -157,7 +158,7 @@ export default function VillaDevotoPage() {
                 Solicitar propuesta sin cargo
               </Button>
               <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Escribir por WhatsApp
               </Button>
             </div>
