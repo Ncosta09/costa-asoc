@@ -11,6 +11,10 @@ import { Button } from "@/components/ui/button";
 import { mdxComponents } from "@/components/blog/mdx-components";
 import { FaqSection } from "@/components/ui/faq-section";
 import { RelatedPosts } from "@/components/blog/related-posts";
+import { BlogMidCta } from "@/components/blog/mid-cta";
+import { AttendedBy } from "@/components/ui/attended-by";
+import { remarkMidCta } from "@/lib/remark-mid-cta";
+import { MID_CTA_AT, midCtaBySlug } from "@/content/blog-cta";
 import { getAllPosts, getPostBySlug, formatDate, lastModified } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
@@ -61,6 +65,15 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
+
+  // CTA a mitad de nota solo en las notas con intención de cambio de administrador.
+  const midCta = midCtaBySlug[post.slug];
+  const components = midCta
+    ? { ...mdxComponents, BlogMidCta: () => <BlogMidCta variant={midCta} /> }
+    : mdxComponents;
+  const remarkPlugins = midCta
+    ? [remarkGfm, () => remarkMidCta({ at: MID_CTA_AT, length: post.content.length })]
+    : [remarkGfm];
 
   return (
     <>
@@ -134,19 +147,20 @@ export default async function BlogPostPage({
           <div className="mt-8">
             <MDXRemote
               source={post.content}
-              components={mdxComponents}
-              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              components={components}
+              options={{ mdxOptions: { remarkPlugins } }}
             />
           </div>
 
           <footer className="mt-14 rounded-2xl border border-cream-200 bg-cream-100/60 p-8 sm:p-10">
             <h2 className="font-display text-[1.4rem] leading-tight tracking-tight text-navy-900">
-              ¿Querés que revisemos tu consorcio?
+              ¿Quieren que revisemos su consorcio?
             </h2>
             <p className="mt-3 max-w-[52ch] text-[15.5px] leading-relaxed text-ink-700">
               Coordinamos una primera reunión sin compromiso para conocer las necesidades
               del edificio y armar una propuesta a medida.
             </p>
+            <AttendedBy className="mt-6" />
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/contacto" variant="primary" size="lg">
                 Solicitar propuesta sin cargo

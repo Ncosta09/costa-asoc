@@ -11,7 +11,6 @@ import {
   Flame,
   Landmark,
   MapPin,
-  MessageCircle,
   ShieldCheck,
   Sun,
   Trees,
@@ -29,6 +28,7 @@ import { buildMetadata } from "@/lib/seo";
 import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Palermo",
@@ -250,7 +250,7 @@ export default function PalermoPage() {
                   Pedir una propuesta sin cargo
                 </Button>
                 <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                  <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                   Escribir por WhatsApp
                 </Button>
               </div>

@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { site } from "@/content/site";
 import { CONSENT_CHANGED_EVENT, GA_ID, getConsent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 /**
  * CTA persistente de WhatsApp, anclado abajo a la derecha.
@@ -88,7 +88,7 @@ export function WhatsAppFloat() {
         // fondo, así que el offset se apaga y el ring se dibuja en cream.
         className="shadow-elevated ring-1 ring-cream-50/25 focus-visible:ring-cream-50 focus-visible:ring-offset-0"
       >
-        <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+        <WhatsAppIcon className="h-4 w-4" />
         Escribir por WhatsApp
       </Button>
     </div>

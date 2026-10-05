@@ -17,16 +17,20 @@ type Props = {
 };
 
 export function ContactEmail({ data }: Props) {
-  const previewText = `Consulta de ${data.name} (${roleLabels[data.role]})`;
+  const previewText = `Consulta de ${data.name} (${data.neighborhood})`;
 
+  // Solo nombre, barrio y un medio de contacto son obligatorios: lo que no se
+  // completó se muestra como "Sin dato" para que se vea qué falta preguntar.
+  const empty = "Sin dato";
   const fields: Array<[string, string]> = [
     ["Nombre", data.name],
-    ["Email", data.email],
-    ["Teléfono", data.phone],
-    ["Rol", roleLabels[data.role]],
-    ["Tipo de edificio", buildingTypeLabels[data.buildingType]],
-    ["Unidades", String(data.units)],
+    ["Teléfono", data.phone ?? empty],
+    ["Email", data.email ?? empty],
     ["Ubicación", data.neighborhood],
+    ["Rol", data.role ? roleLabels[data.role] : empty],
+    ["Tipo de edificio", data.buildingType ? buildingTypeLabels[data.buildingType] : empty],
+    ["Unidades", data.units !== undefined ? String(data.units) : empty],
+    ["Origen", `/${data.source}`],
   ];
 
   return (

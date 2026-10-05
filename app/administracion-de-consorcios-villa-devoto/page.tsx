@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { BadgeCheck, Building2, Clock3, MapPin, MessageCircle, Trees, Users } from "lucide-react";
+import { BadgeCheck, Building2, Clock3, MapPin, Trees, Users } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Villa Devoto",
@@ -52,7 +53,7 @@ const localReasons = [
   {
     icon: MapPin,
     title: "Oficina en el barrio",
-    text: `Trabajamos desde ${site.address.street.split(",")[0]}, en Villa Devoto. El administrador de tu edificio no está del otro lado de la Ciudad: está a minutos.`,
+    text: `Trabajamos desde ${site.address.street.split(",")[0]}, en Villa Devoto. El administrador de su edificio no está del otro lado de la Ciudad: está a minutos.`,
   },
   {
     icon: Clock3,
@@ -157,7 +158,7 @@ export default function VillaDevotoPage() {
                 Solicitar propuesta sin cargo
               </Button>
               <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Escribir por WhatsApp
               </Button>
             </div>
@@ -339,10 +340,10 @@ export default function VillaDevotoPage() {
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-8">
                 <h2 className="font-display text-[2rem] leading-[1.05] tracking-[-0.02em] text-balance text-cream-50 sm:text-[2.5rem]">
-                  ¿Tu edificio está en Villa Devoto o alrededores?
+                  ¿Su edificio está en Villa Devoto o alrededores?
                 </h2>
                 <p className="mt-4 max-w-[58ch] text-[16.5px] leading-relaxed text-cream-100/85">
-                  Contanos cómo es el edificio y qué los tiene disconformes de la
+                  Cuéntennos cómo es el edificio y qué los tiene disconformes de la
                   administración actual. La propuesta se arma a medida y sin cargo.
                 </p>
               </div>

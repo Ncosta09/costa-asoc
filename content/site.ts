@@ -52,6 +52,9 @@ export const site = {
 
   hours: {
     label: "Lunes a viernes, 8 a 18 hs",
+    // Promesa de respuesta cumplible, atada al horario real. Reemplaza a
+    // "respuesta inmediata" y "menos de 24 hs hábiles", que nadie confirmó.
+    responseNote: "Respondemos de lunes a viernes, de 8 a 18 hs.",
     structured: "Mo-Fr 08:00-18:00",
   },
 

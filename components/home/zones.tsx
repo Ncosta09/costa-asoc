@@ -20,7 +20,7 @@ export function Zones() {
               </h2>
               <p className="mt-5 max-w-[46ch] text-[16px] leading-relaxed text-ink-700">
                 Con foco en edificios residenciales y torres corporativas de Recoleta,
-                Belgrano y Puerto Madero. Si tu consorcio está en CABA, podemos
+                Belgrano y Puerto Madero. Si su consorcio está en CABA, podemos
                 administrarlo.
               </p>
             </div>

@@ -1,9 +1,10 @@
 import Image from "next/image";
-import { BadgeCheck, MessageCircle } from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { HeroVideo } from "@/components/home/hero-video";
 import { site } from "@/content/site";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export function Hero() {
   return (
@@ -33,9 +34,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-[58ch] text-pretty text-[17px] leading-relaxed text-cream-100/90 sm:text-[18px]">
-              Gestión transparente, control financiero riguroso y respuesta inmediata. Más
-              de {site.yearsExperience} años acompañando a edificios residenciales y
-              corporativos de la Ciudad.
+              Un estudio contable al frente del consorcio: gestión transparente y control
+              financiero riguroso para edificios residenciales y corporativos de la
+              Ciudad, con período de evaluación sin penalidades.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -48,7 +49,7 @@ export function Hero() {
                 size="lg"
                 className="border-cream-50/50 text-cream-50 hover:bg-cream-50 hover:text-navy-900"
               >
-                <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Escribir por WhatsApp
               </Button>
               <Button

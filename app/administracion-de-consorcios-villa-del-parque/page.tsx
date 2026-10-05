@@ -7,7 +7,6 @@ import {
   ClipboardCheck,
   Home,
   MapPin,
-  MessageCircle,
   Store,
   TrainFront,
 } from "lucide-react";
@@ -21,6 +20,7 @@ import { buildMetadata } from "@/lib/seo";
 import { barrioServiceSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import type { FaqItem } from "@/content/faq";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Villa del Parque",
@@ -177,7 +177,7 @@ export default function VillaDelParquePage() {
                   Solicitar propuesta sin cargo
                 </Button>
                 <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
-                  <MessageCircle aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                   Escribir por WhatsApp
                 </Button>
               </div>
@@ -483,7 +483,7 @@ export default function VillaDelParquePage() {
                   ¿Su edificio está en Villa del Parque?
                 </h2>
                 <p className="mt-4 max-w-[58ch] text-[16.5px] leading-relaxed text-cream-100/85">
-                  Contanos cómo es el edificio: si es obra nueva, un PH de pocas
+                  Cuéntennos cómo es el edificio: si es obra nueva, un PH de pocas
                   unidades o un edificio con encargado. Revisamos la liquidación actual
                   y armamos la propuesta a medida, sin cargo.
                 </p>
