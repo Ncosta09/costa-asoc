@@ -14,12 +14,22 @@ const isDev = process.env.NODE_ENV === "development";
 // - frame-src: el embed de Google Maps en /contacto (www.google.com).
 // - Dominios de GA4: solo entran al CSP si NEXT_PUBLIC_GA_MEASUREMENT_ID está
 //   configurada (build-time). Sin la env var, el CSP sigue igual de cerrado.
+//   Desde la vinculación con Google Ads (28-09) gtag manda los hits a
+//   analytics.google.com, www.google.com/g/collect y stats.g.doubleclick.net, y
+//   el pixel de audiencias a www.google.com.ar. Sin esos dominios GA4 recibió
+//   cero sesiones del 30-09 al 05-10 (lista oficial de Google para GA4 + Signals).
+// - Dominios de Clarity: mismo criterio, con NEXT_PUBLIC_CLARITY_ID.
 const gaEnabled = Boolean(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID);
-const gaScript = gaEnabled ? " https://www.googletagmanager.com" : "";
-const gaConnect = gaEnabled
-  ? " https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com"
-  : "";
-const gaImg = gaEnabled ? " https://*.google-analytics.com" : "";
+const clarityEnabled = gaEnabled && Boolean(process.env.NEXT_PUBLIC_CLARITY_ID);
+const googleHosts =
+  " https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com" +
+  " https://*.g.doubleclick.net https://*.google.com https://*.google.com.ar";
+const clarityHosts = " https://*.clarity.ms https://c.bing.com";
+const gaScript =
+  (gaEnabled ? " https://*.googletagmanager.com" : "") +
+  (clarityEnabled ? " https://*.clarity.ms" : "");
+const gaConnect = (gaEnabled ? googleHosts : "") + (clarityEnabled ? clarityHosts : "");
+const gaImg = gaConnect;
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
