@@ -25,7 +25,7 @@ export function IntroBlock() {
                 lidera un profesional con formación contable.
               </p>
               <p className="mt-5 max-w-[58ch] text-[16px] leading-relaxed text-ink-700">
-                Más de {site.yearsExperience} años acompañando a consejos de administración
+                {site.yearsExperience} años acompañando a consejos de administración
                 con reportes claros, planificación financiera realista y una atención que
                 no requiere insistir.
               </p>

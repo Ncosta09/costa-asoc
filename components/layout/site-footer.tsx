@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
+import { HideOnCampaignRoutes } from "@/components/layout/hide-on-routes";
 import { site, navLinks } from "@/content/site";
 
 export function SiteFooter() {
@@ -14,6 +15,8 @@ export function SiteFooter() {
   ].filter((s) => s.href);
 
   return (
+    // En /propuesta (landing de Ads) el footer con links no va: la página trae uno propio.
+    <HideOnCampaignRoutes>
     <footer className="border-t border-cream-200 bg-cream-100 text-ink-800">
       <Container className="py-16">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-12 md:gap-10">
@@ -128,5 +131,6 @@ export function SiteFooter() {
         </div>
       </Container>
     </footer>
+    </HideOnCampaignRoutes>
   );
 }

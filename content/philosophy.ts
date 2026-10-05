@@ -10,7 +10,7 @@ export const valueProps = [
       "Cuentas bancarias a nombre del consorcio, trazabilidad completa de cada movimiento y posibilidad de auditoría permanente.",
   },
   {
-    title: "Respuesta inmediata",
+    title: "Atención directa",
     body:
       "Atención de lunes a viernes en oficina y guardia para emergencias edilicias fuera de horario. El copropietario siempre tiene a quién llamar.",
   },

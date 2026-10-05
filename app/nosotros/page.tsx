@@ -14,7 +14,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = buildMetadata({
   title: "Nosotros",
   description:
-    "Estudio contable con foco en administración de consorcios desde 2009. Matrículas RPA 8192 y CAPHAI 2903. Conocé nuestra filosofía y cómo trabajamos.",
+    "Estudio contable con foco en administración de consorcios desde 2009. Matrículas RPA 8192 y CAPHAI 2903. Conozcan nuestra filosofía y cómo trabajamos.",
   path: "/nosotros",
 });
 

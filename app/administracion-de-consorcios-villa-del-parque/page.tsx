@@ -483,7 +483,7 @@ export default function VillaDelParquePage() {
                   ¿Su edificio está en Villa del Parque?
                 </h2>
                 <p className="mt-4 max-w-[58ch] text-[16.5px] leading-relaxed text-cream-100/85">
-                  Contanos cómo es el edificio: si es obra nueva, un PH de pocas
+                  Cuéntennos cómo es el edificio: si es obra nueva, un PH de pocas
                   unidades o un edificio con encargado. Revisamos la liquidación actual
                   y armamos la propuesta a medida, sin cargo.
                 </p>

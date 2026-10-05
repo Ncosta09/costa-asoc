@@ -33,9 +33,13 @@ export const servicesFaq: FaqItem[] = [
   {
     question: "¿Cómo solicito una propuesta?",
     answer:
-      "Podés solicitar una propuesta sin cargo desde el formulario de contacto. Coordinamos una primera reunión, llevamos un diagnóstico inicial del edificio y presentamos una propuesta a medida, sin compromiso.",
+      "Pueden solicitar una propuesta sin cargo desde el formulario de contacto, por WhatsApp o por teléfono. Coordinamos una primera reunión, llevamos un diagnóstico inicial del edificio y presentamos una propuesta a medida, sin compromiso.",
   },
 ];
+
+// FAQ corta de /propuesta (landing de Ads): las mismas respuestas de /servicios,
+// en el orden de las objeciones de quien está por cambiar de administrador.
+export const propuestaFaq: FaqItem[] = [2, 1, 0, 3].map((i) => servicesFaq[i]!);
 
 // FAQ de la home (subset de dudas de alta frecuencia, también con potencial de snippet).
 export const homeFaq: FaqItem[] = [

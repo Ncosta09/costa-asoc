@@ -7,12 +7,18 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { MobileDrawer } from "@/components/layout/mobile-drawer";
+import { isCampaignRoute } from "@/components/layout/hide-on-routes";
+import { Phone } from "lucide-react";
+import { site } from "@/content/site";
 import { navLinks } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  // Landing de Ads: sin nav, sin menú y sin CTA a /contacto (serían fugas).
+  // Queda el logo y el teléfono, que es una conversión en sí misma.
+  const campaign = isCampaignRoute(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -39,7 +45,8 @@ export function SiteHeader() {
           <Logo priority />
         </Link>
 
-        <nav aria-label="Principal" className="hidden justify-self-center lg:block">
+        {campaign ? null : (
+          <nav aria-label="Principal" className="hidden justify-self-center lg:block">
           <ul className="flex items-center gap-1">
             {navLinks.map((link) => {
               const active =
@@ -69,25 +76,41 @@ export function SiteHeader() {
             })}
           </ul>
         </nav>
+        )}
 
         <div className="col-start-3 flex items-center gap-2 justify-self-end">
-          <Button
-            href="/contacto"
-            variant="primary"
-            size="default"
-            className="hidden lg:inline-flex"
-          >
-            Solicitar propuesta
-          </Button>
-          <Button
-            href="/contacto"
-            variant="primary"
-            size="sm"
-            className="hidden sm:inline-flex lg:hidden"
-          >
-            Solicitar propuesta
-          </Button>
-          <MobileDrawer />
+          {campaign ? (
+            <a
+              href={site.contact.phoneHref}
+              className="inline-flex items-center gap-2 rounded-md px-2 py-2 text-[15px] font-medium text-navy-900 transition-colors hover:text-terra-700"
+            >
+              <Phone aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
+              <span>
+                <span className="sr-only sm:not-sr-only">Llamar al </span>
+                {site.contact.phone}
+              </span>
+            </a>
+          ) : (
+            <>
+            <Button
+              href="/contacto"
+              variant="primary"
+              size="default"
+              className="hidden lg:inline-flex"
+            >
+              Solicitar propuesta
+            </Button>
+            <Button
+              href="/contacto"
+              variant="primary"
+              size="sm"
+              className="hidden sm:inline-flex lg:hidden"
+            >
+              Solicitar propuesta
+            </Button>
+            <MobileDrawer />
+            </>
+          )}
         </div>
       </Container>
     </header>

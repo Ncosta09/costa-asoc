@@ -127,7 +127,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         title: "Guardia para emergencias",
         description:
-          "Atención permanente para contingencias edilicias fuera del horario de oficina. Respuesta inmediata.",
+          "Atención para contingencias edilicias fuera del horario de oficina, con contacto directo.",
         icon: PhoneCall,
       },
     ],

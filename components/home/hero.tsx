@@ -33,9 +33,9 @@ export function Hero() {
             </h1>
 
             <p className="mt-6 max-w-[58ch] text-pretty text-[17px] leading-relaxed text-cream-100/90 sm:text-[18px]">
-              Gestión transparente, control financiero riguroso y respuesta inmediata. Más
-              de {site.yearsExperience} años acompañando a edificios residenciales y
-              corporativos de la Ciudad.
+              Un estudio contable al frente del consorcio: gestión transparente y control
+              financiero riguroso para edificios residenciales y corporativos de la
+              Ciudad, con período de evaluación sin penalidades.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">

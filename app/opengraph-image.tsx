@@ -54,7 +54,7 @@ export default async function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            Gestión transparente, control financiero riguroso y respuesta inmediata.
+            Gestión transparente y control financiero riguroso, con Contadores Públicos al frente.
           </div>
           <div
             style={{
