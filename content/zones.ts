@@ -29,4 +29,5 @@ export const zoneHrefs: Partial<Record<(typeof coverageZones)[number], string>> 
   Caballito: "/administracion-de-consorcios-caballito",
   Belgrano: "/administracion-de-consorcios-belgrano",
   Palermo: "/administracion-de-consorcios-palermo",
+  Recoleta: "/administracion-de-consorcios-recoleta",
 };
