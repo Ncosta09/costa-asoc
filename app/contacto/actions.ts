@@ -5,6 +5,8 @@ import { validateContact } from "@/lib/validations/contact";
 import { rateLimit } from "@/lib/rate-limit";
 import { getResend } from "@/lib/email/resend";
 import { ContactEmail } from "@/lib/email/templates/contact";
+import { parseAttributionField } from "@/lib/attribution-server";
+import { sendServerEvent } from "@/lib/measurement";
 
 export type ContactFormState = {
   status: "idle" | "success" | "error";
@@ -26,7 +28,12 @@ async function getClientIp() {
 function echo(raw: Record<string, FormDataEntryValue>): Record<string, string> {
   const out: Record<string, string> = {};
   for (const [k, v] of Object.entries(raw)) {
-    if (typeof v === "string" && k !== "company_website" && !k.startsWith("$")) {
+    if (
+      typeof v === "string" &&
+      k !== "company_website" &&
+      k !== "attribution" &&
+      !k.startsWith("$")
+    ) {
       out[k] = v.slice(0, 2000);
     }
   }
@@ -69,6 +76,9 @@ export async function submitContact(
   }
 
   const data = parsed.data;
+  // Hidden del front con el origen del visitante. Si falta o viene roto, queda vacío
+  // ("Directo"): nunca bloquea el envío.
+  const attribution = parseAttributionField(formData.get("attribution"));
   const to = process.env.CONTACT_EMAIL_TO;
   const from = process.env.CONTACT_EMAIL_FROM;
 
@@ -91,7 +101,7 @@ export async function submitContact(
       subject: `Consulta web: ${data.name} (${data.neighborhood})${
         data.source === "contacto" ? "" : ` · desde /${data.source}`
       }`,
-      react: ContactEmail({ data }),
+      react: ContactEmail({ data, attribution }),
     });
 
     if (error) {
@@ -103,6 +113,9 @@ export async function submitContact(
         values: echo(raw),
       };
     }
+
+    // Después del OK de Resend. Acotado a ~2 s y nunca tira (ver lib/measurement.ts).
+    await sendServerEvent("lead_srv", attribution, { form_source: data.source });
 
     return { status: "success" };
   } catch (err) {

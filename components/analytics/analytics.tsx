@@ -9,6 +9,34 @@ import {
   getConsent,
   trackEvent,
 } from "@/lib/analytics";
+import { captureAttribution, getAttribution } from "@/lib/attribution";
+import type { ClickEvent } from "@/lib/attribution-types";
+
+/**
+ * Conteo propio del click (sin cookies, sin terceros): va a nuestro endpoint
+ * aunque no haya consentimiento. sendBeacon no bloquea la navegación del link.
+ */
+function sendClickEvent(type: ClickEvent["type"]) {
+  try {
+    const event: ClickEvent = {
+      type,
+      page: window.location.pathname,
+      attribution: getAttribution(),
+    };
+    const body = JSON.stringify(event);
+    const url = "/api/evento";
+    const blob = new Blob([body], { type: "application/json" });
+    if (navigator.sendBeacon?.(url, blob)) return;
+    void fetch(url, {
+      method: "POST",
+      body,
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // La medición nunca rompe el click.
+  }
+}
 
 /**
  * Carga GA4 (y Clarity, si tiene ID) solo si hay ID de GA configurado Y el
@@ -17,6 +45,8 @@ import {
  * Además registra un listener delegado para medir los clicks de contacto
  * (WhatsApp y teléfono) sin tocar cada componente que los renderiza.
  * Los listeners son inofensivos sin gtag: trackEvent es un no-op.
+ * La atribución (sessionStorage) y el beacon a /api/evento corren siempre,
+ * independientes del consentimiento: no usan cookies ni hablan con terceros.
  */
 export function Analytics() {
   const [consent, setConsentState] = useState<string | null>(null);
@@ -29,6 +59,10 @@ export function Analytics() {
   }, []);
 
   useEffect(() => {
+    captureAttribution();
+  }, []);
+
+  useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
       const anchor = target?.closest?.("a");
@@ -36,8 +70,10 @@ export function Analytics() {
       const href = anchor.getAttribute("href") ?? "";
       if (href.includes("wa.me")) {
         trackEvent("whatsapp_click", { link_url: href });
+        sendClickEvent("whatsapp");
       } else if (href.startsWith("tel:")) {
         trackEvent("phone_click", { link_url: href });
+        sendClickEvent("phone");
       }
     };
     document.addEventListener("click", onClick, { capture: true });

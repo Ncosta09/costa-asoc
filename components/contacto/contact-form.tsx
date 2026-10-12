@@ -1,8 +1,9 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { trackEvent } from "@/lib/analytics";
+import { getAttribution } from "@/lib/attribution";
 import { CheckCircle2, ChevronDown, Loader2 } from "lucide-react";
 import { submitContact, type ContactFormState } from "@/app/contacto/actions";
 import {
@@ -88,6 +89,13 @@ export function ContactForm({
   const successRef = useRef<HTMLHeadingElement>(null);
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const compact = variant === "compact";
+  // Origen del lead (sessionStorage). Vacío en SSR y se completa al montar para no
+  // desfasar la hidratación.
+  const [attribution, setAttribution] = useState("");
+
+  useEffect(() => {
+    setAttribution(JSON.stringify(getAttribution()));
+  }, []);
 
   // `full` desde lg: opcionales abiertos. Corre tras cada respuesta del action porque
   // el atributo `open` controlado por React puede volver a cerrarlo.
@@ -221,6 +229,7 @@ export function ContactForm({
     >
       <Honeypot />
       <input type="hidden" name="source" value={source} />
+      <input type="hidden" name="attribution" value={attribution} />
 
       <Field label="Nombre" name="name" required error={errors.name}>
         <TextInput

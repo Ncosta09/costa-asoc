@@ -10,13 +10,16 @@ import {
   Text,
 } from "@react-email/components";
 import type { ContactInput } from "@/lib/validations/contact";
+import type { Attribution } from "@/lib/attribution-types";
+import { describeSource } from "@/lib/attribution-server";
 import { roleLabels, buildingTypeLabels } from "@/lib/validations/contact";
 
 type Props = {
   data: ContactInput;
+  attribution?: Attribution;
 };
 
-export function ContactEmail({ data }: Props) {
+export function ContactEmail({ data, attribution = {} }: Props) {
   const previewText = `Consulta de ${data.name} (${data.neighborhood})`;
 
   // Solo nombre, barrio y un medio de contacto son obligatorios: lo que no se
@@ -30,7 +33,19 @@ export function ContactEmail({ data }: Props) {
     ["Rol", data.role ? roleLabels[data.role] : empty],
     ["Tipo de edificio", data.buildingType ? buildingTypeLabels[data.buildingType] : empty],
     ["Unidades", data.units !== undefined ? String(data.units) : empty],
-    ["Origen", `/${data.source}`],
+    ["Formulario", `/${data.source}`],
+  ];
+
+  // De dónde vino el visitante (hidden `attribution` del form, ya saneado).
+  const campaign = [attribution.utm_campaign, attribution.utm_source && attribution.utm_medium
+    ? `${attribution.utm_source} / ${attribution.utm_medium}`
+    : attribution.utm_source]
+    .filter(Boolean)
+    .join(" · ");
+  const origin: Array<[string, string]> = [
+    ["Canal", describeSource(attribution)],
+    ["Página de entrada", attribution.landing ?? empty],
+    ...(campaign ? [["Campaña", campaign] as [string, string]] : []),
   ];
 
   return (
@@ -97,6 +112,40 @@ export function ContactEmail({ data }: Props) {
                 </Text>
               </div>
             ))}
+          </Section>
+
+          <Hr style={{ margin: "24px 0", borderColor: "#E8E4D9" }} />
+          <Text
+            style={{
+              fontSize: 12,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: "#8C2518",
+              margin: "0 0 10px",
+              fontWeight: 500,
+            }}
+          >
+            Origen
+          </Text>
+          <Section>
+            {origin.map(([label, value]) => (
+              <Text key={label} style={{ fontSize: 14, color: "#1A1A1A", margin: "0 0 6px", lineHeight: 1.4 }}>
+                <span style={{ color: "#76746E" }}>{label}:</span> {value}
+              </Text>
+            ))}
+            {attribution.gclid ? (
+              <Text
+                style={{
+                  fontSize: 11,
+                  color: "#76746E",
+                  margin: "8px 0 0",
+                  lineHeight: 1.4,
+                  wordBreak: "break-all",
+                }}
+              >
+                gclid: {attribution.gclid}
+              </Text>
+            ) : null}
           </Section>
 
           {data.message ? (
