@@ -209,7 +209,7 @@ export default function VillaPueyrredonPage() {
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              <figcaption className="mt-2 text-[13px] text-ink-700/80">
                 Avenida Albarellos, en Villa Pueyrredón. Foto:{" "}
                 <a href="https://commons.wikimedia.org/wiki/File:Avenida_Albarellos_(8585026274).jpg" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">Cornelius Kibelka</a>,{" "}
                 <a href="https://creativecommons.org/licenses/by-sa/2.0/deed.es" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">CC BY-SA 2.0</a>.
@@ -541,7 +541,7 @@ export default function VillaPueyrredonPage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Villa Pueyrredón y la Comuna 12. La oficina queda sobre Campana, en el
                   borde del barrio que da a Villa Devoto.
                 </p>

@@ -247,7 +247,7 @@ export default function CaballitoPage() {
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              <figcaption className="mt-2 text-[13px] text-ink-700/80">
                 Avenida Rivadavia y Emilio Mitre, la esquina de la pulpería que dio nombre
                 al barrio. Foto:{" "}
                 <a href="https://commons.wikimedia.org/wiki/File:Avenida_Rivadavia_esquina_Emilio_Mitre.jpg" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">Dario Alpern</a>,{" "}
@@ -515,7 +515,7 @@ export default function CaballitoPage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Caballito, único barrio de la Comuna 6, con la Avenida Rivadavia como
                   columna vertebral.
                 </p>

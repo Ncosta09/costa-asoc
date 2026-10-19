@@ -272,7 +272,7 @@ export default function BelgranoPage() {
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              <figcaption className="mt-2 text-[13px] text-ink-700/80">
                 Torres sobre las Barrancas de Belgrano. Foto:{" "}
                 <a href="https://commons.wikimedia.org/wiki/File:Barrancas_de_Belgrano_-_CABA.JPG" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">Patricia Curcio</a>,{" "}
                 <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.es" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">CC BY-SA 3.0</a>.
@@ -534,7 +534,7 @@ export default function BelgranoPage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Belgrano, en la Comuna 13, entre el Río de la Plata y las vías del
                   Mitre.
                 </p>
