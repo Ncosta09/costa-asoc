@@ -31,6 +31,8 @@ function buildParams(
     med: attribution.utm_medium ?? "(none)",
     cmp: attribution.utm_campaign ?? "(none)",
     landing: attribution.landing ?? "(not set)",
+    kw: attribution.kw ?? "(none)",
+    mt: attribution.mt ?? "(none)",
     // Sin esto GA4 no muestra el evento en algunos informes de engagement.
     engagement_time_msec: 1,
   };

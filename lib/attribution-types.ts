@@ -8,6 +8,10 @@ export type Attribution = {
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
+  /** Keyword de Ads ({keyword} del sufijo de URL final). */
+  kw?: string;
+  /** Concordancia de Ads ({matchtype}): e, p o b. */
+  mt?: string;
   referrer?: string;
   landing?: string;
 };
