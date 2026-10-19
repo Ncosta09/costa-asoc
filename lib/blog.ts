@@ -86,6 +86,18 @@ export function getAllPosts(): PostMeta[] {
     .map(({ content: _content, ...meta }) => meta);
 }
 
+/** Notas por página del índice del blog. */
+export const POSTS_PER_PAGE = 9;
+
+export function blogPageCount(): number {
+  return Math.max(1, Math.ceil(getAllPosts().length / POSTS_PER_PAGE));
+}
+
+/** La página 1 es /blog (sin duplicar en /blog/pagina/1). */
+export function blogPagePath(page: number): string {
+  return page <= 1 ? "/blog" : `/blog/pagina/${page}`;
+}
+
 export function getPostBySlug(slug: string): Post | null {
   const raw = readRaw(slug);
   if (!raw) return null;
