@@ -268,7 +268,7 @@ export default function PalermoPage() {
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              <figcaption className="mt-2 text-[13px] text-ink-700/80">
                 Avenida del Libertador frente al Parque Tres de Febrero (recorte). Foto:{" "}
                 <a href="https://commons.wikimedia.org/wiki/File:Buenos_Aires_-_Palermo_Nuevo.jpg" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">Jorge Láscar</a>,{" "}
                 <a href="https://creativecommons.org/licenses/by/2.0/deed.es" target="_blank" rel="noopener noreferrer" className="underline decoration-ink-700/30 underline-offset-2 hover:decoration-ink-700">CC BY 2.0</a>.
@@ -329,7 +329,7 @@ export default function PalermoPage() {
               <h3 className="font-display text-[1.5rem] leading-snug text-navy-900">
                 Qué hace falta para cada decisión
               </h3>
-              <p className="mt-3 text-[13px] text-ink-700/70 sm:hidden">Deslicen la tabla para ver la norma de cada caso.</p>
+              <p className="mt-3 text-[13px] text-ink-700/80 sm:hidden">Deslicen la tabla para ver la norma de cada caso.</p>
               <div className="mt-3 overflow-x-auto rounded-2xl ring-1 ring-cream-300 sm:mt-6">
                 <table className="w-full min-w-[640px] border-collapse bg-cream-50 text-left">
                   <thead>
@@ -482,7 +482,7 @@ export default function PalermoPage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Palermo, en la Comuna 14, entre el Río de la Plata y la Avenida
                   Córdoba.
                 </p>

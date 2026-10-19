@@ -46,6 +46,9 @@ export function ContactEmail({ data, attribution = {} }: Props) {
     ["Canal", describeSource(attribution)],
     ["Página de entrada", attribution.landing ?? empty],
     ...(campaign ? [["Campaña", campaign] as [string, string]] : []),
+    ...(attribution.kw
+      ? [["Keyword", attribution.mt ? `${attribution.kw} (${attribution.mt})` : attribution.kw] as [string, string]]
+      : []),
   ];
 
   return (

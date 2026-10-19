@@ -195,7 +195,7 @@ export default function VillaDelParquePage() {
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              <figcaption className="mt-2 text-[13px] text-ink-700/80">
                 Una calle de Villa del Parque en otoño. Foto: JonySniuk, CC BY-SA 4.0.
               </figcaption>
             </figure>
@@ -387,7 +387,7 @@ export default function VillaDelParquePage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Villa del Parque y el resto de la Comuna 11: la zona que cubrimos
                   todos los días.
                 </p>

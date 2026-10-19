@@ -9,6 +9,7 @@ export const midCtaBySlug: Record<string, MidCtaVariant> = {
   "honorarios-del-administrador-de-consorcio": "cambio",
   "funciones-del-consejo-de-propietarios": "cambio",
   "asamblea-de-consorcio-quorum-y-mayorias": "cambio",
+  "asamblea-autoconvocada-y-asamblea-judicial": "control",
   "como-denunciar-a-un-administrador-de-consorcio": "control",
   "como-verificar-la-matricula-rpa-de-tu-administrador": "control",
   "ley-941-obligaciones-administrador-consorcios": "control",

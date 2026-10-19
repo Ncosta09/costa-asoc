@@ -10,6 +10,7 @@ import type { Attribution, ClickEvent } from "@/lib/attribution-types";
 const MAX_LEN = 200;
 const GCLID_RE = /^[A-Za-z0-9_-]{1,200}$/;
 const HOST_RE = /^[a-z0-9.-]{1,253}$/;
+const MATCH_TYPES = new Set(["e", "p", "b"]);
 // Caracteres de control (C0, DEL, C1) y separadores de línea Unicode.
 const CONTROL_RE = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/g;
 
@@ -59,6 +60,10 @@ export function sanitizeAttribution(input: unknown): Attribution {
   if (med) out.utm_medium = med.toLowerCase();
   const cmp = cleanString(o.utm_campaign);
   if (cmp) out.utm_campaign = cmp;
+  const kw = cleanString(o.kw);
+  if (kw) out.kw = kw.toLowerCase();
+  const mt = cleanString(o.mt)?.toLowerCase();
+  if (mt && MATCH_TYPES.has(mt)) out.mt = mt;
 
   const referrer = sanitizeHost(o.referrer);
   if (referrer) out.referrer = referrer;

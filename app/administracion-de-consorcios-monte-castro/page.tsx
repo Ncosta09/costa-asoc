@@ -196,7 +196,7 @@ export default function MonteCastroPage() {
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
               </div>
-              <figcaption className="mt-2 text-[13px] text-ink-700/70">
+              <figcaption className="mt-2 text-[13px] text-ink-700/80">
                 Avenida Álvarez Jonte al 4200, en Monte Castro. Foto: Gobonobo, CC BY-SA 3.0.
               </figcaption>
             </figure>
@@ -391,7 +391,7 @@ export default function MonteCastroPage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Monte Castro y la Comuna 10, con Villa Devoto y nuestra oficina del
                   otro lado de Baigorria.
                 </p>

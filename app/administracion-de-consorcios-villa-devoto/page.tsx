@@ -176,7 +176,7 @@ export default function VillaDevotoPage() {
                 sizes="(min-width: 1024px) 40vw, 100vw"
               />
             </div>
-            <figcaption className="mt-2 text-[13px] text-ink-700/70">
+            <figcaption className="mt-2 text-[13px] text-ink-700/80">
               Plaza Arenales, el corazón de Villa Devoto.
             </figcaption>
           </figure>
@@ -255,7 +255,7 @@ export default function VillaDevotoPage() {
                     className="h-full w-full border-0"
                   />
                 </div>
-                <p className="mt-2 text-[13px] text-ink-700/70">
+                <p className="mt-2 text-[13px] text-ink-700/80">
                   Villa Devoto y alrededores: la zona que cubrimos todos los días.
                 </p>
               </div>

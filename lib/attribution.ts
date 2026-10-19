@@ -11,7 +11,7 @@ import type { Attribution } from "@/lib/attribution-types";
 
 const STORAGE_KEY = "attribution";
 const MAX_LEN = 200;
-const PARAMS = ["gclid", "utm_source", "utm_medium", "utm_campaign"] as const;
+const PARAMS = ["gclid", "utm_source", "utm_medium", "utm_campaign", "kw", "mt"] as const;
 
 function clean(value: string | null | undefined): string | undefined {
   const v = value?.trim();
@@ -65,7 +65,7 @@ function fromUrl(): Partial<Record<(typeof PARAMS)[number], string>> {
 /**
  * Llamar al montar en cada carga. La primera página vista de la sesión fija la
  * atribución; las siguientes no la pisan, salvo que traigan un `gclid` distinto
- * (nuevo click de Ads): ahí se actualizan el gclid y los utm de esa URL.
+ * (nuevo click de Ads): ahí se actualizan el gclid, los utm y la keyword de esa URL.
  */
 export function captureAttribution() {
   if (typeof window === "undefined") return;
@@ -90,6 +90,8 @@ export function captureAttribution() {
         utm_source: current.utm_source,
         utm_medium: current.utm_medium,
         utm_campaign: current.utm_campaign,
+        kw: current.kw,
+        mt: current.mt,
       });
     }
   } catch {
