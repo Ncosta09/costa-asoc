@@ -63,7 +63,7 @@ export default function PropuestaPage() {
             </div>
 
             <div className="lg:col-span-7 lg:row-start-2 lg:max-w-[30rem]">
-              <DirectContact />
+              <DirectContact callbackFallbackHref={`#${FORM_ID}`} />
             </div>
 
             <div

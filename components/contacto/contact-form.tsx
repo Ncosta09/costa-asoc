@@ -9,15 +9,13 @@ import { submitContact, type ContactFormState } from "@/app/contacto/actions";
 import {
   Field,
   Honeypot,
-  NumberInput,
+  QualificationFields,
   Select,
   TextInput,
   Textarea,
 } from "@/components/contacto/form-fields";
 import {
-  roles,
   buildingTypes,
-  roleLabels,
   buildingTypeLabels,
   CONTACT_METHOD_ERROR,
   type FormSource,
@@ -29,8 +27,9 @@ import { cn } from "@/lib/utils";
 /**
  * Un solo formulario para /contacto, /servicios y /propuesta.
  *
- * Obligatorios: nombre, un medio de contacto (teléfono o email) y barrio. Los datos
- * del edificio son opcionales y van en un <details>: en `compact` (landings) siempre
+ * Obligatorios: nombre, un medio de contacto (teléfono o email), barrio, unidades y
+ * quién consulta (estos dos califican el lead). Tipo de edificio y mensaje son
+ * opcionales y van en un <details>: en `compact` (landings) siempre
  * plegados para que el pedido entre arriba del fold; en `full` (/contacto) plegados
  * por debajo de `lg` y abiertos desde `lg`. Con un error en un opcional se abren solos.
  *
@@ -74,7 +73,7 @@ function describedBy(name: string, error?: string, hasHint = false) {
   return hasHint ? `${name}-hint` : undefined;
 }
 
-const OPTIONAL_FIELDS = ["role", "buildingType", "units", "message"] as const;
+const OPTIONAL_FIELDS = ["buildingType", "message"] as const;
 
 /** Mismo corte que `lg` de Tailwind (64rem). */
 const LG_QUERY = "(min-width: 64rem)";
@@ -156,55 +155,21 @@ export function ContactForm({
 
   const optionalFields = (
     <div className="flex flex-col gap-5">
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Field label="Rol" name="role" error={errors.role}>
-          <Select
-            id="role"
-            name="role"
-            defaultValue={values.role ?? ""}
-            invalid={Boolean(errors.role)}
-            aria-describedby={describedBy("role", errors.role)}
-          >
-            <option value="">Seleccionar…</option>
-            {roles.map((value) => (
-              <option key={value} value={value}>
-                {roleLabels[value]}
-              </option>
-            ))}
-          </Select>
-        </Field>
-        <Field label="Tipo de edificio" name="buildingType" error={errors.buildingType}>
-          <Select
-            id="buildingType"
-            name="buildingType"
-            defaultValue={values.buildingType ?? ""}
-            invalid={Boolean(errors.buildingType)}
-            aria-describedby={describedBy("buildingType", errors.buildingType)}
-          >
-            <option value="">Seleccionar…</option>
-            {buildingTypes.map((value) => (
-              <option key={value} value={value}>
-                {buildingTypeLabels[value]}
-              </option>
-            ))}
-          </Select>
-        </Field>
-      </div>
-      <Field
-        label="Cantidad de unidades"
-        name="units"
-        error={errors.units}
-        hint="Aproximado"
-      >
-        <NumberInput
-          id="units"
-          name="units"
-          placeholder="48"
-          defaultValue={values.units ?? ""}
-          invalid={Boolean(errors.units)}
-          aria-describedby={describedBy("units", errors.units, true)}
-          className="sm:max-w-[12rem]"
-        />
+      <Field label="Tipo de edificio" name="buildingType" error={errors.buildingType}>
+        <Select
+          id="buildingType"
+          name="buildingType"
+          defaultValue={values.buildingType ?? ""}
+          invalid={Boolean(errors.buildingType)}
+          aria-describedby={describedBy("buildingType", errors.buildingType)}
+        >
+          <option value="">Seleccionar…</option>
+          {buildingTypes.map((value) => (
+            <option key={value} value={value}>
+              {buildingTypeLabels[value]}
+            </option>
+          ))}
+        </Select>
       </Field>
       <Field label="Mensaje o consulta" name="message" error={errors.message}>
         <Textarea
@@ -331,6 +296,8 @@ export function ContactForm({
           required
         />
       </Field>
+
+      <QualificationFields errors={errors} values={values} />
 
       {/* Opcionales plegados: siempre en `compact`; en `full`, solo por debajo de `lg`.
           Desde `lg` el <details> se abre (CSS para el primer pintado, efecto para el
