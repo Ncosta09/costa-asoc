@@ -44,7 +44,7 @@ export function Hero() {
                 Solicitar propuesta sin cargo
               </Button>
               <Button
-                href={site.contact.whatsappHref}
+                href={`${site.contact.whatsappHref}?text=${encodeURIComponent("Hola, escribo por la administración de nuestro consorcio.")}`}
                 variant="secondary"
                 size="lg"
                 className="border-cream-50/50 text-cream-50 hover:bg-cream-50 hover:text-navy-900"

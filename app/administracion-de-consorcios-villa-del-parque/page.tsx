@@ -176,7 +176,7 @@ export default function VillaDelParquePage() {
                 <Button href="/contacto" variant="primary" size="lg">
                   Solicitar propuesta sin cargo
                 </Button>
-                <Button href={site.contact.whatsappHref} variant="secondary" size="lg">
+                <Button href={`${site.contact.whatsappHref}?text=${encodeURIComponent("Hola, escribo por la administración de nuestro consorcio en Villa del Parque.")}`} variant="secondary" size="lg">
                   <WhatsAppIcon className="h-4 w-4" />
                   Escribir por WhatsApp
                 </Button>
