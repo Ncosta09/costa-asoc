@@ -1,7 +1,12 @@
 "use server";
 
 import { headers } from "next/headers";
-import { validateContact } from "@/lib/validations/contact";
+import {
+  CALLBACK_SOURCE,
+  describeUnits,
+  roleLabels,
+  validateContact,
+} from "@/lib/validations/contact";
 import { rateLimit } from "@/lib/rate-limit";
 import { getResend } from "@/lib/email/resend";
 import { ContactEmail } from "@/lib/email/templates/contact";
@@ -93,14 +98,20 @@ export async function submitContact(
 
   try {
     const resend = getResend();
+    // Unidades y rol en el asunto: es lo primero que se quiere saber del lead.
+    const qualification = `${describeUnits(data.units)} · ${roleLabels[data.role]}`;
+    const subject =
+      data.source === CALLBACK_SOURCE
+        ? `Pedido de llamada: ${data.name} · ${qualification}`
+        : `Consulta web: ${data.name} (${data.neighborhood}) · ${qualification}${
+            data.source === "contacto" ? "" : ` · desde /${data.source}`
+          }`;
     const { error } = await resend.emails.send({
       from,
       to: [to],
       // Sin email no hay a quién responder por mail: se contesta por teléfono.
       ...(data.email ? { replyTo: data.email } : {}),
-      subject: `Consulta web: ${data.name} (${data.neighborhood})${
-        data.source === "contacto" ? "" : ` · desde /${data.source}`
-      }`,
+      subject,
       react: ContactEmail({ data, attribution }),
     });
 
@@ -115,7 +126,11 @@ export async function submitContact(
     }
 
     // Después del OK de Resend. Acotado a ~2 s y nunca tira (ver lib/measurement.ts).
-    await sendServerEvent("lead_srv", attribution, { form_source: data.source });
+    await sendServerEvent("lead_srv", attribution, {
+      form_source: data.source,
+      units: data.units,
+      role: data.role,
+    });
 
     return { status: "success" };
   } catch (err) {

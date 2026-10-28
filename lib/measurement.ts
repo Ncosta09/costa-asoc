@@ -9,9 +9,24 @@ import { describeSource } from "@/lib/attribution-server";
  * de gtag (generate_lead, etc.) para no duplicar conversiones.
  *
  * Nunca tira: si GA4 falla o tarda, se loguea y sigue.
+ *
+ * Dimensiones personalizadas de evento a crear en GA4 (Administrar > Definiciones
+ * personalizadas), con el nombre de parámetro tal cual:
+ * source_label, src, med, cmp, landing, kw, mt, click_id, page, form_source,
+ * units y role (estos dos solo en `lead_srv`; valores en `lib/validations/contact.ts`).
  */
 
 export type ServerEventName = "lead_srv" | "whatsapp_srv" | "phone_srv";
+
+/** Parámetros propios del evento, además de la atribución. Nunca PII. */
+export type ServerEventExtra = {
+  page?: string;
+  form_source?: string;
+  /** Rango de unidades del edificio (clave corta, p. ej. `31_60`). */
+  units?: string;
+  /** Quién consulta (clave corta, p. ej. `consejo`). */
+  role?: string;
+};
 
 const MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-8YPBZQNXBR";
 const ENDPOINT = "https://www.google-analytics.com/mp/collect";
@@ -23,7 +38,7 @@ let warnedMissingSecret = false;
 
 function buildParams(
   attribution: Attribution,
-  extra: { page?: string; form_source?: string },
+  extra: ServerEventExtra,
 ): Record<string, string | number> {
   const params: Record<string, string | number> = {
     source_label: describeSource(attribution),
@@ -38,6 +53,8 @@ function buildParams(
   };
   if (extra.page) params.page = extra.page;
   if (extra.form_source) params.form_source = extra.form_source;
+  if (extra.units) params.units = extra.units;
+  if (extra.role) params.role = extra.role;
   for (const [k, v] of Object.entries(params)) {
     if (typeof v === "string") params[k] = v.slice(0, GA_PARAM_MAX);
   }
@@ -52,7 +69,7 @@ function buildParams(
 export function buildPayload(
   name: ServerEventName,
   attribution: Attribution,
-  extra: { page?: string; form_source?: string } = {},
+  extra: ServerEventExtra = {},
 ) {
   return {
     client_id: randomUUID(),
@@ -70,7 +87,7 @@ export function buildPayload(
 export async function sendServerEvent(
   name: ServerEventName,
   attribution: Attribution,
-  extra: { page?: string; form_source?: string } = {},
+  extra: ServerEventExtra = {},
   { debug = false }: { debug?: boolean } = {},
 ): Promise<void> {
   const secret = process.env.GA4_MP_API_SECRET;

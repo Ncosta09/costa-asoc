@@ -12,7 +12,13 @@ import {
 import type { ContactInput } from "@/lib/validations/contact";
 import type { Attribution } from "@/lib/attribution-types";
 import { describeSource } from "@/lib/attribution-server";
-import { roleLabels, buildingTypeLabels } from "@/lib/validations/contact";
+import {
+  CALLBACK_SOURCE,
+  buildingTypeLabels,
+  callTimeLabels,
+  roleLabels,
+  unitRangeLabels,
+} from "@/lib/validations/contact";
 
 type Props = {
   data: ContactInput;
@@ -20,21 +26,33 @@ type Props = {
 };
 
 export function ContactEmail({ data, attribution = {} }: Props) {
-  const previewText = `Consulta de ${data.name} (${data.neighborhood})`;
+  const isCallback = data.source === CALLBACK_SOURCE;
+  const previewText = isCallback
+    ? `Pedido de llamada de ${data.name}: ${data.phone ?? ""}`
+    : `Consulta de ${data.name} (${data.neighborhood ?? "sin barrio"})`;
 
-  // Solo nombre, barrio y un medio de contacto son obligatorios: lo que no se
-  // completó se muestra como "Sin dato" para que se vea qué falta preguntar.
+  // Lo opcional que no se completó se muestra como "Sin dato" para que se vea qué
+  // falta preguntar. Unidades y rol (obligatorios) van arriba, destacados.
   const empty = "Sin dato";
-  const fields: Array<[string, string]> = [
-    ["Nombre", data.name],
-    ["Teléfono", data.phone ?? empty],
-    ["Email", data.email ?? empty],
-    ["Ubicación", data.neighborhood],
-    ["Rol", data.role ? roleLabels[data.role] : empty],
-    ["Tipo de edificio", data.buildingType ? buildingTypeLabels[data.buildingType] : empty],
-    ["Unidades", data.units !== undefined ? String(data.units) : empty],
-    ["Formulario", `/${data.source}`],
+  const qualification: Array<[string, string]> = [
+    ["Unidades del edificio", unitRangeLabels[data.units]],
+    ["Quién consulta", roleLabels[data.role]],
   ];
+  const fields: Array<[string, string]> = isCallback
+    ? [
+        ["Nombre", data.name],
+        ["Teléfono", data.phone ?? empty],
+        ["Mejor horario", data.callTime ? callTimeLabels[data.callTime] : "Indistinto"],
+        ["Formulario", "/propuesta · Prefiero que me llamen"],
+      ]
+    : [
+        ["Nombre", data.name],
+        ["Teléfono", data.phone ?? empty],
+        ["Email", data.email ?? empty],
+        ["Ubicación", data.neighborhood ?? empty],
+        ["Tipo de edificio", data.buildingType ? buildingTypeLabels[data.buildingType] : empty],
+        ["Formulario", `/${data.source}`],
+      ];
 
   // De dónde vino el visitante (hidden `attribution` del form, ya saneado).
   const campaign = [attribution.utm_campaign, attribution.utm_source && attribution.utm_medium
@@ -82,11 +100,60 @@ export function ContactEmail({ data, attribution = {} }: Props) {
               fontWeight: 600,
             }}
           >
-            Nueva consulta desde el sitio
+            {isCallback ? "Pedido de llamada" : "Nueva consulta desde el sitio"}
           </Heading>
           <Text style={{ color: "#76746E", fontSize: 14, margin: "0 0 24px" }}>
-            Costa &amp; Asociados · formulario de contacto
+            {isCallback
+              ? `Llamar al ${data.phone ?? ""}`
+              : "Costa & Asociados · formulario de contacto"}
           </Text>
+
+          {/* Calificación primero: tamaño del edificio y quién consulta. Tabla para
+              que quede en dos columnas también en clientes de mail viejos. */}
+          <table
+            role="presentation"
+            width="100%"
+            cellPadding={0}
+            cellSpacing={0}
+            style={{
+              backgroundColor: "#F4F1E8",
+              borderRadius: 8,
+              margin: "0 0 24px",
+              borderCollapse: "separate",
+            }}
+          >
+            <tbody>
+              <tr>
+                {qualification.map(([label, value]) => (
+                  <td key={label} width="50%" style={{ padding: "14px 16px", verticalAlign: "top" }}>
+                    <Text
+                      style={{
+                        fontSize: 12,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.08em",
+                        color: "#8C2518",
+                        margin: "0 0 4px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {label}
+                    </Text>
+                    <Text
+                      style={{
+                        fontSize: 19,
+                        color: "#0D2D5C",
+                        margin: 0,
+                        lineHeight: 1.25,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {value}
+                    </Text>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
 
           <Section>
             {fields.map(([label, value]) => (

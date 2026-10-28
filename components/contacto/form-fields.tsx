@@ -1,37 +1,49 @@
 import type {
   InputHTMLAttributes,
+  Ref,
   SelectHTMLAttributes,
   TextareaHTMLAttributes,
   ReactNode,
 } from "react";
 import { cn } from "@/lib/utils";
+import {
+  roleLabels,
+  roles,
+  unitRangeLabels,
+  unitRanges,
+} from "@/lib/validations/contact";
 
 type FieldProps = {
   label: string;
   name: string;
+  /** id del control si difiere de `name` (dos formularios en la misma página). */
+  id?: string;
   required?: boolean;
   error?: string;
   hint?: string;
   /** Para etiquetas secundarias (p. ej. las opciones dentro de un fieldset). */
   labelClassName?: string;
+  className?: string;
   children: ReactNode;
 };
 
 export function Field({
   label,
   name,
+  id = name,
   required,
   error,
   hint,
   labelClassName,
+  className,
   children,
 }: FieldProps) {
-  const hintId = hint ? `${name}-hint` : undefined;
-  const errorId = error ? `${name}-error` : undefined;
+  const hintId = hint ? `${id}-hint` : undefined;
+  const errorId = error ? `${id}-error` : undefined;
   return (
-    <div className="flex flex-col gap-2">
+    <div className={cn("flex flex-col gap-2", className)}>
       <label
-        htmlFor={name}
+        htmlFor={id}
         className={cn("text-[13px] font-medium tracking-[0.005em] text-navy-900", labelClassName)}
       >
         {label}
@@ -63,7 +75,10 @@ export function TextInput({
   className,
   invalid,
   ...props
-}: InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean }) {
+}: InputHTMLAttributes<HTMLInputElement> & {
+  invalid?: boolean;
+  ref?: Ref<HTMLInputElement>;
+}) {
   return (
     <input
       className={cn(
@@ -139,20 +154,103 @@ export function Textarea({
   );
 }
 
-export function Honeypot() {
+export function Honeypot({ id = "company_website" }: { id?: string }) {
   return (
     <div
       aria-hidden="true"
       className="absolute left-[-9999px] top-[-9999px] h-px w-px opacity-0"
     >
-      <label htmlFor="company_website">No completar este campo</label>
+      <label htmlFor={id}>No completar este campo</label>
       <input
         type="text"
-        id="company_website"
+        id={id}
         name="company_website"
         autoComplete="off"
         tabIndex={-1}
       />
+    </div>
+  );
+}
+
+const subgridField = "sm:row-span-3 sm:grid sm:grid-rows-subgrid sm:content-start";
+
+type QualificationFieldsProps = {
+  errors: Partial<Record<string, string>>;
+  values: Record<string, string>;
+  /** Prefijo de ids cuando hay más de un formulario en la página. */
+  idPrefix?: string;
+  className?: string;
+};
+
+/**
+ * Unidades del edificio y quién consulta: obligatorios en todos los formularios.
+ * Dos selects en una fila desde `sm`. Cada campo es un subgrid de 3 filas (etiqueta,
+ * control, error): si una etiqueta ocupa dos líneas, los dos selects siguen alineados.
+ */
+export function QualificationFields({
+  errors,
+  values,
+  idPrefix = "",
+  className,
+}: QualificationFieldsProps) {
+  const unitsId = `${idPrefix}units`;
+  const roleId = `${idPrefix}role`;
+  return (
+    <div
+      className={cn("grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-4 sm:gap-y-2", className)}
+    >
+      <Field
+        label="Cantidad de unidades del edificio"
+        name="units"
+        id={unitsId}
+        required
+        error={errors.units}
+        className={subgridField}
+      >
+        <Select
+          id={unitsId}
+          name="units"
+          required
+          defaultValue={values.units ?? ""}
+          invalid={Boolean(errors.units)}
+          aria-describedby={errors.units ? `${unitsId}-error` : undefined}
+        >
+          <option value="" disabled>
+            Seleccionar…
+          </option>
+          {unitRanges.map((value) => (
+            <option key={value} value={value}>
+              {unitRangeLabels[value]}
+            </option>
+          ))}
+        </Select>
+      </Field>
+      <Field
+        label="Ustedes son"
+        name="role"
+        id={roleId}
+        required
+        error={errors.role}
+        className={subgridField}
+      >
+        <Select
+          id={roleId}
+          name="role"
+          required
+          defaultValue={values.role ?? ""}
+          invalid={Boolean(errors.role)}
+          aria-describedby={errors.role ? `${roleId}-error` : undefined}
+        >
+          <option value="" disabled>
+            Seleccionar…
+          </option>
+          {roles.map((value) => (
+            <option key={value} value={value}>
+              {roleLabels[value]}
+            </option>
+          ))}
+        </Select>
+      </Field>
     </div>
   );
 }

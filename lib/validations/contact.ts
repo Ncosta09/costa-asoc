@@ -1,11 +1,34 @@
 import { z } from "zod";
 
-export const roles = [
-  "consejo",
-  "propietario",
-  "inmobiliaria",
-  "otro",
-] as const;
+/**
+ * Calificación del lead: obligatoria en todas las variantes del formulario.
+ * Las claves son cortas y sin PII porque viajan tal cual como parámetros `units` y
+ * `role` del evento `lead_srv` (GA4). Las etiquetas son las que ve el visitante y
+ * las que llegan en el mail.
+ */
+export const unitRanges = ["hasta_10", "11_30", "31_60", "mas_60", "no_se"] as const;
+export type UnitRange = (typeof unitRanges)[number];
+export const unitRangeLabels: Record<UnitRange, string> = {
+  hasta_10: "Hasta 10",
+  "11_30": "11 a 30",
+  "31_60": "31 a 60",
+  mas_60: "Más de 60",
+  no_se: "No sé",
+};
+
+/** "31 a 60 unidades" / "Unidades: no sabe", para el asunto y el mail. */
+export function describeUnits(units: UnitRange): string {
+  return units === "no_se" ? "Unidades: no sabe" : `${unitRangeLabels[units]} unidades`;
+}
+
+export const roles = ["consejo", "propietario", "inquilino", "admin_otro"] as const;
+export type Role = (typeof roles)[number];
+export const roleLabels: Record<Role, string> = {
+  consejo: "Consejo de administración",
+  propietario: "Propietario/a",
+  inquilino: "Inquilino/a",
+  admin_otro: "Administrador/a u otro",
+};
 
 export const buildingTypes = [
   "residencial",
@@ -13,33 +36,41 @@ export const buildingTypes = [
   "mixto",
 ] as const;
 
-// Desde qué página llegó la consulta. Va en el asunto del mail para saber si el
-// lead vino de la landing de Ads (/propuesta) o del orgánico.
-export const formSources = ["contacto", "propuesta", "servicios"] as const;
-export type FormSource = (typeof formSources)[number];
-
-export const roleLabels: Record<(typeof roles)[number], string> = {
-  consejo: "Miembro del consejo de administración",
-  propietario: "Propietario",
-  inmobiliaria: "Inmobiliaria",
-  otro: "Otro",
-};
-
 export const buildingTypeLabels: Record<(typeof buildingTypes)[number], string> = {
   residencial: "Residencial",
   corporativo: "Corporativo",
   mixto: "Mixto",
 };
 
+/** "Mejor horario" del pedido de llamada (opcional). */
+export const callTimes = ["manana", "tarde"] as const;
+export const callTimeLabels: Record<(typeof callTimes)[number], string> = {
+  manana: "Mañana",
+  tarde: "Tarde",
+};
+
+// Desde qué página llegó la consulta. Va en el asunto del mail y como `form_source`
+// de `lead_srv` para saber si el lead vino de la landing de Ads (/propuesta) o del
+// orgánico. `propuesta-llamada` es el "Prefiero que me llamen" de /propuesta.
+export const formSources = ["contacto", "propuesta", "servicios", "propuesta-llamada"] as const;
+export type FormSource = (typeof formSources)[number];
+export const CALLBACK_SOURCE = "propuesta-llamada" satisfies FormSource;
+
 // FormData manda "" en los campos que no se completaron. Para los opcionales,
 // vacío (o solo espacios) es "no lo dijeron", no un valor inválido.
 const blankToUndefined = (v: unknown) =>
   typeof v === "string" && v.trim() === "" ? undefined : v;
 
+const pick = "Elijan una opción de la lista";
+
 /**
- * Obligatorios: nombre, barrio y al menos un medio de contacto (teléfono o email).
- * Rol, tipo de edificio, unidades y mensaje son opcionales: se preguntan después.
- * Antes eran 7 obligatorios y era el principal freno de la conversión (auditoría 2026-09-18).
+ * Obligatorios: nombre, unidades, rol y, según el formulario:
+ * - consulta (contacto/propuesta/servicios): barrio y teléfono o email;
+ * - pedido de llamada: teléfono (barrio y email no se piden).
+ * Esas reglas cruzadas viven en `validateContact`, no acá.
+ * Tipo de edificio y mensaje son opcionales. Antes eran 7 obligatorios y era el
+ * principal freno de la conversión (auditoría 2026-09-18): unidades y rol volvieron
+ * como selects de un toque porque son lo primero que se quiere saber del lead.
  */
 export const contactSchema = z
   .object({
@@ -68,29 +99,42 @@ export const contactSchema = z
         .max(40, "Demasiado largo")
         .optional(),
     ),
-    neighborhood: z
-      .string({ required_error: "Indiquen el barrio" })
-      .trim()
-      .min(2, "Indiquen el barrio")
-      .max(120, "Demasiado largo")
-      .regex(/^[^\r\n]*$/, "Revisen el dato"),
-    role: z.preprocess(
-      blankToUndefined,
-      z.enum(roles, { errorMap: () => ({ message: "Elijan una opción de la lista" }) }).optional(),
-    ),
-    buildingType: z.preprocess(
+    neighborhood: z.preprocess(
       blankToUndefined,
       z
-        .enum(buildingTypes, { errorMap: () => ({ message: "Elijan una opción de la lista" }) })
+        .string()
+        .trim()
+        .min(2, "Indiquen el barrio")
+        .max(120, "Demasiado largo")
+        .regex(/^[^\r\n]*$/, "Revisen el dato")
         .optional(),
     ),
     units: z.preprocess(
       blankToUndefined,
-      z.coerce
-        .number({ invalid_type_error: "Ingresen un número" })
-        .int("Tiene que ser un número entero")
-        .min(1, "Tiene que ser al menos 1")
-        .max(2000, "Revisen el dato")
+      z.enum(unitRanges, {
+        errorMap: (issue, ctx) =>
+          issue.code === "invalid_type" && ctx.data === undefined
+            ? { message: "Indiquen cuántas unidades tiene el edificio" }
+            : { message: pick },
+      }),
+    ),
+    role: z.preprocess(
+      blankToUndefined,
+      z.enum(roles, {
+        errorMap: (issue, ctx) =>
+          issue.code === "invalid_type" && ctx.data === undefined
+            ? { message: "Indiquen quiénes son" }
+            : { message: pick },
+      }),
+    ),
+    callTime: z.preprocess(
+      blankToUndefined,
+      z.enum(callTimes, { errorMap: () => ({ message: pick }) }).optional(),
+    ),
+    buildingType: z.preprocess(
+      blankToUndefined,
+      z
+        .enum(buildingTypes, { errorMap: () => ({ message: pick }) })
         .optional(),
     ),
     message: z.preprocess(
@@ -111,9 +155,11 @@ export type ContactInput = z.infer<typeof contactSchema>;
 export const CONTACT_METHOD_ERROR = "contact";
 export const contactMethodMessage =
   "Dejen un teléfono o un email para poder responderles.";
+const callbackPhoneMessage = "Dejen un teléfono para poder llamarlos.";
 
 /**
- * Valida y además exige teléfono o email. Se hace afuera del schema a propósito:
+ * Valida y además aplica las reglas que dependen del formulario (barrio y teléfono
+ * o email en la consulta; teléfono en el pedido de llamada). Se hace afuera del schema a propósito:
  * en zod 3 un `superRefine` sobre el objeto no corre si otro campo ya falló, y el
  * visitante vería el error del contacto recién en el segundo intento.
  */
@@ -132,8 +178,16 @@ export function validateContact(raw: Record<string, unknown>):
 
   const phone = blankToUndefined(raw.phone);
   const email = blankToUndefined(raw.email);
-  if (phone === undefined && email === undefined) {
-    errors[CONTACT_METHOD_ERROR] = contactMethodMessage;
+  if (raw.source === CALLBACK_SOURCE) {
+    // Pedido de llamada: sin teléfono no hay pedido.
+    if (phone === undefined) errors.phone = callbackPhoneMessage;
+  } else {
+    if (blankToUndefined(raw.neighborhood) === undefined && !errors.neighborhood) {
+      errors.neighborhood = "Indiquen el barrio";
+    }
+    if (phone === undefined && email === undefined) {
+      errors[CONTACT_METHOD_ERROR] = contactMethodMessage;
+    }
   }
 
   if (parsed.success && Object.keys(errors).length === 0) {

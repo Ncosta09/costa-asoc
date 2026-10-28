@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+import { CallbackRequest } from "@/components/contacto/callback-request";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +11,9 @@ import { cn } from "@/lib/utils";
  * Los clicks los mide el listener delegado de `components/analytics/analytics.tsx`
  * (`wa.me` → whatsapp_click, `tel:` → phone_click). No hay que cablear nada acá:
  * alcanza con que los href sigan siendo `wa.me/...` y `tel:...`.
+ *
+ * Con `callbackFallbackHref` suma "Prefiero que me llamen" (solo /propuesta, tono
+ * claro): despliega un pedido de llamada inline; sin JS es un link a ese ancla.
  */
 
 const MENSAJE = "Hola, escribo por la administración de nuestro consorcio.";
@@ -26,12 +30,15 @@ type DirectContactProps = {
   tone?: keyof typeof tones;
   /** Muestra debajo el número y el horario de atención. */
   showDetails?: boolean;
+  /** Activa "Prefiero que me llamen"; es el ancla del formulario principal. */
+  callbackFallbackHref?: string;
   className?: string;
 };
 
 export function DirectContact({
   tone = "light",
   showDetails = true,
+  callbackFallbackHref,
   className,
 }: DirectContactProps) {
   return (
@@ -51,6 +58,9 @@ export function DirectContact({
           Llamar
         </a>
       </div>
+      {callbackFallbackHref ? (
+        <CallbackRequest fallbackHref={callbackFallbackHref} baseClassName={base} />
+      ) : null}
       {showDetails ? (
         <p
           className={cn(
