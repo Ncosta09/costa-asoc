@@ -17,6 +17,7 @@ export const coverageZones = [
   "Monte Castro",
   "Villa Pueyrredón",
   "Colegiales",
+  "Villa Urquiza",
 ] as const;
 
 // Landings por barrio ya publicadas: el chip del barrio se vuelve link.
@@ -30,4 +31,5 @@ export const zoneHrefs: Partial<Record<(typeof coverageZones)[number], string>> 
   Belgrano: "/administracion-de-consorcios-belgrano",
   Palermo: "/administracion-de-consorcios-palermo",
   Recoleta: "/administracion-de-consorcios-recoleta",
+  "Villa Urquiza": "/administracion-de-consorcios-villa-urquiza",
 };
