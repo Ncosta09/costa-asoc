@@ -9,8 +9,9 @@ export function IntroBlock() {
     <Section spacing="tight" className="pt-24 sm:pt-28">
       <Container>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Hero sin Reveal: el texto y la foto son LCP y pintan directo (sin opacity:0 previo). */}
           <div className="lg:col-span-7">
-            <Reveal>
+            <div>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-terra-700">
                 Nosotros
               </p>
@@ -29,11 +30,11 @@ export function IntroBlock() {
                 con reportes claros, planificación financiera realista y una atención que
                 no requiere insistir.
               </p>
-            </Reveal>
+            </div>
           </div>
 
           <div className="lg:col-span-5">
-            <Reveal delay={0.08} className="h-full">
+            <div className="h-full">
               <figure className="flex h-full flex-col">
                 {/* TODO: reemplazar por foto de Gabriel en alta resolución (actual: 400x400) */}
                 <div className="relative aspect-[4/5] flex-1 overflow-hidden rounded-lg border border-cream-200 bg-cream-100 lg:aspect-auto lg:min-h-[24rem]">
@@ -42,6 +43,7 @@ export function IntroBlock() {
                     alt="Gabriel A. Costa, contador público y titular de Costa & Asociados"
                     fill
                     sizes="(min-width: 1024px) 40vw, 100vw"
+                    priority
                     className="object-cover object-[center_top]"
                   />
                 </div>
@@ -49,13 +51,13 @@ export function IntroBlock() {
                   <p className="font-display text-[1.25rem] leading-tight tracking-tight text-navy-900">
                     Gabriel A. Costa
                   </p>
-                  <p className="mt-1 text-[14px] text-ink-600">
+                  <p className="mt-1 text-[14px] text-ink-700">
                     Contador Público{" "}
                     <span className="text-terra-700">·</span> Titular del estudio
                   </p>
                 </figcaption>
               </figure>
-            </Reveal>
+            </div>
           </div>
         </div>
 

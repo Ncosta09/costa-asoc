@@ -65,7 +65,7 @@ export function DirectContact({
         <p
           className={cn(
             "mt-2.5 text-[13px] leading-snug",
-            tone === "dark" ? "text-cream-100/75" : "text-ink-500",
+            tone === "dark" ? "text-cream-100/75" : "text-ink-700",
           )}
         >
           {site.contact.phone} · {site.hours.label}

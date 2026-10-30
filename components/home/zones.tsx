@@ -26,7 +26,7 @@ export function Zones() {
             </div>
 
             <div className="lg:col-span-7">
-              <ul className="flex flex-wrap gap-2.5">
+              <ul className="flex flex-wrap gap-x-2.5 gap-y-3">
                 {coverageZones.map((zone) => {
                   const href = zoneHrefs[zone];
                   const chip = (
@@ -40,7 +40,7 @@ export function Zones() {
                       {href ? (
                         <Link
                           href={href}
-                          className="inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[14px] font-medium text-navy-900 ring-1 ring-cream-300 transition-colors hover:bg-cream-50 hover:ring-terra-700/40"
+                          className="relative inline-flex items-center gap-1.5 rounded-full bg-cream-100 px-3.5 py-1.5 text-[14px] font-medium text-navy-900 ring-1 ring-cream-300 transition-colors after:absolute after:inset-x-0 after:-inset-y-1.5 after:content-[''] hover:bg-cream-50 hover:ring-terra-700/40"
                         >
                           {chip}
                         </Link>

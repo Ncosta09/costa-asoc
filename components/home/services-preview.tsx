@@ -22,7 +22,7 @@ export function ServicesPreview() {
             </div>
             <Link
               href="/servicios"
-              className="group inline-flex items-center gap-2 text-[15px] font-medium text-navy-900 transition-colors hover:text-terra-700"
+              className="group -my-2.5 inline-flex min-h-11 items-center gap-2 text-[15px] font-medium text-navy-900 transition-colors hover:text-terra-700"
             >
               Ver todos los servicios de administración
               <ArrowRight aria-hidden="true"

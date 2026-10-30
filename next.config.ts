@@ -63,6 +63,12 @@ const config: NextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          // Sin acceso a cámara, micrófono ni ubicación (tampoco para iframes). El embed de
+          // Google Maps no los necesita: "Cómo llegar" abre maps en otra pestaña.
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
         ],
       },
     ];

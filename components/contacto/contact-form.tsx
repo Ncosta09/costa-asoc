@@ -220,7 +220,7 @@ export function ContactForm({
           <span aria-hidden="true" className="ml-1 text-terra-700">
             *
           </span>
-          <span className="ml-2 font-normal text-ink-500" id="contact-hint">
+          <span className="ml-2 font-normal text-ink-700" id="contact-hint">
             Con uno alcanza
           </span>
         </legend>
@@ -245,7 +245,7 @@ export function ContactForm({
           </Field>
           <span
             aria-hidden="true"
-            className="flex items-center gap-3 text-[13px] italic text-ink-500 sm:mt-[27.5px] sm:h-11"
+            className="flex items-center gap-3 text-[13px] italic text-ink-700 sm:mt-[27.5px] sm:h-11"
           >
             <span className="h-px flex-1 bg-cream-300 sm:hidden" />o
             <span className="h-px flex-1 bg-cream-300 sm:hidden" />
@@ -336,7 +336,7 @@ export function ContactForm({
           ) : (
             <span>
               Datos del edificio{" "}
-              <span className="font-sans text-[13px] font-normal text-ink-500 lg:tracking-normal">
+              <span className="font-sans text-[13px] font-normal text-ink-700 lg:tracking-normal">
                 (opcional)
               </span>
             </span>
@@ -370,7 +370,7 @@ export function ContactForm({
       ) : null}
 
       <div className="flex flex-col-reverse gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-[12.5px] text-ink-500">{site.hours.responseNote}</p>
+        <p className="text-[12.5px] text-ink-700">{site.hours.responseNote}</p>
         <SubmitButton label={compact ? "Pedir propuesta" : "Enviar consulta"} />
       </div>
     </form>

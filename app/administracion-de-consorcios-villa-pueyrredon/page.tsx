@@ -137,7 +137,7 @@ export default function VillaPueyrredonPage() {
                   url: `${site.url}/administracion-de-consorcios-villa-pueyrredon`,
                 },
               ]),
-              barrioServiceSchema("Villa Pueyrredón", "/administracion-de-consorcios-villa-pueyrredon"),
+              barrioServiceSchema("Villa Pueyrredón", "/administracion-de-consorcios-villa-pueyrredon", metadata.description),
             ],
           ),
         }}
@@ -578,7 +578,15 @@ export default function VillaPueyrredonPage() {
                   <a href="/servicios" className={linkClass}>
                     nuestros servicios de administración
                   </a>
-                  , y para conversar el caso de su edificio pueden{" "}
+                  ; en el blog explicamos cómo{" "}
+                  <a href="/blog/como-cambiar-de-administrador-de-consorcio" className={linkClass}>
+                    remover al administrador actual
+                  </a>{" "}
+                  y{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className={linkClass}>
+                    cuánto cobra un administrador y por qué
+                  </a>
+                  ; y para conversar el caso de su edificio pueden{" "}
                   <a href="/contacto" className={linkClass}>
                     escribirnos desde contacto
                   </a>

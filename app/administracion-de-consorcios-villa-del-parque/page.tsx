@@ -25,7 +25,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Villa del Parque",
   description:
-    "Estudio contable matriculado (RPA 8192) con oficina en la Comuna 11, a minutos de Villa del Parque. Administramos consorcios nuevos y edificios de PH del barrio: expensas claras, cuentas a nombre del consorcio y asambleas bien llevadas.",
+    "Estudio contable con RPA 8192 en la Comuna 11, a minutos de Villa del Parque: consorcios nuevos y PH, con expensas claras y asambleas bien llevadas.",
   path: "/administracion-de-consorcios-villa-del-parque",
 });
 
@@ -123,7 +123,7 @@ export default function VillaDelParquePage() {
                   url: `${site.url}/administracion-de-consorcios-villa-del-parque`,
                 },
               ]),
-              barrioServiceSchema("Villa del Parque", "/administracion-de-consorcios-villa-del-parque"),
+              barrioServiceSchema("Villa del Parque", "/administracion-de-consorcios-villa-del-parque", metadata.description),
             ],
           ),
         }}
@@ -431,6 +431,11 @@ export default function VillaDelParquePage() {
                     className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700"
                   >
                     qué incluye nuestra administración
+                  </a>
+                  . Y lo que cobra un administrador, y por qué no hay un arancel
+                  oficial, lo contamos en la nota sobre{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700">
+                    honorarios de la administración de consorcios
                   </a>
                   .
                 </p>

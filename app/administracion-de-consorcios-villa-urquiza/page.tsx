@@ -171,7 +171,7 @@ export default function VillaUrquizaPage() {
                 url: `${site.url}/administracion-de-consorcios-villa-urquiza`,
               },
             ]),
-            barrioServiceSchema("Villa Urquiza", "/administracion-de-consorcios-villa-urquiza"),
+            barrioServiceSchema("Villa Urquiza", "/administracion-de-consorcios-villa-urquiza", metadata.description),
           ]),
         }}
       />
@@ -569,6 +569,10 @@ export default function VillaUrquizaPage() {
                   , y el alcance de cada plan, en{" "}
                   <a href="/servicios" className={linkClass}>
                     servicios
+                  </a>
+                  . Cómo se define lo que cobra la administración lo explicamos en{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className={linkClass}>
+                    la nota sobre el honorario del administrador
                   </a>
                   .
                 </p>

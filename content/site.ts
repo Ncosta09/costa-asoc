@@ -27,10 +27,11 @@ export const site = {
   },
 
   // Perfiles y ficha externa de la ORGANIZACIÓN. Se inyectan en `sameAs` del schema y (si hay) en el footer.
-  // TODO(nico): pegar la URL de la ficha de Google Business Profile cuando esté verificada.
-  // (Instagram: no hay. LinkedIn de empresa: no hay — el personal de Gabriel va en principal.linkedin.)
+  // (Instagram: no hay. LinkedIn de empresa: no hay; el personal de Gabriel va en principal.linkedin.)
   social: {
-    googleBusiness: "", // ej. "https://maps.app.goo.gl/xxxxxxxx" (ficha de Google Business Profile)
+    // Ficha de Google Business Profile (categoría "Administrador de la propiedad", SAB).
+    // Entra en sameAs y hasMap del schema y como link "Google" en el footer.
+    googleBusiness: "https://www.google.com/maps?cid=13546307270591118236",
   },
 
   address: {

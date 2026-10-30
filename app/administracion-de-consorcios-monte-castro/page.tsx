@@ -25,7 +25,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Monte Castro",
   description:
-    "Estudio contable matriculado (RPA 8192) con oficina en Villa Devoto, a diez cuadras de Monte Castro. Administramos PH de pocas unidades, edificios con local a la calle y consorcios con encargado: expensas claras, cuenta a nombre del consorcio y rendición documentada.",
+    "Estudio contable con RPA 8192 a diez cuadras de Monte Castro: PH de pocas unidades, edificios con local y consorcios con encargado, con cuenta del consorcio.",
   path: "/administracion-de-consorcios-monte-castro",
 });
 
@@ -124,7 +124,7 @@ export default function MonteCastroPage() {
                   url: `${site.url}/administracion-de-consorcios-monte-castro`,
                 },
               ]),
-              barrioServiceSchema("Monte Castro", "/administracion-de-consorcios-monte-castro"),
+              barrioServiceSchema("Monte Castro", "/administracion-de-consorcios-monte-castro", metadata.description),
             ],
           ),
         }}
@@ -436,6 +436,10 @@ export default function MonteCastroPage() {
                     className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700"
                   >
                     nuestros servicios de administración
+                  </a>
+                  . Qué cubre el honorario y qué se cobra aparte está en la nota sobre{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700">
+                    qué incluye el honorario del administrador
                   </a>
                   .
                 </p>

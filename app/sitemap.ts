@@ -9,6 +9,8 @@ import { getAllPosts, lastModified } from "@/lib/blog";
  * todas las páginas cambiaron en cada deploy, aprende que nuestro `lastmod` no es
  * confiable y lo empieza a ignorar en todo el sitio — incluidos los posts, que sí
  * lo necesitan para que recrawlee. Bumpear a mano al editar el contenido de la página.
+ *
+ * Sin `changeFrequency` ni `priority`: Google los ignora y solo mira `lastmod`.
  */
 const STATIC_LASTMOD: Record<string, string> = {
   "/": "2026-10-28",
@@ -17,31 +19,27 @@ const STATIC_LASTMOD: Record<string, string> = {
   // (bumpear al editar el contenido de la página, no en cada deploy)
   "/blog": "2026-10-28",
   "/contacto": "2026-07-10",
-  "/administracion-de-consorcios-villa-devoto": "2026-08-17",
-  "/administracion-de-consorcios-villa-del-parque": "2026-08-24",
-  "/administracion-de-consorcios-monte-castro": "2026-09-04",
-  "/administracion-de-consorcios-villa-pueyrredon": "2026-09-23",
-  "/administracion-de-consorcios-caballito": "2026-09-23",
-  "/administracion-de-consorcios-belgrano": "2026-09-23",
-  "/administracion-de-consorcios-palermo": "2026-09-28",
-  "/administracion-de-consorcios-recoleta": "2026-10-12",
-  "/administracion-de-consorcios-villa-urquiza": "2026-10-28",
+  "/administracion-de-consorcios-villa-devoto": "2026-10-30",
+  "/administracion-de-consorcios-villa-del-parque": "2026-10-30",
+  "/administracion-de-consorcios-monte-castro": "2026-10-30",
+  "/administracion-de-consorcios-villa-pueyrredon": "2026-10-30",
+  "/administracion-de-consorcios-caballito": "2026-10-30",
+  "/administracion-de-consorcios-belgrano": "2026-10-30",
+  "/administracion-de-consorcios-palermo": "2026-10-30",
+  "/administracion-de-consorcios-recoleta": "2026-10-30",
+  "/administracion-de-consorcios-villa-urquiza": "2026-10-30",
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries = Object.entries(STATIC_LASTMOD).map(([path, date]) => ({
     url: `${site.url}${path}`,
     lastModified: new Date(date),
-    changeFrequency: "monthly" as const,
-    priority: path === "/" ? 1 : 0.8,
   }));
 
   const postEntries = getAllPosts().map((post) => ({
     url: `${site.url}/blog/${post.slug}`,
     // Última modificación real, no la fecha de publicación (ver `updated` en lib/blog.ts).
     lastModified: new Date(lastModified(post)),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
   }));
 
   return [...staticEntries, ...postEntries];

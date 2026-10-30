@@ -19,7 +19,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = buildMetadata({
   title: "Administradora de consorcios en CABA: servicios",
   description:
-    "Administradora de consorcios con mirada contable: expensas, control financiero, personal, obras, asambleas y guardia para emergencias. RPA 8192, cuentas del consorcio.",
+    "Administradora de consorcios con mirada contable: expensas, control financiero, personal, obras, asambleas y guardia para emergencias. Matrícula RPA 8192.",
   path: "/servicios",
 });
 
