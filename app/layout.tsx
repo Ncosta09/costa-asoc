@@ -7,7 +7,7 @@ import { Analytics } from "@/components/analytics/analytics";
 import { ConsentBanner } from "@/components/analytics/consent-banner";
 import { WhatsAppFloat } from "@/components/ui/whatsapp-float";
 import { buildMetadata } from "@/lib/seo";
-import { professionalServiceSchema } from "@/lib/schema";
+import { professionalServiceSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -68,7 +68,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           // JSON-LD must be raw, not escaped — only emitted once at root
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema()) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([professionalServiceSchema(), websiteSchema()]),
+          }}
         />
       </body>
     </html>

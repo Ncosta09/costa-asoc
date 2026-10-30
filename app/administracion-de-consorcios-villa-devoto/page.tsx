@@ -16,7 +16,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 export const metadata: Metadata = buildMetadata({
   title: "Administración de Consorcios en Villa Devoto",
   description:
-    "Estudio contable matriculado (RPA 8192) con oficina en Villa Devoto. Administración de consorcios del barrio y alrededores: expensas claras, cuentas a nombre del consorcio y un administrador que está cerca del edificio.",
+    "Estudio contable con RPA 8192 y oficina en Villa Devoto: expensas claras, cuentas a nombre del consorcio y un administrador cerca de su edificio.",
   path: "/administracion-de-consorcios-villa-devoto",
 });
 
@@ -106,7 +106,7 @@ export default function VillaDevotoPage() {
                   url: `${site.url}/administracion-de-consorcios-villa-devoto`,
                 },
               ]),
-              barrioServiceSchema("Villa Devoto", "/administracion-de-consorcios-villa-devoto"),
+              barrioServiceSchema("Villa Devoto", "/administracion-de-consorcios-villa-devoto", metadata.description),
             ],
           ),
         }}
@@ -284,7 +284,15 @@ export default function VillaDevotoPage() {
                   documentado, en una cuenta a nombre del consorcio.
                 </p>
                 <p className="mt-4 max-w-[56ch] text-[16px] leading-relaxed text-ink-700">
-                  El detalle completo del servicio está en{" "}
+                  Si están pensando en dejar a su administración actual, explicamos{" "}
+                  <a href="/blog/como-cambiar-de-administrador-de-consorcio" className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700">
+                    el procedimiento para remover al administrador
+                  </a>{" "}
+                  y{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700">
+                    cómo se fija el honorario de una administración
+                  </a>
+                  . El detalle completo del servicio está en{" "}
                   <a
                     href="/servicios"
                     className="font-medium text-terra-700 underline decoration-terra-700/30 underline-offset-4 transition-colors hover:decoration-terra-700"

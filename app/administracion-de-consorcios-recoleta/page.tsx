@@ -200,7 +200,7 @@ export default function RecoletaPage() {
                 url: `${site.url}/administracion-de-consorcios-recoleta`,
               },
             ]),
-            barrioServiceSchema("Recoleta", "/administracion-de-consorcios-recoleta"),
+            barrioServiceSchema("Recoleta", "/administracion-de-consorcios-recoleta", metadata.description),
           ]),
         }}
       />
@@ -616,6 +616,14 @@ export default function RecoletaPage() {
                   , y el detalle de cada plan, en{" "}
                   <a href="/servicios" className={linkClass}>
                     servicios
+                  </a>
+                  . Para un consorcio que evalúa el cambio, contamos{" "}
+                  <a href="/blog/como-cambiar-de-administrador-de-consorcio" className={linkClass}>
+                    los pasos para cambiar de administración
+                  </a>{" "}
+                  y{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className={linkClass}>
+                    qué honorarios y gastos se cobran aparte
                   </a>
                   .
                 </p>

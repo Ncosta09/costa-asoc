@@ -36,7 +36,7 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-ink-700 transition-colors hover:text-navy-900"
+                    className="-my-[5px] inline-block py-[5px] text-ink-700 transition-colors hover:text-navy-900"
                   >
                     {link.label}
                   </Link>
@@ -59,7 +59,7 @@ export function SiteFooter() {
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="transition-colors hover:text-navy-900"
+                        className="-my-1.5 inline-block py-1.5 transition-colors hover:text-navy-900"
                       >
                         <span className="font-medium text-ink-900">{r.short}</span>
                         <span className="ml-2 text-ink-700">· {r.full}</span>
@@ -88,7 +88,7 @@ export function SiteFooter() {
               <li>
                 <a
                   href={site.contact.phoneHref}
-                  className="transition-colors hover:text-navy-900"
+                  className="-my-1.5 inline-block py-1.5 transition-colors hover:text-navy-900"
                 >
                   {site.contact.phone}
                 </a>
@@ -96,7 +96,7 @@ export function SiteFooter() {
               <li>
                 <a
                   href={site.contact.emailHref}
-                  className="transition-colors hover:text-navy-900"
+                  className="-my-1.5 inline-block py-1.5 transition-colors hover:text-navy-900"
                 >
                   {site.contact.email}
                 </a>
@@ -112,7 +112,7 @@ export function SiteFooter() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-ink-700 transition-colors hover:text-navy-900"
+                      className="-my-1.5 inline-block py-1.5 text-ink-700 transition-colors hover:text-navy-900"
                     >
                       {s.label}
                     </a>

@@ -8,17 +8,38 @@ import { ContactMap } from "@/components/contacto/contact-map";
 import { DirectContact } from "@/components/contacto/direct-contact";
 import { OfficeInfo } from "@/components/contacto/office-info";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
+import { site } from "@/content/site";
+
+const DESCRIPTION =
+  "Coordinemos una primera reunión sin compromiso. WhatsApp, teléfono, formulario y datos del estudio en Campana 4710, CABA.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contacto",
-  description:
-    "Coordinemos una primera reunión sin compromiso. WhatsApp, teléfono, formulario y datos del estudio en Campana 4710, CABA.",
+  description: DESCRIPTION,
   path: "/contacto",
 });
 
 export default function ContactoPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            webPageSchema({
+              type: "ContactPage",
+              path: "/contacto",
+              name: `Contacto | ${site.name}`,
+              description: DESCRIPTION,
+            }),
+            breadcrumbSchema([
+              { name: "Inicio", url: site.url },
+              { name: "Contacto", url: `${site.url}/contacto` },
+            ]),
+          ]),
+        }}
+      />
       <Section spacing="tight" className="pt-24 sm:pt-28">
         <Container>
           {/* Sin Reveal en el bloque de arriba: H1 y botones de contacto pintan directo. */}

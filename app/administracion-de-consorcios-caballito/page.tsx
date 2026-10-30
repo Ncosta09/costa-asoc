@@ -177,7 +177,7 @@ export default function CaballitoPage() {
                   url: `${site.url}/administracion-de-consorcios-caballito`,
                 },
               ]),
-              barrioServiceSchema("Caballito", "/administracion-de-consorcios-caballito"),
+              barrioServiceSchema("Caballito", "/administracion-de-consorcios-caballito", metadata.description),
             ],
           ),
         }}
@@ -554,6 +554,10 @@ export default function CaballitoPage() {
                   ; si hoy tienen otra administración, el paso a paso está en la guía para{" "}
                   <a href="/blog/como-cambiar-de-administrador-de-consorcio" className={linkClass}>
                     cambiar de administrador de consorcio
+                  </a>
+                  , cómo se arma el precio en la nota sobre{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className={linkClass}>
+                    cómo se pacta el honorario en asamblea
                   </a>
                   , y para hablar de su edificio pueden{" "}
                   <a href="/contacto" className={linkClass}>

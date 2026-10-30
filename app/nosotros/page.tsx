@@ -8,13 +8,15 @@ import { PhilosophyList } from "@/components/nosotros/philosophy-list";
 import { AccountingEdge } from "@/components/nosotros/accounting-edge";
 import { HowWeWork } from "@/components/nosotros/how-we-work";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { site } from "@/content/site";
+
+const DESCRIPTION =
+  "Estudio contable con foco en administración de consorcios desde 2009. Matrículas RPA 8192 y CAPHAI 2903. Conozcan nuestra filosofía y cómo trabajamos.";
 
 export const metadata: Metadata = buildMetadata({
   title: "Nosotros",
-  description:
-    "Estudio contable con foco en administración de consorcios desde 2009. Matrículas RPA 8192 y CAPHAI 2903. Conozcan nuestra filosofía y cómo trabajamos.",
+  description: DESCRIPTION,
   path: "/nosotros",
 });
 
@@ -24,12 +26,18 @@ export default function NosotrosPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
+          __html: JSON.stringify([
+            webPageSchema({
+              type: "AboutPage",
+              path: "/nosotros",
+              name: `Nosotros | ${site.name}`,
+              description: DESCRIPTION,
+            }),
             breadcrumbSchema([
               { name: "Inicio", url: site.url },
               { name: "Nosotros", url: `${site.url}/nosotros` },
             ]),
-          ),
+          ]),
         }}
       />
       <IntroBlock />

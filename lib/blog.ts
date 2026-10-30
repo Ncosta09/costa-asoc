@@ -10,6 +10,8 @@ export type FaqEntry = { question: string; answer: string };
 export type PostMeta = {
   slug: string;
   title: string;
+  /** <title> opcional distinto del H1 (pruebas de CTR sin tocar el contenido visible). */
+  seoTitle?: string;
   description: string;
   /** ISO date de publicación, ej. "2026-06-20" */
   date: string;
@@ -36,6 +38,7 @@ function parsePost(slug: string, raw: string): Post {
   return {
     slug,
     title: String(data.title ?? ""),
+    seoTitle: data.seoTitle ? String(data.seoTitle) : undefined,
     description: String(data.description ?? ""),
     date: String(data.date ?? ""),
     updated: data.updated ? String(data.updated) : undefined,

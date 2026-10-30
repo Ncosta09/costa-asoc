@@ -55,7 +55,7 @@ export function Field({
       </label>
       {children}
       {hint && !error ? (
-        <p id={hintId} className="text-[12.5px] text-ink-500">
+        <p id={hintId} className="text-[12.5px] text-ink-700">
           {hint}
         </p>
       ) : null}

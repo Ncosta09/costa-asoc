@@ -52,7 +52,7 @@ export function RelatedPosts({
             </div>
             <Link
               href="/blog"
-              className="group inline-flex shrink-0 items-center gap-2 py-1 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-terra-700"
+              className="group -my-[7px] inline-flex min-h-11 shrink-0 items-center gap-2 text-[14.5px] font-medium text-navy-900 transition-colors hover:text-terra-700"
             >
               Ver todas las notas
               <ArrowRight aria-hidden="true"

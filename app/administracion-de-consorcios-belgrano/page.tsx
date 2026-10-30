@@ -201,7 +201,7 @@ export default function BelgranoPage() {
                   url: `${site.url}/administracion-de-consorcios-belgrano`,
                 },
               ]),
-              barrioServiceSchema("Belgrano", "/administracion-de-consorcios-belgrano"),
+              barrioServiceSchema("Belgrano", "/administracion-de-consorcios-belgrano", metadata.description),
             ],
           ),
         }}
@@ -571,7 +571,11 @@ export default function BelgranoPage() {
                   <a href="/blog/honorarios-del-administrador-de-consorcio" className={linkClass}>
                     honorarios del administrador
                   </a>
-                  . El detalle de cada plan está en{" "}
+                  . Si hoy tienen otra administración, el{" "}
+                  <a href="/blog/como-cambiar-de-administrador-de-consorcio" className={linkClass}>
+                    traspaso desde la administración actual
+                  </a>{" "}
+                  está explicado paso a paso. El detalle de cada plan está en{" "}
                   <a href="/servicios" className={linkClass}>
                     servicios
                   </a>

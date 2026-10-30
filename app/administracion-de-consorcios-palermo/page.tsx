@@ -204,7 +204,7 @@ export default function PalermoPage() {
                   url: `${site.url}/administracion-de-consorcios-palermo`,
                 },
               ]),
-              barrioServiceSchema("Palermo", "/administracion-de-consorcios-palermo"),
+              barrioServiceSchema("Palermo", "/administracion-de-consorcios-palermo", metadata.description),
             ],
           ),
         }}
@@ -517,6 +517,14 @@ export default function PalermoPage() {
                   Las funciones del consejo en ese control están en la nota sobre{" "}
                   <a href="/blog/funciones-del-consejo-de-propietarios" className={linkClass}>
                     el consejo de propietarios
+                  </a>
+                  . Si la torre hoy tiene otra administración, explicamos{" "}
+                  <a href="/blog/como-cambiar-de-administrador-de-consorcio" className={linkClass}>
+                    cómo es la remoción y el traspaso
+                  </a>{" "}
+                  y{" "}
+                  <a href="/blog/honorarios-del-administrador-de-consorcio" className={linkClass}>
+                    qué cubre el honorario de la administración
                   </a>
                   . El detalle de cada plan está en{" "}
                   <a href="/servicios" className={linkClass}>

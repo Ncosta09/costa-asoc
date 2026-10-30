@@ -16,7 +16,7 @@ import { AttendedBy } from "@/components/ui/attended-by";
 import { remarkMidCta } from "@/lib/remark-mid-cta";
 import { MID_CTA_AT, midCtaBySlug } from "@/content/blog-cta";
 import { getAllPosts, getPostBySlug, formatDate, lastModified } from "@/lib/blog";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, unsplashOgImage } from "@/lib/seo";
 import { blogPostingSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 import { zoneHrefs } from "@/content/zones";
@@ -39,10 +39,17 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
 
+  // og:image = la cover del post (Unsplash a 1200x630); si no hay cover, la genérica.
+  const image = post.cover
+    ? unsplashOgImage(post.cover, post.coverAlt ?? post.title)
+    : undefined;
+
   const base = buildMetadata({
-    title: post.title,
+    // `seoTitle` (opcional) separa el <title> del H1 para probar CTR sin tocar el contenido.
+    title: post.seoTitle ?? post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
+    image,
   });
 
   return {
@@ -100,7 +107,7 @@ export default async function BlogPostPage({
         <article className="mx-auto max-w-[44rem]">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[14px] font-medium text-ink-500 transition-colors hover:text-navy-900"
+            className="inline-flex min-h-11 items-center gap-2 text-[14px] font-medium text-ink-700 transition-colors hover:text-navy-900"
           >
             <ArrowLeft aria-hidden="true" strokeWidth={1.75} className="h-4 w-4" />
             Volver al blog
@@ -115,7 +122,7 @@ export default async function BlogPostPage({
             <h1 className="mt-3 font-display text-[2.1rem] leading-[1.08] tracking-[-0.02em] text-balance text-navy-900 sm:text-[2.9rem]">
               {post.title}
             </h1>
-            <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[14px] text-ink-500">
+            <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[14px] text-ink-700">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
               <span aria-hidden="true" className="h-1 w-1 rounded-full bg-cream-300" />
               <span>{post.author}</span>
@@ -177,7 +184,7 @@ export default async function BlogPostPage({
                 <span key={href}>
                   <Link
                     href={href}
-                    className="font-medium text-navy-900 underline decoration-terra-700/40 underline-offset-4 hover:decoration-terra-700"
+                    className="py-2.5 font-medium text-navy-900 underline decoration-terra-700/40 underline-offset-4 hover:decoration-terra-700"
                   >
                     {zone}
                   </Link>
