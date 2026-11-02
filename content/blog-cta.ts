@@ -13,6 +13,7 @@ export const midCtaBySlug: Record<string, MidCtaVariant> = {
   "como-denunciar-a-un-administrador-de-consorcio": "control",
   "como-verificar-la-matricula-rpa-de-tu-administrador": "control",
   "ley-941-obligaciones-administrador-consorcios": "control",
+  "certificaciones-obligatorias-de-un-edificio-en-caba": "control",
 };
 
 export const midCtaCopy: Record<MidCtaVariant, { title: string; body: string }> = {
