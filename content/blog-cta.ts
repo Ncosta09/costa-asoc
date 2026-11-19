@@ -15,6 +15,7 @@ export const midCtaBySlug: Record<string, MidCtaVariant> = {
   "ley-941-obligaciones-administrador-consorcios": "control",
   "certificaciones-obligatorias-de-un-edificio-en-caba": "control",
   "tanques-de-agua-limpieza-obligatoria-caba": "control",
+  "reglamento-de-copropiedad": "control",
 };
 
 export const midCtaCopy: Record<MidCtaVariant, { title: string; body: string }> = {
