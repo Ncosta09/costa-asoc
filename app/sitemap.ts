@@ -13,11 +13,11 @@ import { getAllPosts, lastModified } from "@/lib/blog";
  * Sin `changeFrequency` ni `priority`: Google los ignora y solo mira `lastmod`.
  */
 const STATIC_LASTMOD: Record<string, string> = {
-  "/": "2026-11-19",
+  "/": "2026-11-23",
   "/servicios": "2026-09-23",
   "/nosotros": "2026-07-10",
   // (bumpear al editar el contenido de la página, no en cada deploy)
-  "/blog": "2026-11-19",
+  "/blog": "2026-11-23",
   "/contacto": "2026-07-10",
   "/administracion-de-consorcios-villa-devoto": "2026-10-30",
   "/administracion-de-consorcios-villa-del-parque": "2026-10-30",
